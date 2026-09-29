@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Download NIAHCIA</title>
+  <meta name="description" content="Current NIAHCIA releases and deployment packages.">
+  <style>
+    :root{color-scheme:dark;background:#0a0d11;color:#eef2f6;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    *{box-sizing:border-box}
+    body{margin:0;background:linear-gradient(180deg,#0a0d11,#0e1319 45%,#0a0d11)}
+    main{max-width:1120px;margin:0 auto;padding:56px 24px 88px}
+    nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:56px}
+    nav a{color:#cfd7df;text-decoration:none}
+    h1{font-size:clamp(2.8rem,7vw,5.8rem);letter-spacing:-.06em;margin:0 0 12px}
+    .lead{font-size:1.2rem;line-height:1.6;color:#b6c0ca;max-width:760px}
+    .release{margin-top:34px;border:1px solid #29313a;border-radius:18px;background:#11171d;padding:26px}
+    .release-header{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
+    .version{font-size:1.55rem;font-weight:700}
+    .muted{color:#8e9aa6}
+    .buttons{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+    .btn{display:inline-block;border:1px solid #3b4651;border-radius:10px;padding:11px 15px;text-decoration:none;color:#fff;background:#182028}
+    .btn.primary{background:#eef2f6;color:#0b0f13;border-color:#eef2f6;font-weight:700}
+    h2{margin-top:46px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+    .card{border:1px solid #29313a;border-radius:16px;background:#10161c;padding:20px}
+    .card h3{margin:0 0 8px}
+    .card p{color:#aeb8c2;min-height:44px}
+    .asset-list{list-style:none;padding:0;margin:14px 0 0}
+    .asset-list li{margin:8px 0}
+    .asset-list a{color:#eef2f6}
+    .notice{margin-top:26px;padding:14px 16px;border-left:3px solid #65717d;background:#121820;color:#bac4ce}
+    footer{margin-top:58px;color:#7f8b96}
+    footer a{color:#bfc8d1}
+  </style>
+</head>
+<body>
+<main>
+  <nav>
+    <strong>NIAHCIA</strong>
+    <div><a href="index.html">Home</a> &nbsp; <a href="https://github.com/niahcia">GitHub</a></div>
+  </nav>
+
+  <h1>Download NIAHCIA</h1>
+  <p class="lead">Current releases, packaged binaries, checksums, and deployment downloads. This is the normal-user download page.</p>
+
+  <section id="main-release" class="release">
+    <div class="release-header">
+      <div>
+        <div class="version">Latest NIAHCIA Release</div>
+        <div class="muted" id="main-status">Checking current release…</div>
+      </div>
+    </div>
+    <div id="main-actions" class="buttons"></div>
+    <ul id="main-assets" class="asset-list"></ul>
+  </section>
+
+  <div class="notice">NIAHCIA is currently pre-alpha. Until the first tagged release exists, download buttons will correctly show that no public release is available yet.</div>
+
+  <h2>Component Releases</h2>
+  <div id="components" class="grid"></div>
+
+  <h2>Deployment Packages</h2>
+  <div class="grid">
+    <section class="card"><h3>Node</h3><p>Full node and EVM RPC.</p><div class="muted">Expected asset: <code>niahcia-node-…</code></div></section>
+    <section class="card"><h3>Miner</h3><p>RandomX CPU miner.</p><div class="muted">Expected asset: <code>niahcia-miner-…</code></div></section>
+    <section class="card"><h3>Compute Worker</h3><p>AI compute-worker runtime.</p><div class="muted">Expected asset: <code>niahcia-compute-…</code></div></section>
+    <section class="card"><h3>Full Stack</h3><p>Operator bundle containing the standard runtime components.</p><div class="muted">Expected asset: <code>niahcia-full-…</code></div></section>
+  </div>
+
+  <footer>
+    Source remains available in the <a href="https://github.com/niahcia">NIAHCIA GitHub organization</a>.
+  </footer>
+</main>
+
+<script>
+const org='niahcia';
+const components=[
+  ['Node / Core','niahcia'],
+  ['Miner','niahcia-miner'],
+  ['Compute Worker','niahcia-compute'],
+  ['Explorer','niahcia-explorer'],
+  ['Web','niahcia-web']
+];
+
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function mb(n){return (n/1024/1024).toFixed(n>10*1024*1024?1:2)+' MB';}
+
+async function latest(repo){
+  const r=await fetch('https://api.github.com/repos/'+org+'/'+repo+'/releases/latest',{headers:{Accept:'application/vnd.github+json'}});
+  if(!r.ok) throw new Error('none');
+  return r.json();
+}
+
+async function loadMain(){
+  const status=document.getElementById('main-status');
+  const actions=document.getElementById('main-actions');
+  const assets=document.getElementById('main-assets');
+  try{
+    const d=await latest('niahcia');
+    status.textContent=d.tag_name+' · released '+new Date(d.published_at).toLocaleDateString();
+    actions.innerHTML='<a class="btn primary" href="'+esc(d.html_url)+'">View latest release</a><a class="btn" href="https://github.com/niahcia/niahcia/releases">Older releases</a>';
+    const list=(d.assets||[]).map(a=>'<li><a href="'+esc(a.browser_download_url)+'">'+esc(a.name)+'</a> <span class="muted">('+mb(a.size)+')</span></li>').join('');
+    assets.innerHTML=list || '<li class="muted">No packaged assets attached to this release.</li>';
+  }catch(e){
+    status.textContent='No public release published yet';
+    actions.innerHTML='<a class="btn" href="https://github.com/niahcia/niahcia/releases">View release page</a>';
+    assets.innerHTML='';
+  }
+}
+
+async function loadComponents(){
+  const host=document.getElementById('components');
+  for(const [name,repo] of components){
+    const card=document.createElement('section');
+    card.className='card';
+    card.innerHTML='<h3>'+esc(name)+'</h3><div class="muted">Checking current release…</div>';
+    host.appendChild(card);
+    try{
+      const d=await latest(repo);
+      card.innerHTML='<h3>'+esc(name)+'</h3><div class="muted">'+esc(d.tag_name)+' · '+esc(new Date(d.published_at).toLocaleDateString())+'</div><div class="buttons"><a class="btn" href="'+esc(d.html_url)+'">Release</a><a class="btn" href="https://github.com/'+org+'/'+repo+'/releases">History</a></div>';
+    }catch(e){
+      card.innerHTML='<h3>'+esc(name)+'</h3><div class="muted">No release published yet</div><div class="buttons"><a class="btn" href="https://github.com/'+org+'/'+repo+'/releases">Release page</a></div>';
+    }
+  }
+}
+loadMain();
+loadComponents();
+</script>
+</body>
+</html>
