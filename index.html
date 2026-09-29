@@ -3,37 +3,34 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>NIAHCIA — Decentralized AI Agent Network</title>
-  <meta name="description" content="NIAHCIA is a permissionless blockchain and decentralized AI-agent network.">
+  <title>NIAHCIA</title>
+  <meta name="description" content="NIAHCIA decentralized AI agent network.">
   <style>
     :root{color-scheme:dark;background:#0b0d10;color:#f3f5f7;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-    body{margin:0}
-    main{max-width:960px;margin:0 auto;padding:72px 24px}
+    *{box-sizing:border-box} body{margin:0}
+    main{max-width:980px;margin:0 auto;padding:70px 24px}
     h1{font-size:clamp(3rem,9vw,7rem);letter-spacing:-.06em;margin:0}
-    .tag{font-size:1.25rem;color:#aab3bd;margin:8px 0 40px}
-    .lead{font-size:1.35rem;line-height:1.6;max-width:760px}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:40px}
-    .card{border:1px solid #2a3038;border-radius:16px;padding:22px;background:#11151a}
-    .card h2{margin-top:0}
-    a{color:#fff}
-    footer{margin-top:56px;color:#7f8994}
+    .tag{font-size:1.25rem;color:#aab3bd;margin:8px 0 32px}
+    .lead{font-size:1.3rem;line-height:1.6;max-width:760px;color:#c4ccd4}
+    .download{display:inline-block;margin-top:22px;padding:15px 20px;background:#f2f5f7;color:#0b0d10;border-radius:12px;text-decoration:none;font-weight:800;font-size:1.08rem}
+    .links{margin-top:48px;display:flex;gap:18px;flex-wrap:wrap}
+    .links a{color:#dfe5ea}
+    footer{margin-top:72px;color:#7f8994}
   </style>
 </head>
 <body>
 <main>
   <h1>NIAHCIA</h1>
   <div class="tag">AI CHAIN — reversed.</div>
-  <p class="lead">
-    A permissionless blockchain and decentralized AI-agent network combining CPU-secured consensus,
-    EVM smart contracts, independent AI compute, distributed services, and portable agents.
-  </p>
-  <div class="grid">
-    <section class="card"><h2>Protocol</h2><p>Architecture, object specifications, NIPs, economics, and threat model.</p><a href="https://github.com/niahcia/niahcia-protocol">Open protocol</a></section>
-    <section class="card"><h2>Chain</h2><p>Reference implementation of the NIAHCIA CPU-PoW + EVM network.</p><a href="https://github.com/niahcia/niahcia">Open chain repo</a></section>
-    <section class="card"><h2>Miner</h2><p>Dedicated RandomX CPU mining software for base-chain security.</p><a href="https://github.com/niahcia/niahcia-miner">Open miner repo</a></section>
-    <section class="card"><h2>Compute</h2><p>Decentralized AI compute-worker software and runtime adapters.</p><a href="https://github.com/niahcia/niahcia-compute">Open compute repo</a></section>
-    <section class="card"><h2>Explorer</h2><p>Blocks, transactions, agents, AI jobs, workers, models, and service nodes.</p><a href="https://github.com/niahcia/niahcia-explorer">Open explorer repo</a></section>
-    <section class="card"><h2>Web</h2><p>The official user application for agents, wallets, jobs, operators, and developers.</p><a href="https://github.com/niahcia/niahcia-web">Open web repo</a></section>
+  <p class="lead">A permissionless blockchain and decentralized AI-agent network.</p>
+  <a class="download" href="downloads.html">Download NIAHCIA</a>
+  <div class="links">
+    <a href="https://github.com/niahcia/niahcia">Core</a>
+    <a href="https://github.com/niahcia/niahcia-protocol">Protocol</a>
+    <a href="https://github.com/niahcia/niahcia-miner">Miner</a>
+    <a href="https://github.com/niahcia/niahcia-compute">Compute</a>
+    <a href="https://github.com/niahcia/niahcia-explorer">Explorer</a>
+    <a href="https://github.com/niahcia/niahcia-web">Web</a>
   </div>
   <footer>Early development. No production network exists yet.</footer>
 </main>
