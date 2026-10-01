@@ -54,16 +54,115 @@ section:before{content:"";position:absolute;top:-1px;left:50%;width:min(220px,30
 .status span{padding:7px 10px;border:1px solid rgba(255,255,255,.06);border-radius:999px;background:rgba(255,255,255,.025)}
 footer{background:linear-gradient(to top,rgba(127,246,255,.025),transparent)}
 @media(max-width:760px){.architecture:before{display:none}.manifesto{padding:24px}.hero .statement{padding-left:14px}}
+
+/* v3 systems-interface visual language */
+:root{--cyan2:#39d7ff;--violet2:#8b7cff;--ink:#071018}
+body{background:
+radial-gradient(circle at 18% 12%,rgba(57,215,255,.07),transparent 24%),
+radial-gradient(circle at 82% 16%,rgba(139,124,255,.08),transparent 26%),
+linear-gradient(#030508,#05070b 48%,#030508)}
+.wrap{width:min(1240px,calc(100% - 52px))}
+main{position:relative}
+main:before{content:"";position:fixed;left:20px;top:50%;width:1px;height:42vh;transform:translateY(-50%);background:linear-gradient(transparent,rgba(127,246,255,.35),transparent);pointer-events:none}
+main:after{content:"NIAHCIA // LIVE PROTOCOL SURFACE";position:fixed;left:-105px;top:50%;transform:rotate(-90deg);font:700 .62rem monospace;letter-spacing:.22em;color:#415064;pointer-events:none}
+
+.hero{min-height:760px;padding:110px 0 100px}
+.hero .orb{right:-80px;top:120px;width:520px;height:520px;border:none;background:
+radial-gradient(circle at center,rgba(127,246,255,.035),transparent 56%),
+repeating-radial-gradient(circle at center,rgba(127,246,255,.13) 0 1px,transparent 1px 56px);
+box-shadow:none;animation:spinorb 26s linear infinite}
+.hero .orb:before{inset:80px;border:1px dashed rgba(180,156,255,.24);animation:spinorb 18s linear infinite reverse}
+.hero .orb:after{inset:150px;border:1px solid rgba(127,246,255,.25);box-shadow:0 0 55px rgba(127,246,255,.08)}
+@keyframes spinorb{to{transform:rotate(360deg)}}
+
+.hero h1{position:relative;display:inline-block}
+.hero h1:after{content:"DECENTRALIZED INTELLIGENCE INFRASTRUCTURE";position:absolute;left:7px;bottom:-22px;font:700 .62rem monospace;letter-spacing:.18em;color:#627388;-webkit-text-fill-color:#627388}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(280px,.65fr);gap:44px;align-items:end}
+.hero-console{border:1px solid rgba(127,246,255,.16);border-radius:18px;background:linear-gradient(180deg,rgba(8,13,20,.86),rgba(4,7,11,.72));padding:20px;box-shadow:0 30px 80px rgba(0,0,0,.24),inset 0 1px rgba(255,255,255,.025)}
+.console-top{display:flex;justify-content:space-between;gap:12px;font:700 .63rem monospace;color:#6c7c8e;letter-spacing:.12em;border-bottom:1px solid #17212d;padding-bottom:12px;margin-bottom:14px}
+.console-row{display:grid;grid-template-columns:88px 1fr auto;gap:12px;align-items:center;padding:9px 0;font:.74rem monospace;border-bottom:1px solid rgba(255,255,255,.035)}
+.console-row:last-child{border-bottom:0}
+.console-row b{font-weight:600;color:#d9e6f2}
+.console-row span{color:#6f8193}
+.console-row i{font-style:normal;color:#73ffbd}
+.signal{height:4px;background:#101925;border-radius:999px;overflow:hidden}
+.signal:after{content:"";display:block;height:100%;width:76%;background:linear-gradient(90deg,var(--cyan2),var(--violet2));box-shadow:0 0 12px rgba(57,215,255,.35)}
+.signal.s2:after{width:61%}.signal.s3:after{width:88%}.signal.s4:after{width:69%}
+
+.section-shell{position:relative}
+.section-shell:after{content:"";position:absolute;right:0;top:0;width:180px;height:180px;background:
+linear-gradient(90deg,transparent 49%,rgba(127,246,255,.10) 50%,transparent 51%),
+linear-gradient(transparent 49%,rgba(127,246,255,.10) 50%,transparent 51%);
+background-size:24px 24px;mask-image:linear-gradient(135deg,black,transparent 72%);pointer-events:none}
+
+.grid{gap:12px;background:transparent;border:0;overflow:visible;box-shadow:none}
+.card{border:1px solid #1d2b3a;border-radius:16px;min-height:235px}
+.card:after{width:18px;height:18px}
+.card h3{margin-top:34px}
+.card:hover{transform:translateY(-5px);border-color:rgba(127,246,255,.35)}
+
+.architecture{grid-template-columns:repeat(5,1fr);gap:14px}
+.node{min-height:170px;padding:24px 18px}
+.node b{font:800 .78rem monospace;letter-spacing:.08em;color:#dce8f3}
+.node span{line-height:1.8}
+.node:after{content:"";position:absolute;width:7px;height:7px;border-radius:50%;background:var(--cyan);right:14px;top:14px;box-shadow:0 0 14px var(--cyan)}
+
+#principles{overflow:hidden}
+#principles .wrap{position:relative}
+.principles-layout{display:grid;grid-template-columns:.7fr 1.3fr;gap:28px;align-items:stretch;margin-top:34px}
+.principles-index{border:1px solid #1d2b3a;border-radius:18px;background:rgba(6,10,16,.65);padding:22px}
+.principles-index .pitem{padding:14px 0;border-bottom:1px solid rgba(255,255,255,.05);display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:center}
+.principles-index .pitem:last-child{border-bottom:0}
+.principles-index .pitem b{font:700 .66rem monospace;color:var(--cyan);letter-spacing:.1em}
+.principles-index .pitem span{font-size:.88rem;color:#95a5b7}
+.principles-core{position:relative;border:1px solid rgba(127,246,255,.18);border-radius:24px;background:
+radial-gradient(circle at 100% 0,rgba(127,246,255,.10),transparent 28%),
+linear-gradient(145deg,rgba(9,15,23,.9),rgba(4,7,11,.72));padding:34px 38px 32px;overflow:hidden;box-shadow:0 30px 100px rgba(0,0,0,.26),inset 0 1px rgba(255,255,255,.03)}
+.principles-core:before{content:"03";position:absolute;right:20px;bottom:-24px;font:900 8rem/1 monospace;color:rgba(127,246,255,.035)}
+.principles-core:after{content:"";position:absolute;right:-70px;top:-70px;width:220px;height:220px;border:1px solid rgba(127,246,255,.14);border-radius:50%;box-shadow:0 0 0 38px rgba(127,246,255,.02),0 0 0 76px rgba(180,156,255,.018)}
+.manifesto{padding:0;border:0;border-radius:0;background:none;box-shadow:none;margin:0;font-size:clamp(1.35rem,2.15vw,2.15rem);max-width:900px}
+.manifesto em{display:block;margin-top:18px;padding-top:18px;border-top:1px solid rgba(127,246,255,.14);font-size:.88em}
+.principles-note{margin:22px 0 0;max-width:720px;font-size:.92rem;color:#8291a4}
+.protocol-strip{display:grid;grid-template-columns:repeat(4,1fr);margin-top:28px;border:1px solid #1c2937;border-radius:14px;overflow:hidden;background:#070b11}
+.protocol-strip div{padding:13px 14px;border-right:1px solid #1c2937}
+.protocol-strip div:last-child{border-right:0}
+.protocol-strip b{display:block;font:700 .62rem monospace;color:#718398;letter-spacing:.08em}
+.protocol-strip span{display:block;margin-top:4px;font:.76rem monospace;color:#d6e1ec}
+
+.build-panel{margin-top:34px;display:grid;grid-template-columns:1fr .9fr;gap:22px}
+.build-terminal{border:1px solid #1e2d3c;border-radius:18px;background:#05080d;overflow:hidden}
+.term-head{padding:11px 14px;border-bottom:1px solid #1e2d3c;font:700 .63rem monospace;color:#65778a;letter-spacing:.1em}
+.term-body{padding:18px;font:.76rem/1.9 monospace;color:#9fb0c1}
+.term-body .ok{color:#73ffbd}.term-body .cyan{color:var(--cyan)}
+.build-links{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.build-links .btn{display:flex;align-items:center;justify-content:space-between;border-radius:14px;padding:16px 17px}
+.build-links .btn:after{content:"↗";opacity:.5}
+
+@media(max-width:900px){
+  .hero-grid,.principles-layout,.build-panel{grid-template-columns:1fr}
+  .hero-console{max-width:620px}
+  .architecture{grid-template-columns:1fr 1fr}
+  .node:last-child{grid-column:1/-1}
+  .protocol-strip{grid-template-columns:1fr 1fr}
+}
+@media(max-width:560px){
+  .wrap{width:min(100% - 28px,1240px)}
+  main:before,main:after{display:none}
+  .protocol-strip{grid-template-columns:1fr}
+  .protocol-strip div{border-right:0;border-bottom:1px solid #1c2937}
+  .protocol-strip div:last-child{border-bottom:0}
+  .build-links{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
 <div class="wrap"><nav><div class="brand">NIAHCIA</div><div class="navlinks"><a href="#protocol">PROTOCOL</a><a href="#architecture">ARCHITECTURE</a><a href="#principles">PRINCIPLES</a><a href="downloads.html">DOWNLOADS</a><a href="https://github.com/niahcia">GITHUB</a></div></nav></div>
 <main>
-<div class="wrap hero"><div class="orb"></div><div class="eyebrow">OPEN // PERMISSIONLESS // VERIFIABLE</div><h1>NIAHCIA</h1><div class="statement">A decentralized substrate where computation, intelligence, storage, and value can coordinate without a central operator.</div><p class="sub">CPU proof-of-work secures the chain. Independent GPU operators execute AI workloads. Service nodes provide durable network services and storage. Agents can discover capabilities, request work, verify results, retain controlled memory, and exchange value through an open protocol.</p><div class="actions"><a class="btn primary" href="https://github.com/niahcia">Explore the protocol</a><a class="btn" href="downloads.html">Builds & downloads</a><a class="btn" href="releases.html">Current releases</a></div><div class="status"><span><i class="dot"></i>PRE-ALPHA DEVNET</span><span>RANDOMX CPU CONSENSUS</span><span>RETH EXECUTION</span><span>OPEN SOURCE</span></div></div>
-<section id="protocol"><div class="wrap"><div class="section-no">01 / OBJECTIVE</div><h2 class="section-title">Intelligence as open infrastructure.</h2><p class="intro">NIAHCIA is being designed as infrastructure rather than a hosted AI service. Consensus, execution, compute, agents, storage, verification, identity, permissions, and payments are separate protocol responsibilities that can be operated by independent participants.</p><div class="grid"><article class="card"><div class="num">CONSENSUS_01</div><h3>CPU-secured chain</h3><p>RandomX proof-of-work gives consensus a distinct role: ordering and securing protocol state. AI workers are not required to mine, and compute providers do not become a second consensus authority.</p></article><article class="card"><div class="num">COMPUTE_02</div><h3>Decentralized AI execution</h3><p>GPU operators can advertise capabilities and execute inference workloads. Scheduling, commitments, verification, and payment are designed so useful compute can be coordinated without one central GPU cluster.</p></article><article class="card"><div class="num">AGENTS_03</div><h3>Persistent autonomous agents</h3><p>Agents are first-class protocol objects with identity, versioning, execution profiles, capabilities, permissions, memory descriptors, payment plans, and auditable result commitments.</p></article><article class="card"><div class="num">STORAGE_04</div><h3>Proof-backed services</h3><p>Service and storage nodes support durable data and network functions through proof-of-service mechanisms. They contribute infrastructure without becoming an alternate source of chain finality.</p></article><article class="card"><div class="num">VALUE_05</div><h3>Programmable native value</h3><p>Native value uses eight decimal places with deterministic checked arithmetic. CPU security, GPU compute, storage services, and agent-to-agent activity can remain economically distinct instead of being collapsed into one reward mechanism.</p></article><article class="card"><div class="num">VERIFY_06</div><h3>Verification before trust</h3><p>Jobs and services are designed around commitments, reproducible profiles, independent verification policies, and explicit evidence. The protocol should minimize the amount of infrastructure participants must trust.</p></article></div></div></section>
-<section id="architecture"><div class="wrap"><div class="section-no">02 / ARCHITECTURE</div><h2 class="section-title">One network. Distinct responsibilities.</h2><p class="intro">Decentralization becomes fragile when every participant is forced to perform every job. NIAHCIA separates roles while binding them through deterministic protocol objects and settlement.</p><div class="architecture"><div class="node"><b>CPU MINERS</b><span>PoW consensus<br>chain security<br>block production</span></div><div class="node"><b>EXECUTION</b><span>Reth-backed state<br>smart contracts<br>deterministic settlement</span></div><div class="node"><b>GPU WORKERS</b><span>AI inference<br>capability discovery<br>job execution</span></div><div class="node"><b>SERVICE NODES</b><span>storage<br>availability<br>proof of service</span></div><div class="node"><b>AGENTS</b><span>tools & permissions<br>memory<br>payments & coordination</span></div></div></div></section>
-<section id="principles"><div class="wrap"><div class="section-no">03 / PRINCIPLES</div><p class="manifesto">No central scheduler. No requirement that miners run AI. No second consensus authority hidden inside storage or compute. <em>Open participation, explicit verification, deterministic economics, and interoperable infrastructure.</em></p><p class="intro">The project is intentionally pre-alpha. Protocol surfaces are being locked through vectors, tests, restart/reorg behavior, multi-node devnet testing, and compatibility work before production-network promises are made.</p></div></section>
-<section><div class="wrap"><div class="section-no">04 / BUILD</div><h2 class="section-title">The network is the product.</h2><p class="intro">NIAHCIA is developed in public. Core node, protocol specifications, compute, mining interoperability, explorer, web infrastructure, and supporting components live under the NIAHCIA GitHub organization.</p><div class="actions"><a class="btn primary" href="https://github.com/niahcia/niahcia">Core node</a><a class="btn" href="https://github.com/niahcia/niahcia-protocol">Protocol</a><a class="btn" href="https://github.com/niahcia/niahcia-compute">Compute</a><a class="btn" href="https://github.com/niahcia/niahcia-explorer">Explorer</a></div></div></section>
+<div class="wrap hero"><div class="orb"></div><div class="hero-grid"><div><div class="eyebrow">OPEN // PERMISSIONLESS // VERIFIABLE</div><h1>NIAHCIA</h1><div class="statement">A decentralized substrate where computation, intelligence, storage, and value can coordinate without a central operator.</div><p class="sub">CPU proof-of-work secures the chain. Independent GPU operators execute AI workloads. Service nodes provide durable network services and storage. Agents can discover capabilities, request work, verify results, retain controlled memory, and exchange value through an open protocol.</p><div class="actions"><a class="btn primary" href="https://github.com/niahcia">Explore the protocol</a><a class="btn" href="downloads.html">Builds & downloads</a><a class="btn" href="releases.html">Current releases</a></div><div class="status"><span><i class="dot"></i>PRE-ALPHA DEVNET</span><span>RANDOMX CPU CONSENSUS</span><span>RETH EXECUTION</span><span>OPEN SOURCE</span></div></div><aside class="hero-console"><div class="console-top"><span>NETWORK / DEVNET</span><span>LIVE SURFACE</span></div><div class="console-row"><b>CONSENSUS</b><div class="signal"></div><i>ONLINE</i></div><div class="console-row"><b>EXECUTION</b><div class="signal s2"></div><i>BOUND</i></div><div class="console-row"><b>COMPUTE</b><div class="signal s3"></div><i>OPEN</i></div><div class="console-row"><b>STORAGE</b><div class="signal s4"></div><i>VERIFIED</i></div></aside></div></div>
+<section id="protocol" class="section-shell"><div class="wrap"><div class="section-no">01 / OBJECTIVE</div><h2 class="section-title">Intelligence as open infrastructure.</h2><p class="intro">NIAHCIA is being designed as infrastructure rather than a hosted AI service. Consensus, execution, compute, agents, storage, verification, identity, permissions, and payments are separate protocol responsibilities that can be operated by independent participants.</p><div class="grid"><article class="card"><div class="num">CONSENSUS_01</div><h3>CPU-secured chain</h3><p>RandomX proof-of-work gives consensus a distinct role: ordering and securing protocol state. AI workers are not required to mine, and compute providers do not become a second consensus authority.</p></article><article class="card"><div class="num">COMPUTE_02</div><h3>Decentralized AI execution</h3><p>GPU operators can advertise capabilities and execute inference workloads. Scheduling, commitments, verification, and payment are designed so useful compute can be coordinated without one central GPU cluster.</p></article><article class="card"><div class="num">AGENTS_03</div><h3>Persistent autonomous agents</h3><p>Agents are first-class protocol objects with identity, versioning, execution profiles, capabilities, permissions, memory descriptors, payment plans, and auditable result commitments.</p></article><article class="card"><div class="num">STORAGE_04</div><h3>Proof-backed services</h3><p>Service and storage nodes support durable data and network functions through proof-of-service mechanisms. They contribute infrastructure without becoming an alternate source of chain finality.</p></article><article class="card"><div class="num">VALUE_05</div><h3>Programmable native value</h3><p>Native value uses eight decimal places with deterministic checked arithmetic. CPU security, GPU compute, storage services, and agent-to-agent activity can remain economically distinct instead of being collapsed into one reward mechanism.</p></article><article class="card"><div class="num">VERIFY_06</div><h3>Verification before trust</h3><p>Jobs and services are designed around commitments, reproducible profiles, independent verification policies, and explicit evidence. The protocol should minimize the amount of infrastructure participants must trust.</p></article></div></div></section>
+<section id="architecture" class="section-shell"><div class="wrap"><div class="section-no">02 / ARCHITECTURE</div><h2 class="section-title">One network. Distinct responsibilities.</h2><p class="intro">Decentralization becomes fragile when every participant is forced to perform every job. NIAHCIA separates roles while binding them through deterministic protocol objects and settlement.</p><div class="architecture"><div class="node"><b>CPU MINERS</b><span>PoW consensus<br>chain security<br>block production</span></div><div class="node"><b>EXECUTION</b><span>Reth-backed state<br>smart contracts<br>deterministic settlement</span></div><div class="node"><b>GPU WORKERS</b><span>AI inference<br>capability discovery<br>job execution</span></div><div class="node"><b>SERVICE NODES</b><span>storage<br>availability<br>proof of service</span></div><div class="node"><b>AGENTS</b><span>tools & permissions<br>memory<br>payments & coordination</span></div></div></div></section>
+<section id="principles" class="section-shell"><div class="wrap"><div class="section-no">03 / PRINCIPLES</div><div class="principles-layout"><aside class="principles-index"><div class="pitem"><b>01</b><span>No central scheduler</span></div><div class="pitem"><b>02</b><span>Mining remains independent from AI</span></div><div class="pitem"><b>03</b><span>No hidden secondary consensus</span></div><div class="pitem"><b>04</b><span>Verification before trust</span></div><div class="pitem"><b>05</b><span>Open, interoperable infrastructure</span></div></aside><div class="principles-core"><p class="manifesto">No central scheduler. No requirement that miners run AI. No second consensus authority hidden inside storage or compute.<em>Open participation, explicit verification, deterministic economics, and interoperable infrastructure.</em></p><p class="principles-note">The project is intentionally pre-alpha. Protocol surfaces are being locked through vectors, tests, restart/reorg behavior, multi-node devnet testing, and compatibility work before production-network promises are made.</p><div class="protocol-strip"><div><b>CONSENSUS</b><span>CPU / RandomX</span></div><div><b>EXECUTION</b><span>Reth-backed</span></div><div><b>COMPUTE</b><span>GPU / open market</span></div><div><b>SERVICES</b><span>proof-backed</span></div></div></div></div></div></section>
+<section class="section-shell"><div class="wrap"><div class="section-no">04 / BUILD</div><h2 class="section-title">The network is the product.</h2><p class="intro">NIAHCIA is developed in public. Core node, protocol specifications, compute, mining interoperability, explorer, web infrastructure, and supporting components live under the NIAHCIA GitHub organization.</p><div class="build-panel"><div class="build-terminal"><div class="term-head">niahcia://devnet/status</div><div class="term-body"><div><span class="cyan">›</span> consensus ........ <span class="ok">active</span></div><div><span class="cyan">›</span> execution ........ bound</div><div><span class="cyan">›</span> vectors .......... locking</div><div><span class="cyan">›</span> storage proofs ... in test</div><div><span class="cyan">›</span> gpu compute ...... protocolizing</div><div><span class="cyan">›</span> production net ... not released</div></div></div><div class="build-links"><a class="btn primary" href="https://github.com/niahcia/niahcia">Core node</a><a class="btn" href="https://github.com/niahcia/niahcia-protocol">Protocol</a><a class="btn" href="https://github.com/niahcia/niahcia-compute">Compute</a><a class="btn" href="https://github.com/niahcia/niahcia-explorer">Explorer</a></div></div></div></section>
 </main>
 <footer><div class="wrap foot"><div><strong>NIAHCIA</strong><br>Decentralized intelligence infrastructure.</div><div><a href="https://github.com/niahcia">GitHub</a><a href="downloads.html">Downloads</a><a href="releases.html">Releases</a></div><div>Pre-alpha · No production network yet.</div></div></footer>
 </body></html>
