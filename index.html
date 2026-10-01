@@ -163,8 +163,9 @@ header{position:sticky;top:0;z-index:50;padding-top:10px;background:linear-gradi
 .build-links{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:38px}
 .btn{padding:10px 14px;border-bottom:1px solid rgba(127,246,255,.12);text-decoration:none;font-weight:750;transition:.18s}.btn:hover{transform:translateY(-2px);border-color:rgba(127,246,255,.30)}.btn.primary{color:#e8faff}
 
-footer{padding:58px 0 78px;border-top:1px solid rgba(127,246,255,.07);color:#677b8f;text-align:center}
-.foot{display:flex;justify-content:center;gap:28px 44px;flex-wrap:wrap}.foot a{text-decoration:none;color:#91a5b7;margin:0 8px}
+footer{padding:34px 0 42px;border-top:1px solid rgba(127,246,255,.07);color:#677b8f;text-align:center}
+.foot{display:flex;justify-content:center;gap:10px 22px;flex-wrap:wrap;align-items:center}
+.foot strong{color:#8ea3b5;letter-spacing:.08em}
 
 @media(prefers-reduced-motion:reduce){.focus-arc:before,.protocol-visual .signal{animation:none}}
 @media(max-width:980px){
@@ -248,6 +249,7 @@ footer{padding:58px 0 78px;border-top:1px solid rgba(127,246,255,.07);color:#677
   .build-links{margin-top:30px}.btn{font-size:.92rem}
 
   .protocol-visual,.arch-visual,.principles-visual,.build-visual{width:100%;opacity:.08}
+  footer{padding:28px 0 34px}.foot{font-size:.88rem;gap:7px 14px}.foot span{width:100%}
 }
 </style>
 </head>
@@ -377,7 +379,7 @@ footer{padding:58px 0 78px;border-top:1px solid rgba(127,246,255,.07);color:#677
 </section>
 </main>
 
-<footer><div class="wrap foot"><div><strong>NIAHCIA</strong><br>Decentralized intelligence infrastructure.</div><div><a href="https://github.com/niahcia">GitHub</a><a href="downloads.html">Downloads</a><a href="releases.html">Releases</a></div><div>Pre-alpha · No production network yet.</div></div></footer>
+<footer><div class="wrap foot"><strong>NIAHCIA</strong><span>Decentralized intelligence infrastructure.</span><span>Pre-alpha · No production network yet.</span></div></footer>
 <script src="app.js" defer></script>
 </body>
 </html>
