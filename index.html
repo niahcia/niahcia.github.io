@@ -1644,6 +1644,109 @@ body:before{
  .immersive-hero,.immersive-core,.semantic-float,.hero-prompt,.hero-prompt-cta,.hero-mini span,
  .pmod,.pipeline-stage,.pipeline-output,.network-stage,.rule,.rule-core,.memory-shard,.verification-gate,.repo-node,.build-terminal{transition:none!important}
 }
+
+/* v22 screenshot cleanup + composition polish */
+.hero-center h1:after{display:none!important;content:none!important}
+.hero-center{
+  padding-top:74px!important;
+  width:min(820px,80%)!important;
+}
+.hero-center h1{
+  font-size:clamp(3rem,5.8vw,5.45rem)!important;
+  line-height:.91!important;
+  margin:12px auto 12px!important;
+  max-width:820px!important;
+}
+.hero-center .hero-sub{
+  max-width:610px!important;
+  font-size:1rem!important;
+  line-height:1.46!important;
+}
+.hero-prompt{
+  margin-top:32px!important;
+  width:min(720px,90%)!important;
+  padding:15px 14px 15px 18px!important;
+}
+.hero-prompt-cta:before,.hero-prompt-cta:after{
+  content:none!important;display:none!important
+}
+.hero-status{
+  margin-top:12px!important;
+  gap:14px!important;
+}
+.hero-mini{
+  margin-top:22px!important;
+  position:relative!important;
+  z-index:7!important;
+}
+.hero-mini span{
+  position:static!important;
+  transform:none;
+}
+.hero-mini span:hover{transform:translateY(-2px)!important}
+
+.immersive-core{
+  width:min(700px,61vw)!important;
+  height:min(570px,49vw)!important;
+  top:52%!important;
+  opacity:.9;
+}
+.hero-orbit-label{
+  top:56%!important;
+  opacity:.34;
+}
+.semantic-float{
+  min-width:158px!important;
+  padding:12px 14px!important;
+}
+.semantic-float.s1{left:4.5%!important;top:28%!important}
+.semantic-float.s2{right:4.5%!important;top:31%!important}
+.semantic-float.s3{left:8%!important;bottom:11%!important}
+.semantic-float.s4{right:8%!important;bottom:12%!important}
+
+.immersive-hero{
+  min-height:650px!important;
+}
+.immersive-hero:after{
+  content:"";
+  position:absolute;
+  left:12%;right:12%;top:17%;bottom:12%;
+  border-radius:34px;
+  pointer-events:none;
+  background:
+    linear-gradient(115deg,transparent 0 32%,rgba(127,246,255,.025) 45%,transparent 58%),
+    linear-gradient(245deg,transparent 0 38%,rgba(180,156,255,.022) 51%,transparent 64%);
+  filter:blur(2px);
+  z-index:1;
+}
+.hero-center,.semantic-float,.hero-footnote{z-index:6!important}
+.immersive-core{z-index:2!important}
+
+.hero-prompt-copy span{
+  font-size:1.05rem!important;
+}
+.hero-prompt:hover .hero-prompt-copy span{
+  color:#f2fbff;
+}
+.semantic-float:hover b{
+  color:#d9f8ff;
+}
+.semantic-float:hover span{
+  color:#8fa7bb;
+}
+.hero-footnote{
+  bottom:14px!important;
+}
+
+@media(max-width:900px){
+ .immersive-core{width:90vw!important;height:68vw!important}
+ .hero-center{width:88%!important;padding-top:80px!important}
+}
+@media(max-width:620px){
+ .hero-center{width:92%!important;padding-top:64px!important}
+ .hero-center h1{font-size:clamp(2.6rem,13vw,3.8rem)!important}
+ .immersive-hero{min-height:680px!important}
+}
 </style>
 </head>
 <body><div class="ai-background" aria-hidden="true">
