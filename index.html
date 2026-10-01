@@ -17,28 +17,93 @@ body{
   margin:0;color:var(--fg);
   font:16px/1.6 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   background:
-    radial-gradient(circle at 15% 12%,rgba(52,205,229,.09),transparent 28%),
-    radial-gradient(circle at 82% 24%,rgba(139,124,255,.10),transparent 32%),
-    linear-gradient(180deg,#030508 0%,#050912 48%,#030508 100%);
+    linear-gradient(118deg,rgba(19,49,60,.22) 0%,transparent 34%),
+    linear-gradient(242deg,rgba(50,37,88,.20) 0%,transparent 38%),
+    linear-gradient(180deg,#020407 0%,#040810 52%,#020407 100%);
   overflow-x:hidden
 }
 a{color:inherit}
 .wrap{width:min(1240px,calc(100% - 48px));margin:auto}
 .page-progress{position:fixed;left:0;right:0;top:0;height:2px;z-index:100;background:rgba(255,255,255,.02)}
 .page-progress i{display:block;width:100%;height:100%;transform:scaleX(0);transform-origin:left;background:linear-gradient(90deg,var(--cyan),var(--violet))}
-.ai-bg{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.ai-bg{
+  position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden;
+  background:
+    linear-gradient(90deg,rgba(127,246,255,.012) 1px,transparent 1px),
+    linear-gradient(rgba(127,246,255,.010) 1px,transparent 1px);
+  background-size:88px 88px;
+  mask-image:linear-gradient(to bottom,black 0 84%,transparent 100%)
+}
 .ai-bg:before{
+  content:"";position:absolute;inset:-12%;
+  background:
+    linear-gradient(110deg,transparent 0 23%,rgba(127,246,255,.028) 23.2% 23.8%,transparent 24% 100%),
+    linear-gradient(68deg,transparent 0 61%,rgba(180,156,255,.025) 61.2% 61.8%,transparent 62% 100%);
+  filter:blur(10px)
+}
+.ai-bg:after{
   content:"";position:absolute;inset:0;
   background:
-    repeating-linear-gradient(90deg,rgba(127,246,255,.012) 0 1px,transparent 1px 76px),
-    repeating-linear-gradient(0deg,rgba(127,246,255,.010) 0 1px,transparent 1px 76px)
+    radial-gradient(ellipse at 8% 40%,rgba(127,246,255,.10),transparent 27%),
+    radial-gradient(ellipse at 92% 35%,rgba(180,156,255,.10),transparent 29%),
+    radial-gradient(ellipse at 50% 92%,rgba(99,207,255,.04),transparent 30%)
 }
-.bg-plane{position:absolute;border:1px solid rgba(127,246,255,.045);background:linear-gradient(135deg,rgba(127,246,255,.016),rgba(180,156,255,.012));border-radius:28px}
-.bg-plane.p1{width:42vw;height:18vw;left:-7vw;top:19vh;transform:perspective(800px) rotateX(63deg) rotateZ(-14deg)}
-.bg-plane.p2{width:38vw;height:17vw;right:-8vw;top:48vh;transform:perspective(800px) rotateX(66deg) rotateZ(16deg)}
-.bg-plane.p3{width:28vw;height:13vw;left:37vw;bottom:-2vh;transform:perspective(800px) rotateX(70deg) rotateZ(2deg)}
-.bg-label{position:absolute;font:700 .5rem ui-monospace,monospace;letter-spacing:.18em;color:rgba(127,246,255,.09)}
-.bg-label.l1{left:8vw;top:35vh}.bg-label.l2{right:9vw;top:21vh}.bg-label.l3{left:47vw;bottom:12vh}
+.attention-field{
+  position:absolute;
+  display:grid;
+  grid-template-columns:repeat(10,1fr);
+  gap:7px;
+  padding:18px;
+  border:1px solid rgba(127,246,255,.045);
+  border-radius:26px;
+  background:linear-gradient(145deg,rgba(7,14,21,.22),rgba(8,10,18,.10));
+  opacity:.46
+}
+.attention-field.left{
+  width:430px;height:300px;left:-90px;top:14vh;
+  transform:perspective(900px) rotateY(28deg) rotateZ(-8deg)
+}
+.attention-field.right{
+  width:390px;height:270px;right:-70px;top:42vh;
+  transform:perspective(900px) rotateY(-31deg) rotateZ(10deg);
+  opacity:.40
+}
+.attention-field i{
+  display:block;border-radius:4px;min-height:18px;
+  background:linear-gradient(135deg,rgba(127,246,255,var(--a,.025)),rgba(180,156,255,var(--b,.018)));
+  border:1px solid rgba(255,255,255,.008)
+}
+.latent-ribbon{
+  position:absolute;left:50%;bottom:3vh;width:min(980px,70vw);height:210px;
+  transform:translateX(-50%) perspective(1000px) rotateX(68deg);
+  border:1px solid rgba(127,246,255,.035);border-radius:34px;
+  background:
+    linear-gradient(90deg,rgba(127,246,255,.02),transparent 26%,rgba(180,156,255,.025) 58%,transparent 82%),
+    repeating-linear-gradient(90deg,transparent 0 54px,rgba(127,246,255,.018) 54px 55px);
+  box-shadow:inset 0 1px rgba(255,255,255,.015);
+  opacity:.62
+}
+.latent-ribbon:before,.latent-ribbon:after{
+  content:"";position:absolute;left:7%;right:7%;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(127,246,255,.18),rgba(180,156,255,.14),transparent)
+}
+.latent-ribbon:before{top:34%}.latent-ribbon:after{top:66%}
+.context-stack{
+  position:absolute;left:50%;top:12vh;transform:translateX(-50%);
+  width:min(780px,56vw);display:grid;grid-template-columns:repeat(7,1fr);gap:6px;opacity:.28
+}
+.context-stack span{
+  height:4px;border-radius:2px;
+  background:linear-gradient(90deg,rgba(127,246,255,.04),rgba(127,246,255,.20),rgba(180,156,255,.08));
+  transform:scaleX(var(--w,.7));transform-origin:left
+}
+.ai-bg-label{
+  position:absolute;font:800 .48rem ui-monospace,monospace;letter-spacing:.18em;
+  color:rgba(127,246,255,.09)
+}
+.ai-bg-label.l1{left:6vw;top:37vh}
+.ai-bg-label.l2{right:7vw;top:22vh;color:rgba(180,156,255,.09)}
+.ai-bg-label.l3{left:46vw;bottom:11vh}
 header{position:sticky;top:0;z-index:50;padding-top:10px;background:linear-gradient(180deg,rgba(3,5,8,.94),rgba(3,5,8,.58),transparent)}
 .controlbar{
   min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:22px;
@@ -182,8 +247,16 @@ footer{padding:56px 0 76px;border-top:1px solid rgba(127,246,255,.08);color:#677
 <body>
 <div class="page-progress" aria-hidden="true"><i></i></div>
 <div class="ai-bg" aria-hidden="true">
-  <div class="bg-plane p1"></div><div class="bg-plane p2"></div><div class="bg-plane p3"></div>
-  <div class="bg-label l1">SEMANTIC FIELD / 01</div><div class="bg-label l2">ATTENTION PLANE / 02</div><div class="bg-label l3">MEMORY SPACE / 03</div>
+  <div class="attention-field left"><i style="--a:0.035;--b:0.022"></i><i style="--a:0.02;--b:0.08"></i><i style="--a:0.16;--b:0.035"></i><i style="--a:0.11;--b:0.012"></i><i style="--a:0.075;--b:0.05"></i><i style="--a:0.05;--b:0.022"></i><i style="--a:0.035;--b:0.08"></i><i style="--a:0.02;--b:0.035"></i><i style="--a:0.16;--b:0.012"></i><i style="--a:0.11;--b:0.05"></i><i style="--a:0.075;--b:0.022"></i><i style="--a:0.05;--b:0.08"></i><i style="--a:0.035;--b:0.035"></i><i style="--a:0.02;--b:0.012"></i><i style="--a:0.16;--b:0.05"></i><i style="--a:0.11;--b:0.022"></i><i style="--a:0.075;--b:0.08"></i><i style="--a:0.05;--b:0.035"></i><i style="--a:0.035;--b:0.012"></i><i style="--a:0.02;--b:0.05"></i><i style="--a:0.16;--b:0.022"></i><i style="--a:0.11;--b:0.08"></i><i style="--a:0.075;--b:0.035"></i><i style="--a:0.05;--b:0.012"></i><i style="--a:0.035;--b:0.05"></i><i style="--a:0.02;--b:0.022"></i><i style="--a:0.16;--b:0.08"></i><i style="--a:0.11;--b:0.035"></i><i style="--a:0.075;--b:0.012"></i><i style="--a:0.05;--b:0.05"></i><i style="--a:0.035;--b:0.022"></i><i style="--a:0.02;--b:0.08"></i><i style="--a:0.16;--b:0.035"></i><i style="--a:0.11;--b:0.012"></i><i style="--a:0.075;--b:0.05"></i><i style="--a:0.05;--b:0.022"></i><i style="--a:0.035;--b:0.08"></i><i style="--a:0.02;--b:0.035"></i><i style="--a:0.16;--b:0.012"></i><i style="--a:0.11;--b:0.05"></i><i style="--a:0.075;--b:0.022"></i><i style="--a:0.05;--b:0.08"></i><i style="--a:0.035;--b:0.035"></i><i style="--a:0.02;--b:0.012"></i><i style="--a:0.16;--b:0.05"></i><i style="--a:0.11;--b:0.022"></i><i style="--a:0.075;--b:0.08"></i><i style="--a:0.05;--b:0.035"></i><i style="--a:0.035;--b:0.012"></i><i style="--a:0.02;--b:0.05"></i><i style="--a:0.16;--b:0.022"></i><i style="--a:0.11;--b:0.08"></i><i style="--a:0.075;--b:0.035"></i><i style="--a:0.05;--b:0.012"></i><i style="--a:0.035;--b:0.05"></i><i style="--a:0.02;--b:0.022"></i><i style="--a:0.16;--b:0.08"></i><i style="--a:0.11;--b:0.035"></i><i style="--a:0.075;--b:0.012"></i><i style="--a:0.05;--b:0.05"></i></div>
+  <div class="attention-field right"><i style="--a:0.075;--b:0.05"></i><i style="--a:0.05;--b:0.022"></i><i style="--a:0.035;--b:0.08"></i><i style="--a:0.02;--b:0.035"></i><i style="--a:0.16;--b:0.012"></i><i style="--a:0.11;--b:0.05"></i><i style="--a:0.075;--b:0.022"></i><i style="--a:0.05;--b:0.08"></i><i style="--a:0.035;--b:0.035"></i><i style="--a:0.02;--b:0.012"></i><i style="--a:0.16;--b:0.05"></i><i style="--a:0.11;--b:0.022"></i><i style="--a:0.075;--b:0.08"></i><i style="--a:0.05;--b:0.035"></i><i style="--a:0.035;--b:0.012"></i><i style="--a:0.02;--b:0.05"></i><i style="--a:0.16;--b:0.022"></i><i style="--a:0.11;--b:0.08"></i><i style="--a:0.075;--b:0.035"></i><i style="--a:0.05;--b:0.012"></i><i style="--a:0.035;--b:0.05"></i><i style="--a:0.02;--b:0.022"></i><i style="--a:0.16;--b:0.08"></i><i style="--a:0.11;--b:0.035"></i><i style="--a:0.075;--b:0.012"></i><i style="--a:0.05;--b:0.05"></i><i style="--a:0.035;--b:0.022"></i><i style="--a:0.02;--b:0.08"></i><i style="--a:0.16;--b:0.035"></i><i style="--a:0.11;--b:0.012"></i><i style="--a:0.075;--b:0.05"></i><i style="--a:0.05;--b:0.022"></i><i style="--a:0.035;--b:0.08"></i><i style="--a:0.02;--b:0.035"></i><i style="--a:0.16;--b:0.012"></i><i style="--a:0.11;--b:0.05"></i><i style="--a:0.075;--b:0.022"></i><i style="--a:0.05;--b:0.08"></i><i style="--a:0.035;--b:0.035"></i><i style="--a:0.02;--b:0.012"></i><i style="--a:0.16;--b:0.05"></i><i style="--a:0.11;--b:0.022"></i><i style="--a:0.075;--b:0.08"></i><i style="--a:0.05;--b:0.035"></i><i style="--a:0.035;--b:0.012"></i><i style="--a:0.02;--b:0.05"></i><i style="--a:0.16;--b:0.022"></i><i style="--a:0.11;--b:0.08"></i><i style="--a:0.075;--b:0.035"></i><i style="--a:0.05;--b:0.012"></i><i style="--a:0.035;--b:0.05"></i><i style="--a:0.02;--b:0.022"></i><i style="--a:0.16;--b:0.08"></i><i style="--a:0.11;--b:0.035"></i><i style="--a:0.075;--b:0.012"></i><i style="--a:0.05;--b:0.05"></i><i style="--a:0.035;--b:0.022"></i><i style="--a:0.02;--b:0.08"></i><i style="--a:0.16;--b:0.035"></i><i style="--a:0.11;--b:0.012"></i></div>
+  <div class="context-stack">
+    <span style="--w:.72"></span><span style="--w:.44"></span><span style="--w:.91"></span><span style="--w:.58"></span><span style="--w:.80"></span><span style="--w:.36"></span><span style="--w:.66"></span>
+    <span style="--w:.54"></span><span style="--w:.87"></span><span style="--w:.49"></span><span style="--w:.77"></span><span style="--w:.61"></span><span style="--w:.93"></span><span style="--w:.42"></span>
+  </div>
+  <div class="latent-ribbon"></div>
+  <div class="ai-bg-label l1">ATTENTION MAP / CONTEXT A</div>
+  <div class="ai-bg-label l2">ATTENTION MAP / CONTEXT B</div>
+  <div class="ai-bg-label l3">LATENT SPACE / EMBEDDING LAYERS</div>
 </div>
 <header><div class="wrap"><nav class="controlbar">
   <a class="brandlock" href="/" aria-label="NIAHCIA home"><span class="brandmark"></span><span class="brandtext"><strong>NIAHCIA</strong><span>DECENTRALIZED INTELLIGENCE</span></span></a>
