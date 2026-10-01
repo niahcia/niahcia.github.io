@@ -62,45 +62,93 @@ header{position:sticky;top:0;z-index:50;padding-top:10px;background:linear-gradi
   --hx:50%;--hy:48%;--px:0px;--py:0px;
   position:relative;min-height:670px;overflow:hidden;border:1px solid rgba(127,246,255,.13);border-radius:36px;
   background:
-    radial-gradient(circle at var(--hx) var(--hy),rgba(127,246,255,.12),transparent 22%),
-    radial-gradient(circle at 62% 54%,rgba(180,156,255,.08),transparent 36%),
+    radial-gradient(circle at var(--hx) var(--hy),rgba(127,246,255,.10),transparent 20%),
+    radial-gradient(circle at 64% 58%,rgba(180,156,255,.065),transparent 34%),
     linear-gradient(180deg,rgba(5,10,17,.96),rgba(3,7,12,.985));
   box-shadow:0 48px 150px rgba(0,0,0,.42),inset 0 1px rgba(255,255,255,.03);
   transition:border-color .2s,box-shadow .2s
 }
 .hero-scene:hover{border-color:rgba(127,246,255,.24);box-shadow:0 54px 160px rgba(0,0,0,.48),0 0 60px rgba(127,246,255,.04)}
-.hero-grid{position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(127,246,255,.015) 0 1px,transparent 1px 44px),repeating-linear-gradient(0deg,rgba(127,246,255,.012) 0 1px,transparent 1px 44px);mask-image:radial-gradient(circle at center,black,transparent 86%)}
-.transformer-scene{position:absolute;left:50%;top:54%;width:min(860px,72vw);height:500px;transform:translate(calc(-50% + var(--px)),calc(-50% + var(--py)));perspective:1200px;transition:transform .16s ease-out;pointer-events:none}
-.tensor-plane{position:absolute;left:50%;top:50%;width:560px;height:260px;border:1px solid rgba(127,246,255,.1);border-radius:26px;background:linear-gradient(rgba(127,246,255,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(127,246,255,.022) 1px,transparent 1px),linear-gradient(135deg,rgba(127,246,255,.03),rgba(180,156,255,.024));background-size:32px 32px,32px 32px,auto;box-shadow:var(--shadow)}
-.tensor-plane.p1{transform:translate(-50%,-50%) rotateX(64deg) rotateZ(-6deg) translateZ(-80px);opacity:.34}
-.tensor-plane.p2{transform:translate(-50%,-50%) rotateX(64deg) rotateZ(1deg);opacity:.58}
-.tensor-plane.p3{transform:translate(-50%,-50%) rotateX(64deg) rotateZ(8deg) translateZ(82px);opacity:.30}
-.tensor-plane:after{content:attr(data-layer);position:absolute;left:18px;top:14px;font:800 .5rem ui-monospace,monospace;letter-spacing:.14em;color:#72899d}
-.attention-matrix{position:absolute;left:50%;top:50%;width:380px;height:220px;transform:translate(-50%,-50%);display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:repeat(7,1fr);gap:4px;padding:16px;border:1px solid rgba(127,246,255,.15);border-radius:22px;background:rgba(3,8,13,.68);backdrop-filter:blur(9px);box-shadow:0 26px 90px rgba(0,0,0,.28)}
-.attention-matrix i{display:block;border-radius:3px;background:linear-gradient(135deg,rgba(127,246,255,var(--a,.08)),rgba(180,156,255,var(--b,.05)));border:1px solid rgba(255,255,255,.018);transition:.18s}
+.hero-grid{
+  position:absolute;inset:0;
+  background:
+    repeating-linear-gradient(90deg,rgba(127,246,255,.012) 0 1px,transparent 1px 48px),
+    repeating-linear-gradient(0deg,rgba(127,246,255,.010) 0 1px,transparent 1px 48px);
+  mask-image:radial-gradient(circle at center,black 0 54%,transparent 88%)
+}
+.hero-quiet{
+  position:absolute;left:50%;top:45%;width:min(860px,72%);height:330px;transform:translate(-50%,-50%);
+  z-index:3;border-radius:38px;
+  background:radial-gradient(ellipse at center,rgba(3,8,13,.97) 0%,rgba(3,8,13,.92) 48%,rgba(3,8,13,.58) 72%,transparent 100%);
+  filter:blur(.2px);pointer-events:none
+}
+.transformer-scene{
+  position:absolute;left:50%;top:68%;width:min(900px,74vw);height:360px;
+  transform:translate(calc(-50% + var(--px)),calc(-50% + var(--py)));
+  perspective:1200px;transition:transform .16s ease-out;pointer-events:none;z-index:2
+}
+.tensor-plane{
+  position:absolute;left:50%;top:50%;width:590px;height:230px;border:1px solid rgba(127,246,255,.09);border-radius:24px;
+  background:
+    linear-gradient(rgba(127,246,255,.020) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(127,246,255,.020) 1px,transparent 1px),
+    linear-gradient(135deg,rgba(127,246,255,.025),rgba(180,156,255,.020));
+  background-size:34px 34px,34px 34px,auto;box-shadow:0 24px 70px rgba(0,0,0,.22)
+}
+.tensor-plane.p1{transform:translate(-50%,-50%) rotateX(66deg) rotateZ(-7deg) translateZ(-80px);opacity:.27}
+.tensor-plane.p2{transform:translate(-50%,-50%) rotateX(66deg) rotateZ(1deg);opacity:.45}
+.tensor-plane.p3{transform:translate(-50%,-50%) rotateX(66deg) rotateZ(8deg) translateZ(80px);opacity:.24}
+.tensor-plane:after{content:attr(data-layer);position:absolute;left:18px;top:14px;font:800 .48rem ui-monospace,monospace;letter-spacing:.14em;color:#60798f}
+.attention-matrix{
+  position:absolute;left:50%;top:54%;width:340px;height:164px;transform:translate(-50%,-50%);
+  display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:repeat(7,1fr);gap:4px;padding:14px;
+  border:1px solid rgba(127,246,255,.12);border-radius:20px;background:rgba(3,8,13,.62);backdrop-filter:blur(8px)
+}
+.attention-matrix i{display:block;border-radius:3px;background:linear-gradient(135deg,rgba(127,246,255,var(--a,.08)),rgba(180,156,255,var(--b,.05)));border:1px solid rgba(255,255,255,.015);transition:.18s}
 .hero-scene:hover .attention-matrix i:nth-child(5n),.hero-scene:hover .attention-matrix i:nth-child(11n){filter:brightness(1.6);transform:scale(1.08)}
-.matrix-title{position:absolute;left:50%;top:calc(50% - 132px);transform:translateX(-50%);font:800 .54rem ui-monospace,monospace;letter-spacing:.15em;color:#8099ae}
+.matrix-title{position:absolute;left:50%;top:calc(54% - 105px);transform:translateX(-50%);font:800 .5rem ui-monospace,monospace;letter-spacing:.15em;color:#70899f}
 .matrix-title strong{color:var(--cyan)}
-.token-rail{position:absolute;left:50%;top:21%;transform:translateX(-50%);display:flex;gap:7px}
-.token-rail span{padding:6px 9px;border:1px solid rgba(127,246,255,.08);border-radius:7px;background:rgba(5,10,16,.72);font:700 .47rem ui-monospace,monospace;color:#667e93}
-.embedding-strip{position:absolute;left:50%;top:74%;transform:translateX(-50%);width:500px;display:grid;grid-template-columns:repeat(10,1fr);gap:5px}
-.embedding-strip span{height:8px;border-radius:2px;background:linear-gradient(90deg,rgba(127,246,255,.08),rgba(127,246,255,.42),rgba(180,156,255,.18));transform:scaleX(var(--s,.6));transform-origin:left}
+.embedding-strip{position:absolute;left:50%;top:79%;transform:translateX(-50%);width:440px;display:grid;grid-template-columns:repeat(10,1fr);gap:5px}
+.embedding-strip span{height:7px;border-radius:2px;background:linear-gradient(90deg,rgba(127,246,255,.07),rgba(127,246,255,.32),rgba(180,156,255,.15));transform:scaleX(var(--s,.6));transform-origin:left}
 .hero-center{position:relative;z-index:5;width:min(820px,82%);margin:auto;padding-top:76px;text-align:center}
 .hero-kicker{font:800 .65rem ui-monospace,monospace;letter-spacing:.18em;color:#8af9ff}
 .hero-center h1{margin:14px auto 12px;font-size:clamp(3rem,5.8vw,5.45rem);line-height:.91;letter-spacing:-.06em;background:linear-gradient(115deg,#fff 8%,#a8f8ff 48%,#c9b8ff 76%,#fff);-webkit-background-clip:text;color:transparent;filter:drop-shadow(0 0 30px rgba(127,246,255,.10))}
 .hero-sub{max-width:610px;margin:auto;color:#a4b4c3;font-size:1rem;line-height:1.46}
-.hero-prompt{width:min(720px,90%);margin:32px auto 0;padding:15px 14px 15px 18px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:14px;border:1px solid rgba(127,246,255,.22);border-radius:21px;background:linear-gradient(180deg,rgba(7,14,22,.80),rgba(4,9,15,.82));backdrop-filter:blur(18px);box-shadow:0 24px 70px rgba(0,0,0,.32);transition:.2s}
+.hero-prompt-wrap{position:relative;width:min(720px,90%);margin:32px auto 0}
+.hero-prompt{
+  width:100%;padding:15px 14px 15px 18px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:14px;
+  border:1px solid rgba(127,246,255,.22);border-radius:21px;
+  background:linear-gradient(180deg,rgba(7,14,22,.96),rgba(4,9,15,.97));
+  backdrop-filter:blur(18px);box-shadow:0 24px 70px rgba(0,0,0,.32),0 0 0 1px rgba(255,255,255,.012) inset;
+  transition:.2s
+}
 .hero-prompt:hover{transform:translateY(-3px);border-color:rgba(127,246,255,.42);box-shadow:0 30px 86px rgba(0,0,0,.38),0 0 44px rgba(127,246,255,.07)}
-.hero-prompt-copy{text-align:left}.hero-prompt-copy b{display:block;font:800 .52rem ui-monospace,monospace;letter-spacing:.14em;color:#70889c}.hero-prompt-copy span{display:block;margin-top:4px;font-size:1.05rem;color:#dbe8f1}
+.hero-prompt-copy{text-align:left}.hero-prompt-copy b{display:block;font:800 .52rem ui-monospace,monospace;letter-spacing:.14em;color:#70889c}.hero-prompt-copy span{display:block;margin-top:4px;font-size:1.05rem;color:#dbe8f1;transition:.16s}
 .hero-prompt-cta{padding:12px 16px;border-radius:13px;background:#eefaff;color:#071018;font:800 .67rem ui-monospace,monospace;letter-spacing:.06em;transition:.18s}
 .hero-prompt-cta:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(127,246,255,.16)}
-.hero-status{margin-top:12px;display:flex;justify-content:center;gap:14px;flex-wrap:wrap;font:700 .5rem ui-monospace,monospace;letter-spacing:.08em;color:#60758a}
+.hover-prompt{
+  position:absolute;left:18px;top:calc(100% + 10px);z-index:9;max-width:420px;padding:9px 11px;
+  border:1px solid rgba(127,246,255,.14);border-radius:10px;background:rgba(4,10,16,.96);
+  font:700 .55rem ui-monospace,monospace;letter-spacing:.04em;color:#8fa8bb;
+  opacity:0;transform:translateY(-4px);pointer-events:none;transition:.16s
+}
+.hover-prompt.visible{opacity:1;transform:translateY(0)}
+.hover-prompt b{color:var(--cyan);margin-right:7px}
+.hero-status{margin-top:14px;display:flex;justify-content:center;gap:14px;flex-wrap:wrap;font:700 .5rem ui-monospace,monospace;letter-spacing:.08em;color:#60758a}
 .hero-status strong{color:var(--green)}
-.hero-mini{margin-top:22px;display:flex;justify-content:center;gap:9px;flex-wrap:wrap}.hero-mini span{padding:7px 10px;border:1px solid rgba(127,246,255,.08);border-radius:999px;background:rgba(4,9,14,.48);font:700 .5rem ui-monospace,monospace;color:#71869a;transition:.18s}.hero-mini span:hover{transform:translateY(-2px);color:#d8ebf5;border-color:rgba(127,246,255,.26);background:rgba(127,246,255,.035)}
-.semantic-float{position:absolute;z-index:6;min-width:158px;padding:12px 14px;border:1px solid rgba(127,246,255,.11);border-radius:15px;background:linear-gradient(180deg,rgba(7,13,21,.70),rgba(4,8,14,.66));backdrop-filter:blur(14px);transition:.18s}
-.semantic-float:hover{transform:translateY(-5px) scale(1.015);border-color:rgba(127,246,255,.30);box-shadow:0 22px 55px rgba(0,0,0,.24)}
+.hero-mini{margin-top:22px;display:flex;justify-content:center;gap:9px;flex-wrap:wrap}
+.hero-mini button{
+  appearance:none;padding:7px 10px;border:1px solid rgba(127,246,255,.08);border-radius:999px;
+  background:rgba(4,9,14,.62);font:700 .5rem ui-monospace,monospace;color:#71869a;transition:.18s;cursor:default
+}
+.hero-mini button:hover,.hero-mini button:focus-visible{transform:translateY(-2px);color:#d8ebf5;border-color:rgba(127,246,255,.26);background:rgba(127,246,255,.035);outline:none}
+.semantic-float{
+  position:absolute;z-index:6;min-width:158px;padding:12px 14px;border:1px solid rgba(127,246,255,.11);border-radius:15px;
+  background:linear-gradient(180deg,rgba(7,13,21,.82),rgba(4,8,14,.78));backdrop-filter:blur(14px);transition:.18s;cursor:default
+}
+.semantic-float:hover,.semantic-float:focus-visible{transform:translateY(-5px) scale(1.015);border-color:rgba(127,246,255,.30);box-shadow:0 22px 55px rgba(0,0,0,.24);outline:none}
 .semantic-float b{display:block;font:800 .49rem ui-monospace,monospace;letter-spacing:.13em;color:#91adbf}.semantic-float span{display:block;margin-top:5px;font-size:.65rem;color:#64798e}
-.semantic-float.s1{left:4.5%;top:28%}.semantic-float.s2{right:4.5%;top:31%;border-color:rgba(180,156,255,.11)}.semantic-float.s3{left:8%;bottom:11%}.semantic-float.s4{right:8%;bottom:12%;border-color:rgba(180,156,255,.11)}
+.semantic-float.s1{left:4.5%;top:31%}.semantic-float.s2{right:4.5%;top:33%;border-color:rgba(180,156,255,.11)}.semantic-float.s3{left:8%;bottom:10%}.semantic-float.s4{right:8%;bottom:10%;border-color:rgba(180,156,255,.11)}
 .hero-footnote{position:absolute;left:22px;right:22px;bottom:14px;display:flex;justify-content:space-between;gap:20px;font:700 .47rem ui-monospace,monospace;letter-spacing:.08em;color:#4f6377}.hero-footnote b{color:#72899c}
 section{padding:96px 0;border-top:1px solid rgba(127,246,255,.08)}
 .section-no{font:700 .6rem ui-monospace,monospace;letter-spacing:.16em;color:#60758a}
@@ -145,11 +193,12 @@ footer{padding:56px 0 76px;border-top:1px solid rgba(127,246,255,.08);color:#677
 <main>
 <div class="wrap hero"><div class="hero-scene">
   <div class="hero-grid"></div>
+  <div class="hero-quiet"></div>
+
   <div class="transformer-scene" aria-hidden="true">
     <div class="tensor-plane p1" data-layer="CONTEXT EMBEDDINGS"></div>
     <div class="tensor-plane p2" data-layer="MULTI-HEAD ATTENTION"></div>
     <div class="tensor-plane p3" data-layer="LATENT STATE"></div>
-    <div class="token-rail"><span>&lt;BOS&gt;</span><span>ASK</span><span>THE</span><span>NETWORK</span><span>INTENT</span><span>CONTEXT</span><span>VERIFY</span></div>
     <div class="matrix-title"><strong>ATTENTION</strong> / HEAD 04</div>
     <div class="attention-matrix">
       <i style="--a:0.04;--b:0.02"></i>
@@ -239,18 +288,37 @@ footer{padding:56px 0 76px;border-top:1px solid rgba(127,246,255,.08);color:#677
     </div>
     <div class="embedding-strip"><span style="--s:.42"></span><span style="--s:.78"></span><span style="--s:.56"></span><span style="--s:.91"></span><span style="--s:.34"></span><span style="--s:.69"></span><span style="--s:.48"></span><span style="--s:.84"></span><span style="--s:.63"></span><span style="--s:.76"></span></div>
   </div>
-  <div class="semantic-float s1"><b>INTENT</b><span>objective → constraints → policy</span></div>
-  <div class="semantic-float s2"><b>MEMORY</b><span>context → descriptors → relevance</span></div>
-  <div class="semantic-float s3"><b>CAPABILITIES</b><span>tools → compute → services</span></div>
-  <div class="semantic-float s4"><b>VERIFY</b><span>evidence → commitment → settlement</span></div>
+
+  <div class="semantic-float s1" tabindex="0" data-prompt="Plan an objective with constraints and policy."><b>INTENT</b><span>objective → constraints → policy</span></div>
+  <div class="semantic-float s2" tabindex="0" data-prompt="Retrieve prior context and relevant descriptors."><b>MEMORY</b><span>context → descriptors → relevance</span></div>
+  <div class="semantic-float s3" tabindex="0" data-prompt="Discover tools, compute, and services for this task."><b>CAPABILITIES</b><span>tools → compute → services</span></div>
+  <div class="semantic-float s4" tabindex="0" data-prompt="Verify evidence and commitments before settlement."><b>VERIFY</b><span>evidence → commitment → settlement</span></div>
+
   <div class="hero-center">
     <div class="hero-kicker">PRIMARY NETWORK AGENT</div>
     <h1>Ask the network.</h1>
     <p class="hero-sub">A decentralized intelligence surface for discovering capabilities, executing work, verifying results, and settling activity through one open protocol.</p>
-    <div class="hero-prompt" aria-label="Primary agent prompt preview"><div class="hero-prompt-copy"><b>ASK NIAHCIA</b><span>What do you want to accomplish?</span></div><div class="hero-prompt-cta">ENTER PROMPT →</div></div>
+
+    <div class="hero-prompt-wrap">
+      <div class="hero-prompt" aria-label="Primary agent prompt preview">
+        <div class="hero-prompt-copy"><b>ASK NIAHCIA</b><span>What do you want to accomplish?</span></div>
+        <div class="hero-prompt-cta">ENTER PROMPT →</div>
+      </div>
+      <div class="hover-prompt" aria-live="polite"><b>TRY</b><span></span></div>
+    </div>
+
     <div class="hero-status"><span><strong>PREVIEW</strong> PRIMARY AGENT INTERFACE</span><span>PRE-ALPHA NETWORK</span><span>INTERACTION COMING NEXT</span></div>
-    <div class="hero-mini"><span>DISCOVER</span><span>REASON</span><span>EXECUTE</span><span>MEMORY</span><span>VERIFY</span><span>SETTLE</span></div>
+
+    <div class="hero-mini" aria-label="Agent capability previews">
+      <button type="button" data-prompt="Find the best available capability for this objective.">DISCOVER</button>
+      <button type="button" data-prompt="Compose a plan from context, tools, and constraints.">REASON</button>
+      <button type="button" data-prompt="Execute work across independent network providers.">EXECUTE</button>
+      <button type="button" data-prompt="Retrieve relevant prior context for this task.">MEMORY</button>
+      <button type="button" data-prompt="Check evidence, policy, and result commitments.">VERIFY</button>
+      <button type="button" data-prompt="Settle verified activity through protocol state.">SETTLE</button>
+    </div>
   </div>
+
   <div class="hero-footnote"><b>COGNITION SURFACE / ILLUSTRATIVE</b><span>No production network data is represented here.</span></div>
 </div></div>
 
