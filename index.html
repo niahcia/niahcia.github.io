@@ -3,145 +3,150 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>NIAHCIA — Decentralized Intelligence Infrastructure</title>
+<title>NIAHCIA — Decentralized Intelligence</title>
 <meta name="description" content="NIAHCIA is an open protocol for decentralized intelligence.">
 <style>
-:root{--bg:#020407;--fg:#eef7ff;--muted:#91a4b5;--cyan:#7ff6ff;--violet:#b49cff;--green:#73ffbd;--line:rgba(127,246,255,.11)}
+:root{--bg:#020407;--fg:#eef7ff;--muted:#93a6b7;--cyan:#7ff6ff;--violet:#b49cff;--green:#73ffbd;--line:rgba(127,246,255,.10)}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:90px}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
 body{
   margin:0;overflow-x:hidden;color:var(--fg);
-  font:16px/1.6 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font:16px/1.65 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   background:
-    radial-gradient(circle at 18% 12%,rgba(52,199,226,.07),transparent 31%),
-    radial-gradient(circle at 84% 22%,rgba(139,113,235,.075),transparent 33%),
+    radial-gradient(circle at 16% 10%,rgba(53,194,220,.065),transparent 31%),
+    radial-gradient(circle at 86% 20%,rgba(138,108,232,.07),transparent 33%),
     linear-gradient(180deg,#020407 0%,#050913 52%,#020407 100%)
 }
 a{color:inherit}
-.wrap{width:min(1180px,calc(100% - 48px));margin:auto}
-.page-progress{position:fixed;left:0;right:0;top:0;height:2px;z-index:100;background:rgba(255,255,255,.012)}
+.wrap{width:min(1140px,calc(100% - 48px));margin:auto}
+.page-progress{position:fixed;left:0;right:0;top:0;height:2px;z-index:100;background:rgba(255,255,255,.01)}
 .page-progress i{display:block;height:100%;transform:scaleX(0);transform-origin:left;background:linear-gradient(90deg,var(--cyan),var(--violet))}
 .site-atmosphere{position:fixed;inset:0;z-index:-2;pointer-events:none;overflow:hidden}
-.site-atmosphere:before{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 0 28%,rgba(127,246,255,.012) 28.3% 28.7%,transparent 29% 100%),linear-gradient(68deg,transparent 0 68%,rgba(180,156,255,.011) 68.3% 68.7%,transparent 69% 100%);filter:blur(10px)}
-.site-atmosphere:after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 0 42%,rgba(127,246,255,.04),transparent 28%),radial-gradient(ellipse at 100% 54%,rgba(180,156,255,.04),transparent 30%)}
+.site-atmosphere:before{content:"";position:absolute;inset:0;background:linear-gradient(104deg,transparent 0 29%,rgba(127,246,255,.011) 29.25% 29.65%,transparent 30% 100%),linear-gradient(70deg,transparent 0 69%,rgba(180,156,255,.01) 69.25% 69.65%,transparent 70% 100%);filter:blur(12px)}
+.site-atmosphere:after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 0 45%,rgba(127,246,255,.036),transparent 28%),radial-gradient(ellipse at 100% 56%,rgba(180,156,255,.036),transparent 30%)}
 
-header{position:sticky;top:0;z-index:50;padding-top:10px;background:linear-gradient(180deg,rgba(2,4,7,.94),rgba(2,4,7,.56),transparent)}
-.controlbar{min-height:68px;display:flex;align-items:center;justify-content:space-between;gap:22px;padding:0 14px;border-bottom:1px solid var(--line);background:rgba(3,8,13,.50);backdrop-filter:blur(18px)}
+header{position:sticky;top:0;z-index:50;padding-top:10px;background:linear-gradient(180deg,rgba(2,4,7,.95),rgba(2,4,7,.54),transparent)}
+.controlbar{min-height:66px;display:flex;align-items:center;justify-content:space-between;gap:22px;padding:0 12px;border-bottom:1px solid var(--line);background:rgba(3,8,13,.46);backdrop-filter:blur(18px)}
 .brandlock{display:flex;align-items:center;gap:10px;text-decoration:none}
-.brandmark{width:32px;height:32px;display:grid;place-items:center}
-.brandmark:before{content:"";width:14px;height:14px;border:1px solid var(--cyan);transform:rotate(45deg)}
-.brandtext strong{display:block;font-size:.82rem;letter-spacing:.22em}
-.brandtext span{display:block;font:700 .45rem ui-monospace,monospace;letter-spacing:.12em;color:#667b8f}
+.brandmark{width:30px;height:30px;display:grid;place-items:center}
+.brandmark:before{content:"";width:13px;height:13px;border:1px solid var(--cyan);transform:rotate(45deg)}
+.brandtext strong{font-size:.84rem;letter-spacing:.24em}
 .nav-center{display:flex;gap:26px}
 .nav-center a,.nav-github{text-decoration:none;font:700 .58rem ui-monospace,monospace;letter-spacing:.11em;color:#8ea0b3;transition:.18s}
 .nav-center a:hover,.nav-center a.active,.nav-github:hover{color:#fff;transform:translateY(-1px)}
 .nav-right{display:flex;gap:10px;align-items:center}
-.devnet-pill,.nav-github{padding:8px 10px;border-radius:10px;background:rgba(255,255,255,.016)}
-.devnet-pill{font:700 .5rem ui-monospace,monospace;color:#769082}.devnet-pill strong{color:var(--green);margin-right:7px}
+.devnet-pill,.nav-github{padding:8px 10px;border-radius:10px;background:rgba(255,255,255,.014)}
+.devnet-pill{font:700 .49rem ui-monospace,monospace;color:#789085}.devnet-pill strong{color:var(--green);margin-right:7px}
 
-.hero{padding:54px 0 126px}
-.hero-scene{--hx:50%;--hy:48%;--px:0px;--py:0px;position:relative;min-height:700px;overflow:hidden;text-align:center}
-.hero-scene:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at var(--hx) var(--hy),rgba(127,246,255,.07),transparent 18%),radial-gradient(circle at 67% 62%,rgba(180,156,255,.045),transparent 30%)}
-.hero-quiet{position:absolute;left:50%;top:43%;width:min(930px,76%);height:370px;transform:translate(-50%,-50%);z-index:3;background:radial-gradient(ellipse at center,rgba(2,7,12,.99) 0,rgba(2,7,12,.95) 48%,rgba(2,7,12,.56) 74%,transparent 100%);pointer-events:none}
-.hero-ai{position:absolute;left:50%;top:69%;width:min(1040px,82vw);height:390px;transform:translate(calc(-50% + var(--px)),calc(-50% + var(--py)));z-index:2;transition:transform .16s ease-out;pointer-events:none}
-.semantic-lens{position:absolute;border-radius:50%;border:1px solid rgba(127,246,255,.08);background:radial-gradient(circle at 36% 32%,rgba(127,246,255,.10),transparent 28%),radial-gradient(circle at 68% 68%,rgba(180,156,255,.07),transparent 36%),radial-gradient(circle at center,rgba(8,18,27,.30),rgba(2,7,12,.05) 68%,transparent 72%);box-shadow:inset 0 0 70px rgba(127,246,255,.025),0 0 90px rgba(127,246,255,.018);backdrop-filter:blur(2px)}
-.semantic-lens.primary{width:560px;height:250px;left:50%;top:54%;transform:translate(-50%,-50%) rotate(-7deg);border-radius:56% 44% 60% 40%/48% 54% 46% 52%}
-.semantic-lens.secondary{width:330px;height:170px;left:66%;top:45%;transform:translate(-50%,-50%) rotate(13deg);border-radius:43% 57% 46% 54%/61% 39% 61% 39%;opacity:.55}
-.semantic-lens.tertiary{width:250px;height:130px;left:32%;top:67%;transform:translate(-50%,-50%) rotate(-18deg);border-radius:62% 38% 55% 45%/47% 63% 37% 53%;opacity:.38}
-.lens-contours{position:absolute;left:50%;top:53%;width:720px;height:270px;transform:translate(-50%,-50%);opacity:.62}
-.lens-contours svg{width:100%;height:100%;overflow:visible}.lens-contours .contour{fill:none;stroke:rgba(127,246,255,.10);stroke-width:1}.lens-contours .contour.v{stroke:rgba(180,156,255,.085)}.lens-contours .focus{fill:none;stroke:url(#focusGrad);stroke-width:1.2;opacity:.72}
-.lens-label{position:absolute;left:50%;top:17%;transform:translateX(-50%);font:800 .48rem ui-monospace,monospace;letter-spacing:.16em;color:#647c90}.lens-label strong{color:var(--cyan)}
-.context-thread{position:absolute;left:50%;top:78%;width:520px;height:42px;transform:translateX(-50%);opacity:.72}.context-thread svg{width:100%;height:100%}.context-thread path{fill:none;stroke:rgba(127,246,255,.10);stroke-width:1.1}.context-thread .violet{stroke:rgba(180,156,255,.10)}
+.hero{padding:64px 0 150px}
+.hero-scene{--hx:50%;--hy:48%;--px:0px;--py:0px;position:relative;min-height:720px;overflow:hidden;text-align:center}
+.hero-scene:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at var(--hx) var(--hy),rgba(127,246,255,.06),transparent 18%),radial-gradient(circle at 66% 63%,rgba(180,156,255,.04),transparent 30%)}
+.hero-quiet{position:absolute;left:50%;top:42%;width:min(960px,78%);height:390px;transform:translate(-50%,-50%);z-index:3;background:radial-gradient(ellipse at center,rgba(2,7,12,.995) 0,rgba(2,7,12,.965) 49%,rgba(2,7,12,.54) 75%,transparent 100%);pointer-events:none}
+.hero-ai{position:absolute;left:50%;top:70%;width:min(1060px,84vw);height:400px;transform:translate(calc(-50% + var(--px)),calc(-50% + var(--py)));z-index:2;transition:transform .16s ease-out;pointer-events:none}
+.semantic-lens{position:absolute;border-radius:50%;border:1px solid rgba(127,246,255,.052);background:radial-gradient(circle at 36% 32%,rgba(127,246,255,.058),transparent 29%),radial-gradient(circle at 68% 68%,rgba(180,156,255,.045),transparent 37%),radial-gradient(circle at center,rgba(8,18,27,.20),rgba(2,7,12,.025) 68%,transparent 72%);box-shadow:inset 0 0 70px rgba(127,246,255,.014),0 0 90px rgba(127,246,255,.012);backdrop-filter:blur(2px)}
+.semantic-lens.primary{width:570px;height:255px;left:50%;top:54%;transform:translate(-50%,-50%) rotate(-7deg);border-radius:56% 44% 60% 40%/48% 54% 46% 52%}
+.semantic-lens.secondary{width:330px;height:170px;left:66%;top:45%;transform:translate(-50%,-50%) rotate(13deg);border-radius:43% 57% 46% 54%/61% 39% 61% 39%;opacity:.38}
+.semantic-lens.tertiary{width:250px;height:130px;left:32%;top:67%;transform:translate(-50%,-50%) rotate(-18deg);border-radius:62% 38% 55% 45%/47% 63% 37% 53%;opacity:.26}
+.lens-contours{position:absolute;left:50%;top:53%;width:720px;height:270px;transform:translate(-50%,-50%);opacity:.40}
+.lens-contours svg{width:100%;height:100%;overflow:visible}.lens-contours .contour{fill:none;stroke:rgba(127,246,255,.07);stroke-width:1}.lens-contours .contour.v{stroke:rgba(180,156,255,.06)}.lens-contours .focus{fill:none;stroke:url(#focusGrad);stroke-width:1.1;opacity:.55}
+.context-thread{position:absolute;left:50%;top:78%;width:520px;height:42px;transform:translateX(-50%);opacity:.48}.context-thread svg{width:100%;height:100%}.context-thread path{fill:none;stroke:rgba(127,246,255,.07);stroke-width:1}.context-thread .violet{stroke:rgba(180,156,255,.07)}
 .focus-arc{position:absolute;left:50%;top:51%;width:620px;height:260px;transform:translate(-50%,-50%);overflow:hidden;border-radius:50%}
-.focus-arc:before{content:"";position:absolute;left:-18%;top:49%;width:160px;height:1px;background:linear-gradient(90deg,transparent,rgba(127,246,255,.85),rgba(180,156,255,.55),transparent);box-shadow:0 0 18px rgba(127,246,255,.18);transform:rotate(-8deg);animation:focusPass 9s cubic-bezier(.4,0,.2,1) infinite}
-@keyframes focusPass{0%{transform:translateX(0) rotate(-8deg);opacity:0}12%{opacity:.9}50%{opacity:.55}88%{opacity:.85}100%{transform:translateX(760px) rotate(-8deg);opacity:0}}
+.focus-arc:before{content:"";position:absolute;left:-18%;top:49%;width:160px;height:1px;background:linear-gradient(90deg,transparent,rgba(127,246,255,.72),rgba(180,156,255,.42),transparent);box-shadow:0 0 16px rgba(127,246,255,.14);transform:rotate(-8deg);animation:focusPass 10s cubic-bezier(.4,0,.2,1) infinite}
+@keyframes focusPass{0%{transform:translateX(0) rotate(-8deg);opacity:0}12%{opacity:.75}50%{opacity:.42}88%{opacity:.7}100%{transform:translateX(760px) rotate(-8deg);opacity:0}}
 
-.hero-center{position:relative;z-index:5;width:min(850px,82%);margin:auto;padding-top:84px;text-align:center}
-.hero-kicker{font:800 .64rem ui-monospace,monospace;letter-spacing:.18em;color:#8af9ff}
-.hero-center h1{margin:14px auto 12px;font-size:clamp(3rem,5.9vw,5.6rem);line-height:.91;letter-spacing:-.06em;background:linear-gradient(115deg,#fff 8%,#a7f7ff 48%,#cbbaff 76%,#fff);-webkit-background-clip:text;color:transparent}
-.hero-sub{max-width:560px;margin:auto;color:#a6b6c5;font-size:1rem;line-height:1.5}
-.hero-prompt-wrap{position:relative;width:min(735px,91%);margin:34px auto 0}
-.hero-prompt{width:100%;padding:16px 14px 16px 19px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:14px;border:1px solid rgba(127,246,255,.20);border-radius:999px;background:linear-gradient(180deg,rgba(6,13,20,.97),rgba(3,8,13,.985));box-shadow:0 24px 70px rgba(0,0,0,.30);transition:.18s}
-.hero-prompt:hover{transform:translateY(-3px);border-color:rgba(127,246,255,.42);box-shadow:0 30px 86px rgba(0,0,0,.36),0 0 42px rgba(127,246,255,.06)}
-.hero-prompt-copy{text-align:left}.hero-prompt-copy b{display:block;font:800 .51rem ui-monospace,monospace;letter-spacing:.14em;color:#6f8699}.hero-prompt-copy span{display:block;margin-top:4px;font-size:1.05rem;color:#dce9f2}
-.hero-prompt-cta{padding:12px 17px;border-radius:999px;background:#effaff;color:#071018;font:800 .66rem ui-monospace,monospace;letter-spacing:.06em;transition:.18s}.hero-prompt-cta:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(127,246,255,.16)}
+.hero-center{position:relative;z-index:5;width:min(850px,82%);margin:auto;padding-top:92px;text-align:center}
+.hero-kicker{font:800 .61rem ui-monospace,monospace;letter-spacing:.19em;color:#8af9ff}
+.hero-center h1{margin:14px auto 14px;font-size:clamp(3.2rem,6vw,5.8rem);line-height:.9;letter-spacing:-.06em;background:linear-gradient(115deg,#fff 8%,#a7f7ff 48%,#cbbaff 76%,#fff);-webkit-background-clip:text;color:transparent}
+.hero-sub{max-width:520px;margin:auto;color:#a9b8c5;font-size:1.05rem;line-height:1.5}
+.hero-prompt-wrap{position:relative;width:min(760px,92%);margin:38px auto 0}
+.hero-prompt{width:100%;min-height:72px;padding:14px 14px 14px 22px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:16px;border:1px solid rgba(127,246,255,.18);border-radius:999px;background:linear-gradient(180deg,rgba(7,15,22,.88),rgba(3,8,13,.93));backdrop-filter:blur(18px);box-shadow:0 28px 90px rgba(0,0,0,.30),inset 0 1px rgba(255,255,255,.018);transition:.18s}
+.hero-prompt:hover{transform:translateY(-3px);border-color:rgba(127,246,255,.38);box-shadow:0 34px 100px rgba(0,0,0,.34),0 0 44px rgba(127,246,255,.05)}
+.hero-prompt-copy{text-align:left}.hero-prompt-copy b{display:block;font:800 .49rem ui-monospace,monospace;letter-spacing:.15em;color:#6f8699}.hero-prompt-copy span{display:block;margin-top:4px;font-size:1.08rem;color:#e2edf5}
+.hero-prompt-cta{padding:12px 17px;border-radius:999px;border:1px solid rgba(255,255,255,.65);color:#f2fbff;font:800 .62rem ui-monospace,monospace;letter-spacing:.08em;transition:.18s}
+.hero-prompt-cta:hover{background:#effaff;color:#071018;transform:translateY(-1px)}
 .hover-prompt{position:absolute;left:50%;top:calc(100% + 10px);z-index:9;max-width:430px;padding:8px 10px;border-radius:999px;background:rgba(4,10,16,.96);font:700 .54rem ui-monospace,monospace;color:#8fa8bb;opacity:0;transform:translate(-50%,-4px);pointer-events:none;transition:.16s;white-space:nowrap}.hover-prompt.visible{opacity:1;transform:translate(-50%,0)}.hover-prompt b{color:var(--cyan);margin-right:7px}
-.hero-status{margin-top:14px;display:flex;justify-content:center;gap:14px;flex-wrap:wrap;font:700 .49rem ui-monospace,monospace;letter-spacing:.08em;color:#60758a}.hero-status strong{color:var(--green)}
-.hero-mini{margin-top:24px;display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
-.hero-mini button{appearance:none;padding:7px 10px;border:0;border-bottom:1px solid rgba(127,246,255,.10);background:transparent;font:700 .5rem ui-monospace,monospace;color:#71869a;transition:.18s;cursor:default}
-.hero-mini button:hover,.hero-mini button:focus-visible{transform:translateY(-2px);color:#d8ebf5;border-color:rgba(127,246,255,.36);outline:none}
-.semantic-float{position:absolute;z-index:6;min-width:150px;padding:8px 0;background:transparent;border-bottom:1px solid rgba(127,246,255,.14);transition:.18s;text-align:center}
-.semantic-float:hover,.semantic-float:focus-visible{transform:translateY(-4px);border-color:rgba(127,246,255,.38);outline:none}
-.semantic-float b{display:block;font:800 .49rem ui-monospace,monospace;letter-spacing:.13em;color:#91adbf}.semantic-float span{display:block;margin-top:4px;font-size:.64rem;color:#64798e}
-.semantic-float.s1{left:9%;top:32%}.semantic-float.s2{right:9%;top:32%}.semantic-float.s3{left:17%;bottom:10%}.semantic-float.s4{right:17%;bottom:10%}
-.hero-footnote{position:absolute;left:50%;bottom:12px;transform:translateX(-50%);width:min(780px,90%);display:flex;justify-content:center;gap:24px;flex-wrap:wrap;font:700 .46rem ui-monospace,monospace;letter-spacing:.08em;color:#4f6377;text-align:center}.hero-footnote b{color:#72899c}
+.hero-status{margin-top:15px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap;font:700 .48rem ui-monospace,monospace;letter-spacing:.08em;color:#60758a}.hero-status strong{color:var(--green)}
+.hero-mini{margin-top:24px;display:flex;justify-content:center;gap:9px;flex-wrap:wrap}
+.hero-mini button{appearance:none;padding:7px 9px;border:0;border-bottom:1px solid rgba(127,246,255,.09);background:transparent;font:700 .49rem ui-monospace,monospace;color:#71869a;transition:.18s;cursor:default}
+.hero-mini button:hover,.hero-mini button:focus-visible{transform:translateY(-2px);color:#d8ebf5;border-color:rgba(127,246,255,.34);outline:none}
+.semantic-float{position:absolute;z-index:6;min-width:150px;padding:8px 0;background:transparent;border-bottom:1px solid rgba(127,246,255,.11);transition:.18s;text-align:center}
+.semantic-float:hover,.semantic-float:focus-visible{transform:translateY(-4px);border-color:rgba(127,246,255,.32);outline:none}
+.semantic-float b{display:block;font:800 .48rem ui-monospace,monospace;letter-spacing:.13em;color:#91adbf}.semantic-float span{display:block;margin-top:4px;font-size:.63rem;color:#64798e}
+.semantic-float.s1{left:10%;top:32%}.semantic-float.s2{right:10%;top:32%}.semantic-float.s3{left:18%;bottom:10%}.semantic-float.s4{right:18%;bottom:10%}
+.hero-footnote{position:absolute;left:50%;bottom:12px;transform:translateX(-50%);width:min(780px,90%);font:700 .45rem ui-monospace,monospace;letter-spacing:.08em;color:#4f6377;text-align:center}
 
-.section{position:relative;padding:138px 0 128px;overflow:hidden;text-align:center}
-.section::before{content:"";position:absolute;left:-8%;right:-8%;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(127,246,255,.14),rgba(180,156,255,.11),transparent)}
-.section-head{max-width:760px;margin:0 auto;position:relative;z-index:3}
-.section-no{font:700 .58rem ui-monospace,monospace;letter-spacing:.16em;color:#60758a}
-.section-title{margin:12px 0 18px;font-size:clamp(2rem,3.7vw,3.6rem);line-height:1;letter-spacing:-.05em}
-.intro{max-width:680px;margin:0 auto;color:#9aacbb}
+.section{position:relative;min-height:78vh;padding:150px 0 145px;overflow:hidden;text-align:center;display:flex;align-items:center}
+.section::before{content:"";position:absolute;left:-8%;right:-8%;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(127,246,255,.12),rgba(180,156,255,.09),transparent)}
+.section>.wrap{width:min(1080px,calc(100% - 48px))}
+.section-head{max-width:720px;margin:0 auto;position:relative;z-index:3}
+.section-no{font:700 .56rem ui-monospace,monospace;letter-spacing:.17em;color:#60758a}
+.section-title{margin:12px 0 18px;font-size:clamp(2.2rem,3.9vw,3.8rem);line-height:.98;letter-spacing:-.05em}
+.intro{max-width:620px;margin:0 auto;color:#9aacbb;font-size:1rem}
 
-.protocol-visual,.arch-visual,.principles-visual,.build-visual{position:absolute;left:50%;transform:translateX(-50%);pointer-events:none;opacity:.32}
-.protocol-visual{top:110px;width:min(880px,72vw);height:580px}
-.protocol-visual svg{width:100%;height:100%}.protocol-visual .river{fill:none;stroke:url(#riverGradient);stroke-width:15;opacity:.08}.protocol-visual .river2{fill:none;stroke:rgba(127,246,255,.08);stroke-width:1.5}.protocol-visual .branch{fill:none;stroke:rgba(180,156,255,.06);stroke-width:1.1}
-.protocol-visual .signal{fill:#dffcff;filter:drop-shadow(0 0 8px rgba(127,246,255,.7));offset-path:path("M20 210 C180 80 300 350 455 210 S700 70 880 250");animation:signalFlow 10s ease-in-out infinite}
-@keyframes signalFlow{0%{offset-distance:0%;opacity:0}10%{opacity:.9}90%{opacity:.9}100%{offset-distance:100%;opacity:0}}
+.protocol-visual,.arch-visual,.principles-visual,.build-visual{position:absolute;left:50%;transform:translateX(-50%);pointer-events:none;opacity:.24}
+.protocol-visual{top:50%;width:min(860px,70vw);height:560px;transform:translate(-50%,-48%)}
+.protocol-visual svg{width:100%;height:100%}.protocol-visual .river{fill:none;stroke:url(#riverGradient);stroke-width:14;opacity:.06}.protocol-visual .river2{fill:none;stroke:rgba(127,246,255,.065);stroke-width:1.4}.protocol-visual .branch{fill:none;stroke:rgba(180,156,255,.05);stroke-width:1}
+.protocol-visual .signal{fill:#dffcff;filter:drop-shadow(0 0 7px rgba(127,246,255,.55));offset-path:path("M20 210 C180 80 300 350 455 210 S700 70 880 250");animation:signalFlow 11s ease-in-out infinite}
+@keyframes signalFlow{0%{offset-distance:0%;opacity:0}10%{opacity:.75}90%{opacity:.75}100%{offset-distance:100%;opacity:0}}
 
-.protocol-flow{margin:58px auto 0;display:grid;grid-template-columns:repeat(6,1fr);gap:14px;position:relative;z-index:3;max-width:980px}
-.protocol-step{padding:14px 4px 17px;border-bottom:1px solid rgba(127,246,255,.09);transition:.18s}
-.protocol-step:nth-child(even){transform:translateY(14px)}.protocol-step:hover{transform:translateY(-4px);border-color:rgba(127,246,255,.28)}.protocol-step:nth-child(even):hover{transform:translateY(10px)}
-.protocol-step b{display:block;font:800 .52rem ui-monospace,monospace;color:#b4c8d6;letter-spacing:.10em}.protocol-step span{display:block;margin-top:7px;font-size:.69rem;color:#6f8396}
-.protocol-copy{margin:78px auto 0;width:min(760px,92%);display:grid;gap:26px;position:relative;z-index:3}
-.protocol-item{padding-bottom:20px;border-bottom:1px solid rgba(127,246,255,.07);transition:.18s}
-.protocol-item:hover{transform:translateY(-3px)}
-.protocol-item .tag{font:800 .49rem ui-monospace,monospace;color:#6c8599}.protocol-item h3{margin:8px 0 7px;font-size:1.15rem}.protocol-item p{margin:0 auto;max-width:560px;color:#8295a6}
+.protocol-flow{margin:56px auto 0;display:flex;align-items:center;justify-content:center;gap:10px 14px;flex-wrap:wrap;position:relative;z-index:3;max-width:900px}
+.protocol-step{display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid rgba(127,246,255,.08);transition:.18s}
+.protocol-step:not(:last-child)::after{content:"→";margin-left:6px;color:#50677a}
+.protocol-step:hover{transform:translateY(-3px);border-color:rgba(127,246,255,.24)}
+.protocol-step b{font:800 .53rem ui-monospace,monospace;color:#b4c8d6;letter-spacing:.10em}.protocol-step span{font-size:.68rem;color:#6f8396}
+.protocol-copy{margin:74px auto 0;width:min(760px,94%);display:grid;grid-template-columns:repeat(3,1fr);gap:30px 34px;position:relative;z-index:3}
+.protocol-item{padding:0 0 18px;border-bottom:1px solid rgba(127,246,255,.065);transition:.18s}.protocol-item:hover{transform:translateY(-3px)}
+.protocol-item .tag{font:800 .48rem ui-monospace,monospace;color:#6c8599}.protocol-item h3{margin:7px 0 6px;font-size:1.05rem}.protocol-item p{margin:0 auto;max-width:220px;color:#8295a6;font-size:.86rem}
 
-.arch-visual{top:120px;width:min(820px,68vw);height:500px}
-.arch-visual svg{width:100%;height:100%}.arch-visual .mesh{fill:none;stroke:rgba(127,246,255,.07);stroke-width:1}.arch-visual .mesh.v{stroke:rgba(180,156,255,.06)}.arch-visual .plate{fill:rgba(127,246,255,.015);stroke:rgba(127,246,255,.08)}
-.roles{position:relative;z-index:3;margin:64px auto 0;width:min(880px,92%);display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
-.role{padding:12px 0 18px;border-bottom:1px solid rgba(127,246,255,.08);transition:.18s}.role:hover{transform:translateY(-4px);border-color:rgba(127,246,255,.26)}
-.role b{display:block;font:800 .54rem ui-monospace,monospace;color:#b7c9d7}.role span{display:block;margin-top:7px;font-size:.74rem;color:#71869b}
+.arch-visual{top:50%;width:min(760px,62vw);height:470px;transform:translate(-50%,-46%)}
+.arch-visual svg{width:100%;height:100%}.arch-visual .mesh{fill:none;stroke:rgba(127,246,255,.06);stroke-width:1}.arch-visual .mesh.v{stroke:rgba(180,156,255,.05)}.arch-visual .plate{fill:rgba(127,246,255,.012);stroke:rgba(127,246,255,.065)}
+.role-constellation{position:relative;z-index:3;margin:68px auto 0;width:min(760px,92%);min-height:330px}
+.role-core{position:absolute;left:50%;top:50%;width:150px;height:150px;transform:translate(-50%,-50%);border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 35% 30%,rgba(127,246,255,.10),transparent 42%),linear-gradient(135deg,rgba(127,246,255,.035),rgba(180,156,255,.035));box-shadow:0 0 80px rgba(127,246,255,.025)}
+.role-core b{font-size:.78rem;letter-spacing:.14em}.role-core span{display:block;margin-top:5px;font:.52rem ui-monospace,monospace;color:#71869a}
+.role{position:absolute;width:180px;padding:8px 0 11px;border-bottom:1px solid rgba(127,246,255,.08);transition:.18s}
+.role:hover{transform:translateY(-4px);border-color:rgba(127,246,255,.24)}
+.role b{display:block;font:800 .52rem ui-monospace,monospace;color:#b7c9d7}.role span{display:block;margin-top:5px;font-size:.72rem;color:#71869b}
+.role.r1{left:3%;top:4%}.role.r2{right:3%;top:4%}.role.r3{left:0;bottom:5%}.role.r4{right:0;bottom:5%}.role.r5{left:50%;bottom:-2%;transform:translateX(-50%)}.role.r5:hover{transform:translate(-50%,-4px)}
 
-.principles-visual{top:120px;width:min(760px,62vw);height:520px}
-.principles-visual svg{width:100%;height:100%}.principles-visual .gate{fill:none;stroke:url(#gateGradient);stroke-width:1.05}.principles-visual .cut{fill:none;stroke:rgba(127,246,255,.07);stroke-width:1}.principles-visual .zone{fill:rgba(180,156,255,.015)}
-.principles-layout{position:relative;z-index:3;margin:58px auto 0;width:min(820px,92%)}
-.rule-list{display:flex;justify-content:center;gap:14px 24px;flex-wrap:wrap}
-.rule{padding:0 0 10px;border-bottom:1px solid rgba(127,246,255,.07);transition:.18s}
-.rule:hover{transform:translateY(-3px)}.rule b{font:800 .49rem ui-monospace,monospace;color:#6d879b;margin-right:8px}.rule span{color:#9cadbc}
-.manifesto{max-width:700px;margin:42px auto 0;font-size:clamp(1.35rem,2.2vw,2.15rem);line-height:1.2;letter-spacing:-.035em}
-.manifesto em{display:block;margin-top:20px;padding-top:18px;border-top:1px solid rgba(127,246,255,.08);font-style:normal;color:var(--cyan)}
-.principles-note{max-width:650px;margin:24px auto 0;color:#8193a4}
-.constraint-strip{display:flex;justify-content:center;gap:10px 24px;flex-wrap:wrap;margin-top:24px}
-.constraint-strip div{padding-bottom:8px;border-bottom:1px solid rgba(127,246,255,.08)}.constraint-strip b{display:block;font:800 .47rem ui-monospace,monospace;color:#6e8498}.constraint-strip span{display:block;margin-top:4px;font-size:.7rem;color:#b4c3cf}
+.principles-visual{top:50%;width:min(700px,58vw);height:480px;transform:translate(-50%,-48%)}
+.principles-visual svg{width:100%;height:100%}.principles-visual .gate{fill:none;stroke:url(#gateGradient);stroke-width:1}.principles-visual .cut{fill:none;stroke:rgba(127,246,255,.06);stroke-width:1}.principles-visual .zone{fill:rgba(180,156,255,.012)}
+.principles-layout{position:relative;z-index:3;margin:58px auto 0;width:min(820px,94%)}
+.rule-list{display:flex;justify-content:center;gap:14px 22px;flex-wrap:wrap}
+.rule{padding:0 0 9px;border-bottom:1px solid rgba(127,246,255,.065);transition:.18s}.rule:hover{transform:translateY(-3px)}
+.rule b{font:800 .48rem ui-monospace,monospace;color:#6d879b;margin-right:7px}.rule span{color:#9cadbc}
+.manifesto{max-width:650px;margin:44px auto 0;font-size:clamp(1.5rem,2.4vw,2.2rem);line-height:1.2;letter-spacing:-.035em}
+.manifesto em{display:block;margin-top:18px;padding-top:16px;border-top:1px solid rgba(127,246,255,.07);font-style:normal;color:var(--cyan)}
+.principles-note{max-width:600px;margin:22px auto 0;color:#8193a4}
+.constraint-strip{display:flex;justify-content:center;gap:10px 22px;flex-wrap:wrap;margin-top:24px}
+.constraint-strip div{padding-bottom:7px;border-bottom:1px solid rgba(127,246,255,.07)}.constraint-strip b{display:block;font:800 .46rem ui-monospace,monospace;color:#6e8498}.constraint-strip span{display:block;margin-top:3px;font-size:.68rem;color:#b4c3cf}
 
-.build-visual{top:110px;width:min(760px,62vw);height:520px}
-.build-visual svg{width:100%;height:100%}.build-visual .route{fill:none;stroke:rgba(127,246,255,.07);stroke-width:1}.build-visual .route.v{stroke:rgba(180,156,255,.07)}.build-visual .hub{fill:rgba(127,246,255,.02);stroke:rgba(127,246,255,.09)}
-.build-layout{position:relative;z-index:3;margin:58px auto 0;width:min(840px,92%)}
-.repo-map{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
-.repo-node{text-decoration:none;padding:0 0 18px;border-bottom:1px solid rgba(127,246,255,.08);transition:.18s}.repo-node:hover{transform:translateY(-4px);border-color:rgba(127,246,255,.26)}
-.repo-node b{display:block;font:800 .54rem ui-monospace,monospace;color:#abc1d0}.repo-node span{display:block;margin-top:5px;font-size:.73rem;color:#6f8396}
-.build-terminal{margin:36px auto 0;font:.74rem/1.9 ui-monospace,monospace;color:#8ea0b2}
-.build-links{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:22px}
-.btn{padding:10px 14px;border-bottom:1px solid rgba(127,246,255,.13);text-decoration:none;font-weight:750;transition:.18s}.btn:hover{transform:translateY(-2px);border-color:rgba(127,246,255,.34)}.btn.primary{color:#e8faff}
+.build-visual{top:50%;width:min(680px,56vw);height:470px;transform:translate(-50%,-48%)}
+.build-visual svg{width:100%;height:100%}.build-visual .route{fill:none;stroke:rgba(127,246,255,.06);stroke-width:1}.build-visual .route.v{stroke:rgba(180,156,255,.06)}.build-visual .hub{fill:rgba(127,246,255,.016);stroke:rgba(127,246,255,.07)}
+.build-layout{position:relative;z-index:3;margin:60px auto 0;width:min(820px,94%)}
+.repo-map{display:flex;justify-content:center;gap:14px 28px;flex-wrap:wrap}
+.repo-node{text-decoration:none;padding:0 0 10px;border-bottom:1px solid rgba(127,246,255,.07);transition:.18s;min-width:105px}
+.repo-node:hover{transform:translateY(-4px);border-color:rgba(127,246,255,.24)}
+.repo-node b{display:block;font:800 .52rem ui-monospace,monospace;color:#abc1d0}.repo-node span{display:block;margin-top:4px;font-size:.7rem;color:#6f8396}
+.build-links{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:38px}
+.btn{padding:10px 14px;border-bottom:1px solid rgba(127,246,255,.12);text-decoration:none;font-weight:750;transition:.18s}.btn:hover{transform:translateY(-2px);border-color:rgba(127,246,255,.30)}.btn.primary{color:#e8faff}
 
-footer{padding:56px 0 76px;border-top:1px solid rgba(127,246,255,.08);color:#677b8f;text-align:center}
+footer{padding:58px 0 78px;border-top:1px solid rgba(127,246,255,.07);color:#677b8f;text-align:center}
 .foot{display:flex;justify-content:center;gap:28px 44px;flex-wrap:wrap}.foot a{text-decoration:none;color:#91a5b7;margin:0 8px}
 
 @media(prefers-reduced-motion:reduce){.focus-arc:before,.protocol-visual .signal{animation:none}}
 @media(max-width:980px){
-  .nav-center{display:none}.semantic-float{display:none}.hero-scene{min-height:760px}.hero-center{width:88%;padding-top:86px}.hero-ai{width:96vw}
-  .protocol-visual,.arch-visual,.principles-visual,.build-visual{opacity:.18}
-  .protocol-flow{grid-template-columns:repeat(3,1fr)}.protocol-step:nth-child(even){transform:none}
-  .roles,.repo-map{grid-template-columns:repeat(2,1fr)}
+  .nav-center{display:none}.semantic-float{display:none}.hero-scene{min-height:760px}.hero-center{width:88%;padding-top:90px}.hero-ai{width:96vw}
+  .section{min-height:auto}.protocol-copy{grid-template-columns:repeat(2,1fr)}
+  .protocol-visual,.arch-visual,.principles-visual,.build-visual{opacity:.16}
 }
 @media(max-width:620px){
-  .wrap{width:min(100% - 28px,1180px)}.nav-right{display:none}.brandtext span{display:none}
-  .hero{padding-top:24px}.hero-scene{min-height:700px}.hero-center{width:92%;padding-top:68px}.hero-center h1{font-size:clamp(2.6rem,13vw,3.8rem)}
-  .hero-prompt{grid-template-columns:1fr;border-radius:22px}.hero-prompt-copy{text-align:center}.hero-prompt-cta{text-align:center}.hover-prompt{white-space:normal;width:90%}
+  .wrap{width:min(100% - 28px,1140px)}.nav-right{display:none}
+  .hero{padding-top:24px}.hero-scene{min-height:700px}.hero-center{width:92%;padding-top:72px}.hero-center h1{font-size:clamp(2.7rem,13vw,3.9rem)}
+  .hero-prompt{grid-template-columns:1fr;border-radius:22px;padding:17px}.hero-prompt-copy{text-align:center}.hero-prompt-cta{text-align:center}.hover-prompt{white-space:normal;width:90%}
   .hero-footnote{display:none}.hero-ai{width:100vw;height:430px;top:73%}.semantic-lens.primary{width:390px;height:190px}.semantic-lens.secondary{width:220px;height:120px}.semantic-lens.tertiary{width:170px;height:90px}.lens-contours{width:430px;height:210px}.context-thread{width:320px}.focus-arc{width:420px}
-  .section{padding:105px 0 96px}.protocol-flow,.roles,.repo-map{grid-template-columns:1fr}.protocol-copy,.build-layout{width:100%}.protocol-visual,.arch-visual,.principles-visual,.build-visual{width:100%;opacity:.13}
+  .section{padding:112px 0 102px}.protocol-copy{grid-template-columns:1fr}.protocol-step:not(:last-child)::after{display:none}
+  .role-constellation{min-height:470px}.role{width:150px}.role.r1{left:0}.role.r2{right:0}.role.r3{left:0;bottom:24%}.role.r4{right:0;bottom:24%}.role.r5{bottom:0}
+  .protocol-visual,.arch-visual,.principles-visual,.build-visual{width:100%;opacity:.11}
 }
 </style>
 </head>
@@ -150,8 +155,8 @@ footer{padding:56px 0 76px;border-top:1px solid rgba(127,246,255,.08);color:#677
 <div class="site-atmosphere" aria-hidden="true"></div>
 
 <header><div class="wrap"><nav class="controlbar">
-  <a class="brandlock" href="/" aria-label="NIAHCIA home"><span class="brandmark"></span><span class="brandtext"><strong>NIAHCIA</strong><span>DECENTRALIZED INTELLIGENCE</span></span></a>
-  <div class="nav-center"><a href="/">AGENT</a><a href="#architecture">NETWORK</a><a href="#protocol">PROTOCOL</a><a href="#principles">PRINCIPLES</a><a href="downloads.html">DOWNLOADS</a></div>
+  <a class="brandlock" href="/" aria-label="NIAHCIA home"><span class="brandmark"></span><span class="brandtext"><strong>NIAHCIA</strong></span></a>
+  <div class="nav-center"><a href="/">AGENT</a><a href="#protocol">PROTOCOL</a><a href="#architecture">NETWORK</a><a href="#principles">PRINCIPLES</a><a href="downloads.html">DOWNLOADS</a></div>
   <div class="nav-right"><span class="devnet-pill"><strong>DEVNET</strong>PRE-ALPHA</span><a class="nav-github" href="https://github.com/niahcia">GITHUB ↗</a></div>
 </nav></div></header>
 
@@ -161,7 +166,6 @@ footer{padding:56px 0 76px;border-top:1px solid rgba(127,246,255,.08);color:#677
   <div class="hero-ai" aria-hidden="true">
     <div class="semantic-lens primary"></div><div class="semantic-lens secondary"></div><div class="semantic-lens tertiary"></div>
     <div class="lens-contours"><svg viewBox="0 0 720 270" preserveAspectRatio="none"><defs><linearGradient id="focusGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7ff6ff"/><stop offset="100%" stop-color="#b49cff"/></linearGradient></defs><path class="contour" d="M40 154 C115 66 232 62 304 128 S470 230 676 116"/><path class="contour v" d="M28 178 C126 96 218 90 302 148 S476 248 694 142"/><path class="contour" d="M82 116 C162 42 270 54 338 112 S500 198 640 94"/><path class="focus" d="M112 188 C218 130 286 126 362 166 S510 214 612 158"/></svg></div>
-    <div class="lens-label"><strong>SEMANTIC FOCUS</strong> / CONTEXT LENS</div>
     <div class="context-thread"><svg viewBox="0 0 520 42" preserveAspectRatio="none"><path d="M0 24 C72 4 122 38 188 18 S300 8 360 24 S446 30 520 12"/><path class="violet" d="M0 30 C82 16 138 34 205 24 S322 14 385 28 S458 34 520 20"/></svg></div>
     <div class="focus-arc"></div>
   </div>
@@ -174,15 +178,15 @@ footer{padding:56px 0 76px;border-top:1px solid rgba(127,246,255,.08);color:#677
   <div class="hero-center">
     <div class="hero-kicker">PRIMARY NETWORK AGENT</div>
     <h1>Ask the network.</h1>
-    <p class="hero-sub">One open network for intelligence, compute, verification, and value.</p>
+    <p class="hero-sub">Open intelligence. Shared compute. Verifiable results.</p>
     <div class="hero-prompt-wrap">
       <div class="hero-prompt" aria-label="Primary agent prompt preview">
         <div class="hero-prompt-copy"><b>ASK NIAHCIA</b><span>What do you want to do?</span></div>
-        <div class="hero-prompt-cta">ENTER PROMPT →</div>
+        <div class="hero-prompt-cta">ENTER →</div>
       </div>
       <div class="hover-prompt" aria-live="polite"><b>TRY</b><span></span></div>
     </div>
-    <div class="hero-status"><span><strong>PREVIEW</strong></span><span>PRE-ALPHA NETWORK</span></div>
+    <div class="hero-status"><span><strong>PREVIEW</strong></span><span>PRE-ALPHA</span></div>
     <div class="hero-mini">
       <button type="button" data-prompt="Find the right capability.">DISCOVER</button>
       <button type="button" data-prompt="Turn the goal into a plan.">REASON</button>
@@ -192,21 +196,21 @@ footer{padding:56px 0 76px;border-top:1px solid rgba(127,246,255,.08);color:#677
       <button type="button" data-prompt="Settle verified activity.">SETTLE</button>
     </div>
   </div>
-  <div class="hero-footnote"><b>ILLUSTRATIVE INTERFACE</b><span>No production network data is shown.</span></div>
+  <div class="hero-footnote">Illustrative interface · No production network data.</div>
 </div></div>
 
 <section id="protocol" class="section">
   <div class="protocol-visual" aria-hidden="true"><svg viewBox="0 0 900 620" preserveAspectRatio="none"><defs><linearGradient id="riverGradient" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7ff6ff"/><stop offset="100%" stop-color="#b49cff"/></linearGradient></defs><path class="river" d="M20 180 C170 30 300 310 430 180 S690 20 880 210"/><path class="river2" d="M20 210 C180 80 300 350 455 210 S700 70 880 250"/><path class="branch" d="M260 250 C360 330 410 390 480 520"/><path class="branch" d="M520 190 C610 270 670 350 800 470"/><circle class="signal" r="4"/></svg></div>
   <div class="wrap">
-    <div class="section-head"><div class="section-no">01 / PROTOCOL</div><h2 class="section-title">Intelligence, open by design.</h2><p class="intro">NIAHCIA connects security, compute, agents, storage, verification, and payments without making any one role control the rest.</p></div>
-    <div class="protocol-flow"><div class="protocol-step"><b>PROMPT</b><span>ask</span></div><div class="protocol-step"><b>INTENT</b><span>understand</span></div><div class="protocol-step"><b>DISCOVER</b><span>find</span></div><div class="protocol-step"><b>EXECUTE</b><span>run</span></div><div class="protocol-step"><b>VERIFY</b><span>check</span></div><div class="protocol-step"><b>SETTLE</b><span>record</span></div></div>
+    <div class="section-head"><div class="section-no">01 / PROTOCOL</div><h2 class="section-title">Intelligence, open by design.</h2><p class="intro">Security, compute, agents, storage, verification, and value meet in one protocol.</p></div>
+    <div class="protocol-flow"><div class="protocol-step"><b>ASK</b></div><div class="protocol-step"><b>UNDERSTAND</b></div><div class="protocol-step"><b>FIND</b></div><div class="protocol-step"><b>RUN</b></div><div class="protocol-step"><b>VERIFY</b></div><div class="protocol-step"><b>SETTLE</b></div></div>
     <div class="protocol-copy">
-      <article class="protocol-item"><div class="tag">CONSENSUS</div><h3>CPU-secured chain</h3><p>RandomX secures the network. AI remains a separate role.</p></article>
-      <article class="protocol-item"><div class="tag">COMPUTE</div><h3>Open AI execution</h3><p>GPU workers provide compute through the protocol.</p></article>
-      <article class="protocol-item"><div class="tag">AGENTS</div><h3>Persistent agents</h3><p>Agents can carry identity, tools, permissions, memory, and payments.</p></article>
-      <article class="protocol-item"><div class="tag">SERVICES</div><h3>Proof-backed storage</h3><p>Service nodes add availability without becoming a second consensus.</p></article>
-      <article class="protocol-item"><div class="tag">VALUE</div><h3>Native settlement</h3><p>Security, compute, storage, and agents can settle on one network.</p></article>
-      <article class="protocol-item"><div class="tag">VERIFY</div><h3>Verify before trust</h3><p>Results are checked through explicit policies and evidence.</p></article>
+      <article class="protocol-item"><div class="tag">CONSENSUS</div><h3>CPU-secured chain</h3><p>RandomX secures the network.</p></article>
+      <article class="protocol-item"><div class="tag">COMPUTE</div><h3>Open AI execution</h3><p>GPU workers provide compute.</p></article>
+      <article class="protocol-item"><div class="tag">AGENTS</div><h3>Persistent agents</h3><p>Identity, tools, memory, and payments.</p></article>
+      <article class="protocol-item"><div class="tag">SERVICES</div><h3>Proof-backed storage</h3><p>Availability without a second consensus.</p></article>
+      <article class="protocol-item"><div class="tag">VALUE</div><h3>Native settlement</h3><p>Useful work settles on one network.</p></article>
+      <article class="protocol-item"><div class="tag">VERIFY</div><h3>Verify before trust</h3><p>Evidence comes before acceptance.</p></article>
     </div>
   </div>
 </section>
@@ -214,19 +218,26 @@ footer{padding:56px 0 76px;border-top:1px solid rgba(127,246,255,.08);color:#677
 <section id="architecture" class="section">
   <div class="arch-visual" aria-hidden="true"><svg viewBox="0 0 900 560"><path class="mesh" d="M70 120 C230 40 400 60 520 180 S720 330 860 240"/><path class="mesh v" d="M40 260 C210 150 350 220 470 340 S700 500 860 390"/><path class="mesh" d="M160 30 C140 180 220 290 360 410 S610 540 800 500"/><polygon class="plate" points="360,130 520,90 650,180 600,320 430,350 300,240"/><polygon class="plate" points="500,250 680,210 790,310 720,440 560,430 470,340"/></svg></div>
   <div class="wrap">
-    <div class="section-head"><div class="section-no">02 / NETWORK</div><h2 class="section-title">One network. Clear roles.</h2><p class="intro">Each participant does one job well. The protocol ties them together.</p></div>
-    <div class="roles"><div class="role"><b>CPU MINERS</b><span>secure the chain</span></div><div class="role"><b>EXECUTION</b><span>run state and contracts</span></div><div class="role"><b>GPU WORKERS</b><span>run AI jobs</span></div><div class="role"><b>SERVICE NODES</b><span>store and serve data</span></div><div class="role"><b>AGENTS</b><span>use tools and memory</span></div></div>
+    <div class="section-head"><div class="section-no">02 / NETWORK</div><h2 class="section-title">One network. Clear roles.</h2><p class="intro">No participant has to be everything.</p></div>
+    <div class="role-constellation">
+      <div class="role-core"><div><b>NIAHCIA</b><span>shared protocol</span></div></div>
+      <div class="role r1"><b>CPU MINERS</b><span>secure the chain</span></div>
+      <div class="role r2"><b>EXECUTION</b><span>run state and contracts</span></div>
+      <div class="role r3"><b>GPU WORKERS</b><span>run AI jobs</span></div>
+      <div class="role r4"><b>SERVICE NODES</b><span>store and serve data</span></div>
+      <div class="role r5"><b>AGENTS</b><span>use tools and memory</span></div>
+    </div>
   </div>
 </section>
 
 <section id="principles" class="section">
   <div class="principles-visual" aria-hidden="true"><svg viewBox="0 0 760 570"><defs><linearGradient id="gateGradient" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7ff6ff"/><stop offset="100%" stop-color="#b49cff"/></linearGradient></defs><path class="gate" d="M100 470 L210 90 L380 160 L510 80 L650 470"/><path class="cut" d="M160 400 L590 400 M190 320 L560 320 M220 240 L530 240"/><polygon class="zone" points="250,165 380,210 500,145 560,325 380,430 190,320"/></svg></div>
   <div class="wrap">
-    <div class="section-head"><div class="section-no">03 / PRINCIPLES</div><h2 class="section-title">Open. Verifiable. Decentralized.</h2><p class="intro">The network stays simple by keeping power separated and verification explicit.</p></div>
+    <div class="section-head"><div class="section-no">03 / PRINCIPLES</div><h2 class="section-title">Open. Verifiable. Decentralized.</h2><p class="intro">Power stays separated. Verification stays explicit.</p></div>
     <div class="principles-layout">
       <div class="rule-list"><div class="rule"><b>01</b><span>No central scheduler</span></div><div class="rule"><b>02</b><span>Mining stays independent from AI</span></div><div class="rule"><b>03</b><span>No hidden second consensus</span></div><div class="rule"><b>04</b><span>Verify before trust</span></div><div class="rule"><b>05</b><span>Open infrastructure</span></div></div>
-      <p class="manifesto">Many roles. One protocol.<em>No single role should control the intelligence layer.</em></p>
-      <p class="principles-note">NIAHCIA is pre-alpha. Core protocol behavior is still being tested and locked before production release.</p>
+      <p class="manifesto">Many roles. One protocol.<em>No single role controls the intelligence layer.</em></p>
+      <p class="principles-note">NIAHCIA is pre-alpha. Core behavior is still being tested before production release.</p>
       <div class="constraint-strip"><div><b>CONSENSUS</b><span>CPU / RandomX</span></div><div><b>EXECUTION</b><span>Reth-backed</span></div><div><b>COMPUTE</b><span>GPU market</span></div><div><b>SERVICES</b><span>proof-backed</span></div></div>
     </div>
   </div>
@@ -235,10 +246,9 @@ footer{padding:56px 0 76px;border-top:1px solid rgba(127,246,255,.08);color:#677
 <section class="section">
   <div class="build-visual" aria-hidden="true"><svg viewBox="0 0 760 590"><path class="route" d="M120 110 C230 150 300 210 380 300 S560 410 690 470"/><path class="route v" d="M660 110 C540 170 480 210 390 305 S230 440 90 500"/><path class="route" d="M380 65 L380 520"/><rect class="hub" x="300" y="245" width="160" height="120" rx="52"/><rect class="hub" x="70" y="70" width="110" height="74" rx="32"/><rect class="hub" x="570" y="70" width="110" height="74" rx="32"/><rect class="hub" x="60" y="450" width="120" height="78" rx="34"/><rect class="hub" x="575" y="430" width="120" height="78" rx="34"/></svg></div>
   <div class="wrap">
-    <div class="section-head"><div class="section-no">04 / BUILD</div><h2 class="section-title">Built in public.</h2><p class="intro">Core code, protocol work, compute, explorer, and web development live in the open.</p></div>
+    <div class="section-head"><div class="section-no">04 / BUILD</div><h2 class="section-title">Built in public.</h2><p class="intro">Explore the code, protocol, compute, explorer, and web stack.</p></div>
     <div class="build-layout">
       <div class="repo-map"><a class="repo-node" href="https://github.com/niahcia/niahcia"><b>CORE</b><span>chain</span></a><a class="repo-node" href="https://github.com/niahcia/niahcia-protocol"><b>PROTOCOL</b><span>objects</span></a><a class="repo-node" href="https://github.com/niahcia/niahcia-compute"><b>COMPUTE</b><span>AI jobs</span></a><a class="repo-node" href="https://github.com/niahcia/niahcia-explorer"><b>EXPLORER</b><span>visibility</span></a><a class="repo-node" href="https://github.com/niahcia/niahcia.github.io"><b>WEB</b><span>interface</span></a></div>
-      <div class="build-terminal">› consensus ........ active<br>› execution ........ bound<br>› vectors .......... locking<br>› storage proofs ... testing<br>› gpu compute ...... protocolizing<br>› production net ... not released</div>
       <div class="build-links"><a class="btn primary" href="https://github.com/niahcia">GitHub</a><a class="btn" href="releases.html">Releases</a><a class="btn" href="downloads.html">Downloads</a></div>
     </div>
   </div>
