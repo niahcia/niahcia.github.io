@@ -508,12 +508,111 @@ linear-gradient(180deg,rgba(8,14,22,.95),rgba(4,7,12,.95));min-height:520px;over
 @media(prefers-reduced-motion:reduce){
  .token-stream b,.attn-head,.activation-field i,.reasoning-sweep,.thought-wave,.cog-ring,.activity-arc,.cognitive-bars i,.agent-link:before{animation:none!important}
 }
+
+/* v10 prompt-first hero */
+.agent-title{
+  font-size:clamp(1.9rem,3vw,2.85rem);
+  line-height:.94;
+  letter-spacing:-.045em;
+  margin:12px 0 12px;
+  max-width:520px
+}
+.agent-subtitle{
+  font-size:clamp(.94rem,1.05vw,1.08rem);
+  line-height:1.4;
+  max-width:640px;
+  margin:0 0 12px
+}
+.agent-desc{font-size:.86rem;line-height:1.62;max-width:640px}
+.agent-hero{min-height:650px;padding:58px 0 64px}
+.agent-shell{grid-template-columns:minmax(0,.9fr) minmax(410px,1.1fr);gap:46px}
+
+.front-prompt{
+  position:relative;
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:12px;
+  align-items:center;
+  margin:20px 0 12px;
+  padding:13px 13px 13px 17px;
+  max-width:690px;
+  border:1px solid rgba(127,246,255,.23);
+  border-radius:17px;
+  background:
+    radial-gradient(circle at 15% 0,rgba(127,246,255,.055),transparent 42%),
+    linear-gradient(180deg,rgba(8,14,22,.95),rgba(4,8,13,.95));
+  box-shadow:0 20px 60px rgba(0,0,0,.3),inset 0 1px rgba(255,255,255,.035);
+  overflow:hidden
+}
+.front-prompt:before{
+  content:"";
+  position:absolute;
+  top:0;bottom:0;
+  width:26%;
+  left:-30%;
+  background:linear-gradient(90deg,transparent,rgba(127,246,255,.055),transparent);
+  transform:skewX(-18deg);
+  animation:frontPromptSweep 7s linear infinite;
+  pointer-events:none
+}
+@keyframes frontPromptSweep{to{left:115%}}
+.front-prompt-copy{min-width:0;position:relative;z-index:1}
+.front-prompt-label{
+  display:block;
+  margin-bottom:5px;
+  font:700 .55rem/1 monospace;
+  letter-spacing:.14em;
+  color:#688096
+}
+.front-prompt-placeholder{
+  display:block;
+  font-size:.98rem;
+  line-height:1.25;
+  color:#dce8f1;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis
+}
+.front-prompt-button{
+  position:relative;z-index:1;
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  padding:11px 14px;
+  border:1px solid rgba(127,246,255,.34);
+  border-radius:12px;
+  background:linear-gradient(135deg,#eef7ff,#c8f2ff);
+  color:#071018;
+  font:800 .68rem/1 monospace;
+  letter-spacing:.05em;
+  white-space:nowrap
+}
+.front-prompt-button:after{content:"→";font-size:.9rem}
+.front-prompt-status{
+  margin:0 0 17px;
+  font:600 .59rem/1.45 monospace;
+  color:#6f8396;
+  max-width:690px
+}
+.agent-actions{margin-top:20px}
+.agent-copy .agent-coming{margin-top:13px}
+
+@media(max-width:980px){
+  .agent-shell{grid-template-columns:1fr}
+  .agent-title{font-size:clamp(1.9rem,4.8vw,2.65rem)}
+}
+@media(max-width:620px){
+  .agent-title{font-size:clamp(1.75rem,8.5vw,2.35rem)}
+  .front-prompt{grid-template-columns:1fr}
+  .front-prompt-button{justify-content:center;width:100%}
+  .front-prompt-placeholder{white-space:normal}
+}
 </style>
 </head>
 <body>
 <header class="site-header"><div class="wrap"><nav class="controlbar"><a class="brandlock" href="/" aria-label="NIAHCIA home"><span class="brandmark"><i></i><i></i></span><span class="brandtext"><strong>NIAHCIA</strong><span>DECENTRALIZED INTELLIGENCE</span></span></a><div class="nav-center"><a href="/">AGENT</a><a href="#architecture">NETWORK</a><a href="#protocol">PROTOCOL</a><a href="#principles">PRINCIPLES</a><a href="downloads.html">DOWNLOADS</a></div><div class="nav-right"><span class="devnet-pill"><i></i>AGENT NETWORK // DEVNET</span><a class="nav-github" href="https://github.com/niahcia">GITHUB</a></div><div class="nav-mobile"><a href="/">AGENT</a><a href="#architecture">NETWORK</a><a href="#protocol">PROTOCOL</a><a href="#principles">PRINCIPLES</a><a href="downloads.html">DOWNLOADS</a></div></nav><div class="header-underbar"></div></div></header>
 <main>
-<div class="wrap hero agent-hero"><div class="agent-shell"><section class="agent-copy"><div class="agent-kicker">PRIMARY NETWORK AGENT</div><h1 class="agent-title">Ask the network.</h1><p class="agent-subtitle">NIAHCIA’s primary AI agent will be the front door to decentralized intelligence.</p><p class="agent-desc">The agent will discover capabilities, dispatch work to independent compute providers, use approved tools and memory, verify results, and settle activity through the same protocol surfaces available to every other NIAHCIA agent.</p><div class="agent-actions"><a class="btn primary" href="#architecture">See how the network works</a><a class="btn" href="https://github.com/niahcia">Build with NIAHCIA</a></div><div class="agent-flow"><span>REQUEST</span><span>DISCOVER</span><span>EXECUTE</span><span>VERIFY</span><span>SETTLE</span><span>RESULT</span></div><div class="agent-coming"><i></i>PRIMARY AGENT INTERFACE // IN DEVELOPMENT</div><div class="agent-note">The flagship agent is intended to use normal NIAHCIA protocol primitives rather than a privileged hidden backend.</div></section><aside class="agent-console" aria-label="NIAHCIA primary agent network preview"><div class="agent-console-head"><span>NIAHCIA / PRIMARY AGENT</span><span>DEVNET PREVIEW</span></div><div class="activation-field"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="reasoning-sweep"></div><div class="attn-head a1"></div><div class="attn-head a2"></div><div class="attn-head a3"></div><div class="cognitive-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="thought-wave w1"></div><div class="thought-wave w2"></div><div class="thought-wave w3"></div><div class="cog-ring r1"></div><div class="cog-ring r2"></div><div class="cog-ring r3"></div><div class="activity-arc"></div><div class="activity-arc a2"></div><div class="agent-link l1"></div><div class="agent-link l2"></div><div class="agent-link l3"></div><div class="agent-link l4"></div><div class="agent-link l5"></div><div class="token-stream t1"><b></b><b></b><b></b></div><div class="token-stream t2 v"><b></b><b></b><b></b></div><div class="token-stream t3"><b></b><b></b><b></b></div><div class="token-stream t4 v"><b></b><b></b><b></b></div><div class="token-stream t5"><b></b><b></b><b></b></div><div class="agent-core"><div><div class="brainmark"><i></i></div><strong>NIAHCIA</strong><small>PRIMARY AGENT</small></div></div><div class="agent-node compute">COMPUTE<small>GPU WORKERS</small></div><div class="agent-node memory">MEMORY<small>DESCRIPTORS</small></div><div class="agent-node verify">VERIFY<small>POLICIES</small></div><div class="agent-node chain">CHAIN<small>SETTLEMENT</small></div><div class="agent-node tools">TOOLS<small>CAPABILITIES</small></div><div class="agent-input"><span class="placeholder">What do you want to accomplish?</span><button aria-label="Agent interface preview">→</button></div></aside></div></div>
+<div class="wrap hero agent-hero"><div class="agent-shell"><section class="agent-copy"><div class="agent-kicker">PRIMARY NETWORK AGENT</div><h1 class="agent-title">Ask the network.</h1><p class="agent-subtitle">NIAHCIA’s primary AI agent will be the front door to decentralized intelligence.</p><div class="front-prompt" aria-label="Primary agent prompt preview"><div class="front-prompt-copy"><span class="front-prompt-label">ASK THE NETWORK</span><span class="front-prompt-placeholder">What do you want to accomplish?</span></div><div class="front-prompt-button" aria-hidden="true">ENTER PROMPT</div></div><p class="front-prompt-status">PRIMARY AGENT INTERFACE // PREVIEW ONLY // INTERACTION COMING NEXT</p><p class="agent-desc">The agent will discover capabilities, dispatch work to independent compute providers, use approved tools and memory, verify results, and settle activity through the same protocol surfaces available to every other NIAHCIA agent.</p><div class="agent-actions"><a class="btn primary" href="#architecture">See how the network works</a><a class="btn" href="https://github.com/niahcia">Build with NIAHCIA</a></div><div class="agent-flow"><span>REQUEST</span><span>DISCOVER</span><span>EXECUTE</span><span>VERIFY</span><span>SETTLE</span><span>RESULT</span></div><div class="agent-coming"><i></i>PRIMARY AGENT INTERFACE // IN DEVELOPMENT</div><div class="agent-note">The flagship agent is intended to use normal NIAHCIA protocol primitives rather than a privileged hidden backend.</div></section><aside class="agent-console" aria-label="NIAHCIA primary agent network preview"><div class="agent-console-head"><span>NIAHCIA / PRIMARY AGENT</span><span>DEVNET PREVIEW</span></div><div class="activation-field"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="reasoning-sweep"></div><div class="attn-head a1"></div><div class="attn-head a2"></div><div class="attn-head a3"></div><div class="cognitive-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="thought-wave w1"></div><div class="thought-wave w2"></div><div class="thought-wave w3"></div><div class="cog-ring r1"></div><div class="cog-ring r2"></div><div class="cog-ring r3"></div><div class="activity-arc"></div><div class="activity-arc a2"></div><div class="agent-link l1"></div><div class="agent-link l2"></div><div class="agent-link l3"></div><div class="agent-link l4"></div><div class="agent-link l5"></div><div class="token-stream t1"><b></b><b></b><b></b></div><div class="token-stream t2 v"><b></b><b></b><b></b></div><div class="token-stream t3"><b></b><b></b><b></b></div><div class="token-stream t4 v"><b></b><b></b><b></b></div><div class="token-stream t5"><b></b><b></b><b></b></div><div class="agent-core"><div><div class="brainmark"><i></i></div><strong>NIAHCIA</strong><small>PRIMARY AGENT</small></div></div><div class="agent-node compute">COMPUTE<small>GPU WORKERS</small></div><div class="agent-node memory">MEMORY<small>DESCRIPTORS</small></div><div class="agent-node verify">VERIFY<small>POLICIES</small></div><div class="agent-node chain">CHAIN<small>SETTLEMENT</small></div><div class="agent-node tools">TOOLS<small>CAPABILITIES</small></div><div class="agent-input"><span class="placeholder">Agent request surface // preview</span><button aria-label="Agent interface preview">→</button></div></aside></div></div>
 <section id="protocol" class="section-shell"><div class="wrap"><div class="section-no">01 / OBJECTIVE</div><h2 class="section-title">Intelligence as open infrastructure.</h2><p class="intro">NIAHCIA is being designed as infrastructure rather than a hosted AI service. Consensus, execution, compute, agents, storage, verification, identity, permissions, and payments are separate protocol responsibilities that can be operated by independent participants.</p><div class="protocol-map"><div class="protocol-bus"></div><article class="pmod"><div class="tag">CONSENSUS_01</div><h3>CPU-secured chain</h3><p>RandomX orders and secures protocol state without requiring miners to operate AI infrastructure.</p><div class="rail"><i></i><i></i><i></i></div></article><article class="pmod v"><div class="tag">COMPUTE_02</div><h3>Decentralized AI execution</h3><p>GPU operators advertise capabilities, execute jobs, and settle useful work through explicit protocol surfaces.</p><div class="rail"><i></i><i></i><i></i></div></article><article class="pmod"><div class="tag">AGENTS_03</div><h3>Persistent autonomous agents</h3><p>Identity, versioning, tools, permissions, memory descriptors, and payments become interoperable objects.</p><div class="rail"><i></i><i></i><i></i></div></article><article class="pmod v"><div class="tag">STORAGE_04</div><h3>Proof-backed services</h3><p>Storage and service nodes provide availability without becoming an alternate source of chain finality.</p><div class="rail"><i></i><i></i><i></i></div></article><article class="pmod"><div class="tag">VALUE_05</div><h3>Programmable native value</h3><p>Security, compute, storage, and agent activity remain economically distinct while settling on one network.</p><div class="rail"><i></i><i></i><i></i></div></article><article class="pmod v"><div class="tag">VERIFY_06</div><h3>Verification before trust</h3><p>Commitments, reproducible profiles, evidence, and explicit policies minimize trusted infrastructure.</p><div class="rail"><i></i><i></i><i></i></div></article></div></div></section>
 <section id="architecture" class="section-shell"><div class="wrap"><div class="section-no">02 / ARCHITECTURE</div><h2 class="section-title">One network. Distinct responsibilities.</h2><p class="intro">Decentralization becomes fragile when every participant is forced to perform every job. NIAHCIA separates roles while binding them through deterministic protocol objects and settlement.</p><div class="network-stage" aria-label="NIAHCIA network role topology"><svg class="net-svg" viewBox="0 0 1200 640" role="img" aria-label="CPU miners, execution, GPU workers, service nodes, and agents connected through the NIAHCIA protocol"><defs><linearGradient id="netgrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7ff6ff"/><stop offset="100%" stop-color="#b49cff"/></linearGradient><path id="p1" d="M600 320 C470 245 350 205 250 150"/><path id="p2" d="M600 320 C730 245 850 205 950 150"/><path id="p3" d="M600 320 C800 340 925 390 1015 455"/><path id="p4" d="M600 320 C400 340 275 390 185 455"/><path id="p5" d="M600 320 C600 210 600 145 600 88"/></defs><ellipse class="net-orbit" cx="600" cy="320" rx="390" ry="215"/><ellipse class="net-orbit secondary" cx="600" cy="320" rx="290" ry="160"/><path class="net-path" d="M600 320 C470 245 350 205 250 150"/><path class="net-path alt" d="M600 320 C730 245 850 205 950 150"/><path class="net-path" d="M600 320 C800 340 925 390 1015 455"/><path class="net-path alt" d="M600 320 C400 340 275 390 185 455"/><path class="net-path" d="M600 320 C600 210 600 145 600 88"/><circle class="net-pulse" cx="600" cy="320" r="92"/><circle class="net-pulse v" cx="600" cy="320" r="118"/><circle class="net-hub-ring" cx="600" cy="320" r="84"/><circle class="net-hub-inner" cx="600" cy="320" r="58"/><text class="net-hub-text" x="600" y="314" text-anchor="middle">NIAHCIA</text><text class="net-hub-sub" x="600" y="337" text-anchor="middle">PROTOCOL CORE</text><g transform="translate(145 103)"><rect class="net-nodebox" width="210" height="92" rx="15"/><rect class="net-nodecap" width="5" height="92" rx="2"/><text class="net-label" x="24" y="30">CPU MINERS</text><text class="net-small" x="24" y="54">POW CONSENSUS / SECURITY</text><text class="net-small" x="24" y="71">BLOCK PRODUCTION</text></g><g transform="translate(845 103)"><rect class="net-nodebox" width="210" height="92" rx="15"/><rect class="net-nodecap v" width="5" height="92" rx="2"/><text class="net-label" x="24" y="30">EXECUTION</text><text class="net-small" x="24" y="54">RETH-BACKED STATE</text><text class="net-small" x="24" y="71">SMART CONTRACTS</text></g><g transform="translate(905 425)"><rect class="net-nodebox" width="210" height="92" rx="15"/><rect class="net-nodecap" width="5" height="92" rx="2"/><text class="net-label" x="24" y="30">GPU WORKERS</text><text class="net-small" x="24" y="54">AI INFERENCE / DISCOVERY</text><text class="net-small" x="24" y="71">JOB EXECUTION</text></g><g transform="translate(85 425)"><rect class="net-nodebox" width="210" height="92" rx="15"/><rect class="net-nodecap v" width="5" height="92" rx="2"/><text class="net-label" x="24" y="30">SERVICE NODES</text><text class="net-small" x="24" y="54">STORAGE / AVAILABILITY</text><text class="net-small" x="24" y="71">PROOF OF SERVICE</text></g><g transform="translate(495 42)"><rect class="net-nodebox" width="210" height="92" rx="15"/><rect class="net-nodecap" width="5" height="92" rx="2"/><text class="net-label" x="24" y="30">AGENTS</text><text class="net-small" x="24" y="54">TOOLS / PERMISSIONS</text><text class="net-small" x="24" y="71">MEMORY / PAYMENTS</text></g><circle class="net-packet" r="4"><animateMotion dur="5.8s" repeatCount="indefinite"><mpath href="#p1"/></animateMotion></circle><circle class="net-packet v" r="4"><animateMotion dur="6.8s" begin="-2s" repeatCount="indefinite"><mpath href="#p2"/></animateMotion></circle><circle class="net-packet" r="4"><animateMotion dur="7.1s" begin="-3s" repeatCount="indefinite"><mpath href="#p3"/></animateMotion></circle><circle class="net-packet v" r="4"><animateMotion dur="6.2s" begin="-1s" repeatCount="indefinite"><mpath href="#p4"/></animateMotion></circle><circle class="net-packet" r="4"><animateMotion dur="5.4s" begin="-4s" repeatCount="indefinite"><mpath href="#p5"/></animateMotion></circle></svg><div class="arch-legend"><span><i></i> protocol traffic</span><span><i></i> verification / settlement path</span><span>roles remain independently operated</span></div></div></div></section><div class="flow-divider"></div>
 <section id="principles" class="section-shell"><div class="wrap"><div class="section-no">03 / PRINCIPLES</div><div class="rule-surface"><aside class="rule-rail"><div class="rule"><b>RULE_01</b><span>No central scheduler</span></div><div class="rule"><b>RULE_02</b><span>Mining remains independent from AI</span></div><div class="rule"><b>RULE_03</b><span>No hidden secondary consensus</span></div><div class="rule"><b>RULE_04</b><span>Verification before trust</span></div><div class="rule"><b>RULE_05</b><span>Open, interoperable infrastructure</span></div></aside><div class="rule-core"><p class="manifesto">No central scheduler. No requirement that miners run AI. No second consensus authority hidden inside storage or compute.<em>Open participation, explicit verification, deterministic economics, and interoperable infrastructure.</em></p><p class="principles-note">The project is intentionally pre-alpha. Protocol surfaces are being locked through vectors, tests, restart/reorg behavior, multi-node devnet testing, and compatibility work before production-network promises are made.</p><div class="constraint-strip"><div><b>CONSENSUS</b><span>CPU / RandomX</span></div><div><b>EXECUTION</b><span>Reth-backed</span></div><div><b>COMPUTE</b><span>GPU / open market</span></div><div><b>SERVICES</b><span>proof-backed</span></div></div></div></div></div></section>
