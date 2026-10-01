@@ -100,11 +100,31 @@ header{position:sticky;top:0;z-index:50;padding-top:10px;background:linear-gradi
 
 .arch-visual{top:50%;width:min(760px,62vw);height:470px;transform:translate(-50%,-46%)}
 .arch-visual svg{width:100%;height:100%}.arch-visual .mesh{fill:none;stroke:rgba(127,246,255,.06);stroke-width:1}.arch-visual .mesh.v{stroke:rgba(180,156,255,.05)}.arch-visual .plate{fill:rgba(127,246,255,.012);stroke:rgba(127,246,255,.065)}
-.role-constellation{position:relative;z-index:3;margin:68px auto 0;width:min(760px,92%);min-height:330px}
-.role-core{position:absolute;left:50%;top:50%;width:150px;height:150px;transform:translate(-50%,-50%);border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 35% 30%,rgba(127,246,255,.10),transparent 42%),linear-gradient(135deg,rgba(127,246,255,.035),rgba(180,156,255,.035));box-shadow:0 0 80px rgba(127,246,255,.025)}
+.role-constellation{position:relative;z-index:3;margin:68px auto 0;width:min(760px,92%);min-height:350px}
+.role-links{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.role-links path{
+  fill:none;stroke:url(#roleLinkGradient);stroke-width:1.15;opacity:.38;
+  transition:opacity .2s,stroke-width .2s
+}
+.role-links .secondary{stroke:rgba(180,156,255,.16);stroke-width:.9;opacity:.28}
+.role-links circle{fill:#bffbff;opacity:.34;filter:drop-shadow(0 0 5px rgba(127,246,255,.35))}
+.role-constellation:hover .role-links path{opacity:.58;stroke-width:1.35}
+.role-core{
+  position:absolute;left:50%;top:50%;width:150px;height:150px;transform:translate(-50%,-50%);
+  border-radius:50%;display:grid;place-items:center;
+  background:radial-gradient(circle at 35% 30%,rgba(127,246,255,.11),transparent 42%),linear-gradient(135deg,rgba(127,246,255,.038),rgba(180,156,255,.038));
+  box-shadow:0 0 85px rgba(127,246,255,.03),inset 0 0 0 1px rgba(127,246,255,.06)
+}
+.role-core:before{
+  content:"";position:absolute;inset:16px;border-radius:50%;
+  border:1px solid rgba(127,246,255,.07)
+}
 .role-core b{font-size:.78rem;letter-spacing:.14em}.role-core span{display:block;margin-top:5px;font:.52rem ui-monospace,monospace;color:#71869a}
-.role{position:absolute;width:180px;padding:8px 0 11px;border-bottom:1px solid rgba(127,246,255,.08);transition:.18s}
-.role:hover{transform:translateY(-4px);border-color:rgba(127,246,255,.24)}
+.role{
+  position:absolute;width:180px;padding:8px 0 11px;border-bottom:1px solid rgba(127,246,255,.08);
+  transition:.18s;background:linear-gradient(90deg,transparent,rgba(3,8,13,.54),transparent)
+}
+.role:hover{transform:translateY(-4px);border-color:rgba(127,246,255,.28)}
 .role b{display:block;font:800 .52rem ui-monospace,monospace;color:#b7c9d7}.role span{display:block;margin-top:5px;font-size:.72rem;color:#71869b}
 .role.r1{left:3%;top:4%}.role.r2{right:3%;top:4%}.role.r3{left:0;bottom:5%}.role.r4{right:0;bottom:5%}.role.r5{left:50%;bottom:-2%;transform:translateX(-50%)}.role.r5:hover{transform:translate(-50%,-4px)}
 
@@ -145,7 +165,7 @@ footer{padding:58px 0 78px;border-top:1px solid rgba(127,246,255,.07);color:#677
   .hero-prompt{grid-template-columns:1fr;border-radius:22px;padding:17px}.hero-prompt-copy{text-align:center}.hero-prompt-cta{text-align:center}.hover-prompt{white-space:normal;width:90%}
   .hero-footnote{display:none}.hero-ai{width:100vw;height:430px;top:73%}.semantic-lens.primary{width:390px;height:190px}.semantic-lens.secondary{width:220px;height:120px}.semantic-lens.tertiary{width:170px;height:90px}.lens-contours{width:430px;height:210px}.context-thread{width:320px}.focus-arc{width:420px}
   .section{padding:112px 0 102px}.protocol-copy{grid-template-columns:1fr}.protocol-step:not(:last-child)::after{display:none}
-  .role-constellation{min-height:470px}.role{width:150px}.role.r1{left:0}.role.r2{right:0}.role.r3{left:0;bottom:24%}.role.r4{right:0;bottom:24%}.role.r5{bottom:0}
+  .role-constellation{min-height:470px}.role-links{display:none}.role{width:150px}.role.r1{left:0}.role.r2{right:0}.role.r3{left:0;bottom:24%}.role.r4{right:0;bottom:24%}.role.r5{bottom:0}
   .protocol-visual,.arch-visual,.principles-visual,.build-visual{width:100%;opacity:.11}
 }
 </style>
@@ -220,6 +240,27 @@ footer{padding:58px 0 78px;border-top:1px solid rgba(127,246,255,.07);color:#677
   <div class="wrap">
     <div class="section-head"><div class="section-no">02 / NETWORK</div><h2 class="section-title">One network. Clear roles.</h2><p class="intro">No participant has to be everything.</p></div>
     <div class="role-constellation">
+      <svg class="role-links" viewBox="0 0 760 350" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="roleLinkGradient" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#7ff6ff"/>
+            <stop offset="100%" stop-color="#b49cff"/>
+          </linearGradient>
+        </defs>
+        <path d="M380 175 C320 135 225 92 112 48"/>
+        <path d="M380 175 C440 135 535 92 648 48"/>
+        <path d="M380 175 C300 210 205 255 90 300"/>
+        <path d="M380 175 C460 210 555 255 670 300"/>
+        <path d="M380 175 C380 220 380 265 380 322"/>
+        <path class="secondary" d="M112 48 C235 18 525 18 648 48"/>
+        <path class="secondary" d="M90 300 C230 338 530 338 670 300"/>
+        <circle cx="380" cy="175" r="3.5"/>
+        <circle cx="112" cy="48" r="2.3"/>
+        <circle cx="648" cy="48" r="2.3"/>
+        <circle cx="90" cy="300" r="2.3"/>
+        <circle cx="670" cy="300" r="2.3"/>
+        <circle cx="380" cy="322" r="2.3"/>
+      </svg>
       <div class="role-core"><div><b>NIAHCIA</b><span>shared protocol</span></div></div>
       <div class="role r1"><b>CPU MINERS</b><span>secure the chain</span></div>
       <div class="role r2"><b>EXECUTION</b><span>run state and contracts</span></div>
