@@ -786,86 +786,119 @@ backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
  .front-prompt-label:after{content:""}
  .page-progress{height:1px}
 }
+
+/* v14: compact hero + genuine AI cognition console */
+.agent-title{
+  font-size:clamp(1.55rem,2.1vw,2.15rem)!important;
+  line-height:1.02!important;
+  letter-spacing:-.035em!important;
+  margin:10px 0 10px!important;
+  max-width:460px!important;
+}
+.agent-title:after{font-size:.50rem!important;bottom:-16px!important;letter-spacing:.14em!important}
+.agent-subtitle{font-size:.98rem!important;line-height:1.4!important;max-width:610px!important}
+.agent-hero{min-height:620px!important;padding:48px 0 56px!important}
+.agent-shell{grid-template-columns:minmax(0,.88fr) minmax(470px,1.12fr)!important;gap:48px!important}
+
+.ai-console{position:relative;min-height:500px;border:1px solid rgba(127,246,255,.18);border-radius:24px;overflow:hidden;
+background:
+radial-gradient(circle at 50% 46%,rgba(127,246,255,.09),transparent 20%),
+radial-gradient(circle at 62% 52%,rgba(180,156,255,.055),transparent 34%),
+linear-gradient(180deg,rgba(5,10,17,.98),rgba(3,6,11,.98));
+box-shadow:0 36px 100px rgba(0,0,0,.38),inset 0 1px rgba(255,255,255,.03)}
+.ai-console:before{content:"";position:absolute;inset:0;background:
+linear-gradient(rgba(127,246,255,.025) 1px,transparent 1px),
+linear-gradient(90deg,rgba(127,246,255,.025) 1px,transparent 1px);
+background-size:28px 28px;mask-image:radial-gradient(circle at 50% 46%,black 0,rgba(0,0,0,.5) 54%,transparent 88%);pointer-events:none}
+.ai-console-head{position:absolute;left:18px;right:18px;top:15px;z-index:10;display:flex;justify-content:space-between;gap:14px;font:700 .56rem monospace;letter-spacing:.12em;color:#63778c}
+.ai-console-head b{color:#73ffbd;font-weight:700}
+.ai-orbital{position:absolute;inset:48px 18px 78px;z-index:1;width:calc(100% - 36px);height:calc(100% - 126px)}
+.ai-orbital .fieldline{fill:none;stroke:url(#aiGrad);stroke-width:1;opacity:.2;vector-effect:non-scaling-stroke}
+.ai-orbital .fieldline.alt{stroke:url(#aiGradV);opacity:.16}
+.ai-orbital .cortex{fill:url(#coreGlow);stroke:rgba(127,246,255,.28);stroke-width:1.1;filter:url(#aiBlur);animation:cortexPulse 7s ease-in-out infinite}
+.ai-orbital .lobe{fill:none;stroke:rgba(127,246,255,.28);stroke-width:1.35;filter:url(#aiBloom);animation:lobeFlow 8s ease-in-out infinite}
+.ai-orbital .lobe.v{stroke:rgba(180,156,255,.25);animation-delay:-3s}
+.ai-orbital .wave{fill:none;stroke:rgba(127,246,255,.22);stroke-width:1.25;opacity:.65;animation:waveMorph 7s ease-in-out infinite}
+.ai-orbital .wave.v{stroke:rgba(180,156,255,.2);animation-delay:-2.4s}
+.ai-orbital .syn{fill:none;stroke:rgba(127,246,255,.18);stroke-width:1;opacity:.55}
+@keyframes cortexPulse{0%,100%{transform:scale(.97);opacity:.72}50%{transform:scale(1.03);opacity:1}}
+@keyframes lobeFlow{0%,100%{opacity:.18;transform:scale(.98)}50%{opacity:.58;transform:scale(1.035)}}
+@keyframes waveMorph{0%,100%{transform:translateX(-3px) scaleY(.95)}50%{transform:translateX(4px) scaleY(1.05)}}
+
+.ai-core-label{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);z-index:5;text-align:center;pointer-events:none}
+.ai-core-label strong{display:block;font:800 .82rem monospace;letter-spacing:.22em;color:#eef7ff}
+.ai-core-label span{display:block;margin-top:6px;font:700 .52rem monospace;letter-spacing:.13em;color:#75889c}
+.ai-core-label:before{content:"";display:block;width:56px;height:22px;margin:0 auto 11px;border:1px solid rgba(127,246,255,.26);border-radius:50% 42% 55% 45% / 45% 55% 42% 58%;box-shadow:0 0 30px rgba(127,246,255,.08);animation:brainBreathe 5.5s ease-in-out infinite}
+@keyframes brainBreathe{50%{transform:scale(1.12) rotate(3deg);border-radius:42% 58% 46% 54% / 58% 44% 56% 42%}}
+
+.ai-readout{position:absolute;z-index:7;min-width:116px;padding:9px 10px;border:1px solid rgba(127,246,255,.12);border-radius:11px;background:rgba(5,10,16,.74);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.ai-readout b{display:block;font:700 .54rem monospace;letter-spacing:.12em;color:#9eefff}
+.ai-readout span{display:block;margin-top:3px;font:600 .48rem monospace;letter-spacing:.08em;color:#60758a}
+.ai-readout.r1{left:6%;top:23%}.ai-readout.r2{right:6%;top:25%}.ai-readout.r3{left:8%;bottom:23%}.ai-readout.r4{right:7%;bottom:24%}
+.ai-readout:after{content:"";position:absolute;width:46px;height:1px;top:50%;background:linear-gradient(90deg,rgba(127,246,255,.25),transparent)}
+.ai-readout.r1:after,.ai-readout.r3:after{left:100%}.ai-readout.r2:after,.ai-readout.r4:after{right:100%;transform:rotate(180deg)}
+
+.ai-thoughtbar{position:absolute;left:18px;right:18px;bottom:16px;z-index:10;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;padding:11px 12px 11px 15px;border:1px solid rgba(127,246,255,.15);border-radius:14px;background:rgba(3,7,12,.82);backdrop-filter:blur(8px)}
+.ai-thoughtbar span{font-size:.78rem;color:#8aa0b4}
+.ai-thoughtbar small{font:700 .5rem monospace;letter-spacing:.1em;color:#60758a}
+.ai-thoughtbar i{display:block;width:54px;height:18px;border-radius:999px;background:
+linear-gradient(90deg,rgba(127,246,255,.06),rgba(127,246,255,.4),rgba(180,156,255,.24),rgba(127,246,255,.06));
+background-size:200% 100%;animation:thinkingBand 3.8s linear infinite}
+@keyframes thinkingBand{to{background-position:-200% 0}}
+
+.ai-state-strip{position:absolute;left:18px;top:48px;display:flex;gap:6px;z-index:9}
+.ai-state-strip span{padding:5px 7px;border:1px solid rgba(255,255,255,.05);border-radius:999px;background:rgba(255,255,255,.018);font:700 .46rem monospace;letter-spacing:.08em;color:#53697d}
+.ai-state-strip span:first-child{color:#73ffbd;border-color:rgba(115,255,189,.14)}
+
+@media(max-width:980px){
+ .agent-shell{grid-template-columns:1fr!important}
+ .agent-title{font-size:clamp(1.65rem,4.3vw,2.1rem)!important}
+ .ai-console{min-height:470px}
+}
+@media(max-width:620px){
+ .agent-title{font-size:1.7rem!important}
+ .ai-readout{min-width:92px;padding:7px}
+ .ai-console{min-height:440px}
+ .ai-state-strip{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+ .ai-orbital .cortex,.ai-orbital .lobe,.ai-orbital .wave,.ai-core-label:before,.ai-thoughtbar i{animation:none!important}
+}
 </style>
 </head>
 <body><div class="page-progress" aria-hidden="true"><i></i></div>
 <header class="site-header"><div class="wrap"><nav class="controlbar"><a class="brandlock" href="/" aria-label="NIAHCIA home"><span class="brandmark"><i></i><i></i></span><span class="brandtext"><strong>NIAHCIA</strong><span>DECENTRALIZED INTELLIGENCE</span></span></a><div class="nav-center"><a href="/">AGENT</a><a href="#architecture">NETWORK</a><a href="#protocol">PROTOCOL</a><a href="#principles">PRINCIPLES</a><a href="downloads.html">DOWNLOADS</a></div><div class="nav-right"><span class="devnet-pill"><i></i>AGENT NETWORK // DEVNET</span><a class="nav-github" href="https://github.com/niahcia">GITHUB</a></div><div class="nav-mobile"><a href="/">AGENT</a><a href="#architecture">NETWORK</a><a href="#protocol">PROTOCOL</a><a href="#principles">PRINCIPLES</a><a href="downloads.html">DOWNLOADS</a></div></nav><div class="header-underbar"></div></div></header>
 <main>
-<div class="wrap hero agent-hero"><div class="agent-shell"><section class="agent-copy"><div class="agent-kicker">PRIMARY NETWORK AGENT</div><h1 class="agent-title">Ask the network.</h1><p class="agent-subtitle">NIAHCIA’s primary AI agent will be the front door to decentralized intelligence.</p><div class="front-prompt" aria-label="Primary agent prompt preview"><div class="front-prompt-copy"><span class="front-prompt-label">ASK THE NETWORK</span><span class="front-prompt-placeholder">What do you want to accomplish?</span></div><div class="front-prompt-button" aria-hidden="true">ENTER PROMPT</div></div><p class="front-prompt-status">PRIMARY AGENT INTERFACE // PREVIEW ONLY // INTERACTION COMING NEXT</p><div class="system-ribbon" aria-label="NIAHCIA system preview status"><div><b>CONSENSUS</b><span class="accent">CPU / RANDOMX</span></div><div><b>EXECUTION</b><span>RETH-BOUND</span></div><div><b>AI COMPUTE</b><span>GPU MARKET</span></div><div><b>NETWORK</b><span>PRE-ALPHA</span></div></div><p class="agent-desc">The agent will discover capabilities, dispatch work to independent compute providers, use approved tools and memory, verify results, and settle activity through the same protocol surfaces available to every other NIAHCIA agent.</p><div class="agent-actions"><a class="btn primary" href="#architecture">See how the network works</a><a class="btn" href="https://github.com/niahcia">Build with NIAHCIA</a></div><div class="agent-flow"><span>REQUEST</span><span>DISCOVER</span><span>EXECUTE</span><span>VERIFY</span><span>SETTLE</span><span>RESULT</span></div><div class="agent-coming"><i></i>PRIMARY AGENT INTERFACE // IN DEVELOPMENT</div><div class="agent-note">The flagship agent is intended to use normal NIAHCIA protocol primitives rather than a privileged hidden backend.</div></section><aside class="agent-console" aria-label="NIAHCIA primary agent network preview"><div class="agent-console-head"><span>NIAHCIA / PRIMARY AGENT</span><span>DEVNET PREVIEW</span></div><svg class="intelligence-field" viewBox="0 0 560 400" aria-hidden="true">
+<div class="wrap hero agent-hero"><div class="agent-shell"><section class="agent-copy"><div class="agent-kicker">PRIMARY NETWORK AGENT</div><h1 class="agent-title">Ask the network.</h1><p class="agent-subtitle">NIAHCIA’s primary AI agent will be the front door to decentralized intelligence.</p><div class="front-prompt" aria-label="Primary agent prompt preview"><div class="front-prompt-copy"><span class="front-prompt-label">ASK THE NETWORK</span><span class="front-prompt-placeholder">What do you want to accomplish?</span></div><div class="front-prompt-button" aria-hidden="true">ENTER PROMPT</div></div><p class="front-prompt-status">PRIMARY AGENT INTERFACE // PREVIEW ONLY // INTERACTION COMING NEXT</p><div class="system-ribbon" aria-label="NIAHCIA system preview status"><div><b>CONSENSUS</b><span class="accent">CPU / RANDOMX</span></div><div><b>EXECUTION</b><span>RETH-BOUND</span></div><div><b>AI COMPUTE</b><span>GPU MARKET</span></div><div><b>NETWORK</b><span>PRE-ALPHA</span></div></div><p class="agent-desc">The agent will discover capabilities, dispatch work to independent compute providers, use approved tools and memory, verify results, and settle activity through the same protocol surfaces available to every other NIAHCIA agent.</p><div class="agent-actions"><a class="btn primary" href="#architecture">See how the network works</a><a class="btn" href="https://github.com/niahcia">Build with NIAHCIA</a></div><div class="agent-flow"><span>REQUEST</span><span>DISCOVER</span><span>EXECUTE</span><span>VERIFY</span><span>SETTLE</span><span>RESULT</span></div><div class="agent-coming"><i></i>PRIMARY AGENT INTERFACE // IN DEVELOPMENT</div><div class="agent-note">The flagship agent is intended to use normal NIAHCIA protocol primitives rather than a privileged hidden backend.</div></section><aside class="ai-console" aria-label="NIAHCIA primary AI agent cognition preview">
+<div class="ai-console-head"><span>NIAHCIA / PRIMARY AGENT</span><b>COGNITION PREVIEW</b></div>
+<div class="ai-state-strip"><span>REASONING</span><span>MEMORY</span><span>TOOLS</span><span>VERIFY</span></div>
+<svg class="ai-orbital" viewBox="0 0 620 390" aria-hidden="true">
 <defs>
-  <radialGradient id="blobC" cx="42%" cy="38%" r="62%">
-    <stop offset="0%" stop-color="#9ff8ff" stop-opacity=".36"/>
-    <stop offset="42%" stop-color="#42dff0" stop-opacity=".18"/>
-    <stop offset="100%" stop-color="#42dff0" stop-opacity="0"/>
-  </radialGradient>
-  <radialGradient id="blobV" cx="60%" cy="58%" r="58%">
-    <stop offset="0%" stop-color="#c6b7ff" stop-opacity=".30"/>
-    <stop offset="48%" stop-color="#8b7cff" stop-opacity=".14"/>
-    <stop offset="100%" stop-color="#8b7cff" stop-opacity="0"/>
-  </radialGradient>
-  <radialGradient id="haloGrad" cx="50%" cy="50%" r="50%">
-    <stop offset="0%" stop-color="#7ff6ff" stop-opacity=".22"/>
-    <stop offset="55%" stop-color="#b49cff" stop-opacity=".08"/>
-    <stop offset="100%" stop-color="#000" stop-opacity="0"/>
-  </radialGradient>
-  <linearGradient id="contourGrad" x1="0" y1="0" x2="1" y2="1">
-    <stop offset="0%" stop-color="#7ff6ff" stop-opacity=".08"/>
-    <stop offset="48%" stop-color="#7ff6ff" stop-opacity=".72"/>
-    <stop offset="100%" stop-color="#b49cff" stop-opacity=".12"/>
-  </linearGradient>
-  <linearGradient id="tendrilGrad" x1="0" y1="0" x2="1" y2="0">
-    <stop offset="0%" stop-color="#7ff6ff" stop-opacity="0"/>
-    <stop offset="55%" stop-color="#7ff6ff" stop-opacity=".6"/>
-    <stop offset="100%" stop-color="#7ff6ff" stop-opacity="0"/>
-  </linearGradient>
-  <linearGradient id="tendrilV" x1="1" y1="0" x2="0" y2="1">
-    <stop offset="0%" stop-color="#b49cff" stop-opacity="0"/>
-    <stop offset="52%" stop-color="#b49cff" stop-opacity=".58"/>
-    <stop offset="100%" stop-color="#b49cff" stop-opacity="0"/>
-  </linearGradient>
-  <filter id="fluidWarp" x="-35%" y="-35%" width="170%" height="170%">
-    <feTurbulence type="fractalNoise" baseFrequency=".009 .015" numOctaves="2" seed="8" result="noise">
-      <animate attributeName="baseFrequency" dur="12s" values=".009 .015;.014 .010;.009 .015" repeatCount="indefinite"/>
-    </feTurbulence>
-    <feDisplacementMap in="SourceGraphic" in2="noise" scale="42" xChannelSelector="R" yChannelSelector="B"/>
-    <feGaussianBlur stdDeviation="3.5"/>
-  </filter>
-  <filter id="fluidWarp2" x="-35%" y="-35%" width="170%" height="170%">
-    <feTurbulence type="turbulence" baseFrequency=".012 .008" numOctaves="2" seed="14" result="noise2">
-      <animate attributeName="baseFrequency" dur="15s" values=".012 .008;.007 .014;.012 .008" repeatCount="indefinite"/>
-    </feTurbulence>
-    <feDisplacementMap in="SourceGraphic" in2="noise2" scale="34" xChannelSelector="G" yChannelSelector="R"/>
-    <feGaussianBlur stdDeviation="2.4"/>
-  </filter>
-  <filter id="softBloom" x="-30%" y="-30%" width="160%" height="160%">
-    <feGaussianBlur stdDeviation="2" result="blur"/>
-    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-  </filter>
-  <filter id="haloBlur" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="16"/></filter>
+<linearGradient id="aiGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7ff6ff" stop-opacity=".02"/><stop offset="48%" stop-color="#7ff6ff" stop-opacity=".68"/><stop offset="100%" stop-color="#7ff6ff" stop-opacity=".02"/></linearGradient>
+<linearGradient id="aiGradV" x1="1" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#b49cff" stop-opacity=".02"/><stop offset="52%" stop-color="#b49cff" stop-opacity=".62"/><stop offset="100%" stop-color="#7ff6ff" stop-opacity=".02"/></linearGradient>
+<radialGradient id="coreGlow"><stop offset="0%" stop-color="#7ff6ff" stop-opacity=".18"/><stop offset="58%" stop-color="#83d8ec" stop-opacity=".07"/><stop offset="100%" stop-color="#8b7cff" stop-opacity=".02"/></radialGradient>
+<filter id="aiBlur" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="8"/></filter>
+<filter id="aiBloom" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
 </defs>
-
-<ellipse class="halo" cx="280" cy="205" rx="160" ry="118"/>
-
-<g class="fluid-shell">
-  <path fill="url(#blobC)" d="M123,205 C126,123 203,62 288,78 C372,94 442,145 431,223 C419,306 339,347 253,333 C169,318 119,280 123,205Z"/>
-</g>
-<g class="fluid-core">
-  <path fill="url(#blobV)" d="M171,198 C172,139 226,105 286,112 C346,118 399,155 391,216 C384,273 331,306 273,299 C213,291 168,255 171,198Z"/>
-</g>
-
-<path class="contour c1" d="M118,207 C119,122 198,62 287,76 C378,91 448,147 436,228 C424,310 341,352 251,336 C164,320 114,281 118,207Z"/>
-<path class="contour c2" d="M150,202 C151,140 208,97 281,102 C356,107 411,150 405,217 C398,282 337,317 271,312 C205,307 148,270 150,202Z"/>
-<path class="contour c3" d="M189,199 C190,153 229,126 281,130 C335,134 375,161 371,210 C367,258 324,285 277,282 C227,279 188,247 189,199Z"/>
-
-<path class="neural-tendril" d="M41,150 C105,142 152,165 198,191 C228,208 254,217 280,206"/>
-<path class="neural-tendril v" d="M520,142 C463,145 420,162 374,188 C340,207 310,214 281,206"/>
-<path class="neural-tendril" d="M55,302 C119,287 167,264 209,233 C235,214 258,204 280,206"/>
-<path class="neural-tendril v" d="M506,300 C451,278 407,257 370,231 C336,207 307,202 281,206"/>
-<path class="neural-tendril" d="M282,377 C282,327 283,282 281,239 C280,226 280,215 280,206"/>
-
-<path class="interference" d="M32,210 C92,173 155,178 214,207 C272,235 333,237 392,208 C448,181 501,185 538,210"/>
-<path class="interference v" d="M41,190 C101,226 165,231 223,203 C278,177 334,176 391,202 C445,226 492,226 528,194"/>
-</svg><div class="activation-field"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="reasoning-sweep"></div><div class="attn-head a1"></div><div class="attn-head a2"></div><div class="attn-head a3"></div><div class="cognitive-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="thought-wave w1"></div><div class="thought-wave w2"></div><div class="thought-wave w3"></div><div class="cog-ring r1"></div><div class="cog-ring r2"></div><div class="cog-ring r3"></div><div class="activity-arc"></div><div class="activity-arc a2"></div><div class="agent-link l1"></div><div class="agent-link l2"></div><div class="agent-link l3"></div><div class="agent-link l4"></div><div class="agent-link l5"></div><div class="token-stream t1"><b></b><b></b><b></b></div><div class="token-stream t2 v"><b></b><b></b><b></b></div><div class="token-stream t3"><b></b><b></b><b></b></div><div class="token-stream t4 v"><b></b><b></b><b></b></div><div class="token-stream t5"><b></b><b></b><b></b></div><div class="agent-core"><div><div class="brainmark"><i></i></div><strong>NIAHCIA</strong><small>PRIMARY AGENT</small></div></div><div class="agent-node compute">COMPUTE<small>GPU WORKERS</small></div><div class="agent-node memory">MEMORY<small>DESCRIPTORS</small></div><div class="agent-node verify">VERIFY<small>POLICIES</small></div><div class="agent-node chain">CHAIN<small>SETTLEMENT</small></div><div class="agent-node tools">TOOLS<small>CAPABILITIES</small></div><div class="agent-input"><span class="placeholder">Agent request surface // preview</span><button aria-label="Agent interface preview">→</button></div></aside></div></div>
+<ellipse class="cortex" cx="310" cy="190" rx="118" ry="100"/>
+<path class="lobe" d="M220 189 C236 112 294 93 337 118 C379 143 391 187 363 226 C337 263 277 268 240 235 C220 216 216 202 220 189Z"/>
+<path class="lobe v" d="M252 151 C282 121 337 122 370 155 C397 183 393 222 360 247 C329 269 286 264 257 238 C229 212 225 180 252 151Z"/>
+<path class="wave" d="M82 191 C152 151 216 156 268 187 C321 219 374 218 426 188 C476 160 526 164 573 191"/>
+<path class="wave v" d="M90 174 C150 209 214 215 269 188 C322 163 371 162 426 187 C478 211 528 209 567 177"/>
+<path class="fieldline" d="M108 95 C172 90 208 120 248 158 C272 181 293 191 310 190"/>
+<path class="fieldline alt" d="M514 99 C455 103 418 126 378 160 C352 181 331 191 310 190"/>
+<path class="fieldline" d="M114 288 C176 277 215 247 252 219 C274 202 293 192 310 190"/>
+<path class="fieldline alt" d="M508 286 C451 270 415 246 376 217 C350 199 330 191 310 190"/>
+<path class="syn" d="M310 91 C310 123 310 153 310 190"/>
+<path class="syn" d="M310 190 C310 224 310 257 310 300"/>
+</svg>
+<div class="ai-core-label"><strong>NIAHCIA</strong><span>PRIMARY AGENT</span></div>
+<div class="ai-readout r1"><b>CONTEXT</b><span>semantic state</span></div>
+<div class="ai-readout r2"><b>MEMORY</b><span>retrieval graph</span></div>
+<div class="ai-readout r3"><b>REASON</b><span>planning field</span></div>
+<div class="ai-readout r4"><b>VERIFY</b><span>result confidence</span></div>
+<div class="ai-thoughtbar"><div><small>AGENT THOUGHT SURFACE</small><span>Reasoning across context, memory, tools, and verification…</span></div><i></i></div>
+</aside></div></div>
 <section id="protocol" class="section-shell"><div class="wrap"><div class="section-no">01 / OBJECTIVE</div><h2 class="section-title">Intelligence as open infrastructure.</h2><p class="intro">NIAHCIA is being designed as infrastructure rather than a hosted AI service. Consensus, execution, compute, agents, storage, verification, identity, permissions, and payments are separate protocol responsibilities that can be operated by independent participants.</p><div class="protocol-map"><div class="protocol-bus"></div><article class="pmod"><div class="tag">CONSENSUS_01</div><h3>CPU-secured chain</h3><p>RandomX orders and secures protocol state without requiring miners to operate AI infrastructure.</p><div class="rail"><i></i><i></i><i></i></div></article><article class="pmod v"><div class="tag">COMPUTE_02</div><h3>Decentralized AI execution</h3><p>GPU operators advertise capabilities, execute jobs, and settle useful work through explicit protocol surfaces.</p><div class="rail"><i></i><i></i><i></i></div></article><article class="pmod"><div class="tag">AGENTS_03</div><h3>Persistent autonomous agents</h3><p>Identity, versioning, tools, permissions, memory descriptors, and payments become interoperable objects.</p><div class="rail"><i></i><i></i><i></i></div></article><article class="pmod v"><div class="tag">STORAGE_04</div><h3>Proof-backed services</h3><p>Storage and service nodes provide availability without becoming an alternate source of chain finality.</p><div class="rail"><i></i><i></i><i></i></div></article><article class="pmod"><div class="tag">VALUE_05</div><h3>Programmable native value</h3><p>Security, compute, storage, and agent activity remain economically distinct while settling on one network.</p><div class="rail"><i></i><i></i><i></i></div></article><article class="pmod v"><div class="tag">VERIFY_06</div><h3>Verification before trust</h3><p>Commitments, reproducible profiles, evidence, and explicit policies minimize trusted infrastructure.</p><div class="rail"><i></i><i></i><i></i></div></article></div></div></section>
 <section id="architecture" class="section-shell"><div class="wrap"><div class="section-no">02 / ARCHITECTURE</div><h2 class="section-title">One network. Distinct responsibilities.</h2><p class="intro">Decentralization becomes fragile when every participant is forced to perform every job. NIAHCIA separates roles while binding them through deterministic protocol objects and settlement.</p><div class="network-stage" aria-label="NIAHCIA network role topology"><svg class="net-svg" viewBox="0 0 1200 640" role="img" aria-label="CPU miners, execution, GPU workers, service nodes, and agents connected through the NIAHCIA protocol"><defs><linearGradient id="netgrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7ff6ff"/><stop offset="100%" stop-color="#b49cff"/></linearGradient><path id="p1" d="M600 320 C470 245 350 205 250 150"/><path id="p2" d="M600 320 C730 245 850 205 950 150"/><path id="p3" d="M600 320 C800 340 925 390 1015 455"/><path id="p4" d="M600 320 C400 340 275 390 185 455"/><path id="p5" d="M600 320 C600 210 600 145 600 88"/></defs><ellipse class="net-orbit" cx="600" cy="320" rx="390" ry="215"/><ellipse class="net-orbit secondary" cx="600" cy="320" rx="290" ry="160"/><path class="net-path" d="M600 320 C470 245 350 205 250 150"/><path class="net-path alt" d="M600 320 C730 245 850 205 950 150"/><path class="net-path" d="M600 320 C800 340 925 390 1015 455"/><path class="net-path alt" d="M600 320 C400 340 275 390 185 455"/><path class="net-path" d="M600 320 C600 210 600 145 600 88"/><circle class="net-pulse" cx="600" cy="320" r="92"/><circle class="net-pulse v" cx="600" cy="320" r="118"/><circle class="net-hub-ring" cx="600" cy="320" r="84"/><circle class="net-hub-inner" cx="600" cy="320" r="58"/><text class="net-hub-text" x="600" y="314" text-anchor="middle">NIAHCIA</text><text class="net-hub-sub" x="600" y="337" text-anchor="middle">PROTOCOL CORE</text><g transform="translate(145 103)"><rect class="net-nodebox" width="210" height="92" rx="15"/><rect class="net-nodecap" width="5" height="92" rx="2"/><text class="net-label" x="24" y="30">CPU MINERS</text><text class="net-small" x="24" y="54">POW CONSENSUS / SECURITY</text><text class="net-small" x="24" y="71">BLOCK PRODUCTION</text></g><g transform="translate(845 103)"><rect class="net-nodebox" width="210" height="92" rx="15"/><rect class="net-nodecap v" width="5" height="92" rx="2"/><text class="net-label" x="24" y="30">EXECUTION</text><text class="net-small" x="24" y="54">RETH-BACKED STATE</text><text class="net-small" x="24" y="71">SMART CONTRACTS</text></g><g transform="translate(905 425)"><rect class="net-nodebox" width="210" height="92" rx="15"/><rect class="net-nodecap" width="5" height="92" rx="2"/><text class="net-label" x="24" y="30">GPU WORKERS</text><text class="net-small" x="24" y="54">AI INFERENCE / DISCOVERY</text><text class="net-small" x="24" y="71">JOB EXECUTION</text></g><g transform="translate(85 425)"><rect class="net-nodebox" width="210" height="92" rx="15"/><rect class="net-nodecap v" width="5" height="92" rx="2"/><text class="net-label" x="24" y="30">SERVICE NODES</text><text class="net-small" x="24" y="54">STORAGE / AVAILABILITY</text><text class="net-small" x="24" y="71">PROOF OF SERVICE</text></g><g transform="translate(495 42)"><rect class="net-nodebox" width="210" height="92" rx="15"/><rect class="net-nodecap" width="5" height="92" rx="2"/><text class="net-label" x="24" y="30">AGENTS</text><text class="net-small" x="24" y="54">TOOLS / PERMISSIONS</text><text class="net-small" x="24" y="71">MEMORY / PAYMENTS</text></g><circle class="net-packet" r="4"><animateMotion dur="5.8s" repeatCount="indefinite"><mpath href="#p1"/></animateMotion></circle><circle class="net-packet v" r="4"><animateMotion dur="6.8s" begin="-2s" repeatCount="indefinite"><mpath href="#p2"/></animateMotion></circle><circle class="net-packet" r="4"><animateMotion dur="7.1s" begin="-3s" repeatCount="indefinite"><mpath href="#p3"/></animateMotion></circle><circle class="net-packet v" r="4"><animateMotion dur="6.2s" begin="-1s" repeatCount="indefinite"><mpath href="#p4"/></animateMotion></circle><circle class="net-packet" r="4"><animateMotion dur="5.4s" begin="-4s" repeatCount="indefinite"><mpath href="#p5"/></animateMotion></circle></svg><div class="arch-legend"><span><i></i> protocol traffic</span><span><i></i> verification / settlement path</span><span>roles remain independently operated</span></div></div></div></section><div class="flow-divider"></div>
 <section id="principles" class="section-shell"><div class="wrap"><div class="section-no">03 / PRINCIPLES</div><div class="rule-surface"><aside class="rule-rail"><div class="rule"><b>RULE_01</b><span>No central scheduler</span></div><div class="rule"><b>RULE_02</b><span>Mining remains independent from AI</span></div><div class="rule"><b>RULE_03</b><span>No hidden secondary consensus</span></div><div class="rule"><b>RULE_04</b><span>Verification before trust</span></div><div class="rule"><b>RULE_05</b><span>Open, interoperable infrastructure</span></div></aside><div class="rule-core"><p class="manifesto">No central scheduler. No requirement that miners run AI. No second consensus authority hidden inside storage or compute.<em>Open participation, explicit verification, deterministic economics, and interoperable infrastructure.</em></p><p class="principles-note">The project is intentionally pre-alpha. Protocol surfaces are being locked through vectors, tests, restart/reorg behavior, multi-node devnet testing, and compatibility work before production-network promises are made.</p><div class="constraint-strip"><div><b>CONSENSUS</b><span>CPU / RandomX</span></div><div><b>EXECUTION</b><span>Reth-backed</span></div><div><b>COMPUTE</b><span>GPU / open market</span></div><div><b>SERVICES</b><span>proof-backed</span></div></div></div></div></div></section>
