@@ -296,10 +296,67 @@ linear-gradient(180deg,rgba(7,12,19,.95),rgba(3,6,10,.96));overflow:hidden}
  .constraint-strip{grid-template-columns:1fr}
  .repo-node{width:132px}
 }
+
+/* v6 header / navigation */
+.site-header{position:sticky;top:0;z-index:50;padding:14px 0 0;background:linear-gradient(to bottom,rgba(3,5,8,.96),rgba(3,5,8,.78) 72%,transparent);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.site-header .wrap{width:min(1280px,calc(100% - 34px))}
+nav.controlbar{height:auto;min-height:64px;border:1px solid rgba(127,246,255,.14);border-radius:18px;padding:9px 10px 9px 14px;background:
+linear-gradient(180deg,rgba(10,16,24,.9),rgba(5,9,14,.82));
+box-shadow:0 16px 50px rgba(0,0,0,.28),inset 0 1px rgba(255,255,255,.03);display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;overflow:hidden;position:relative}
+nav.controlbar:before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,var(--cyan),var(--violet),transparent);opacity:.55}
+nav.controlbar:after{content:"";position:absolute;left:-15%;top:0;width:18%;height:100%;background:linear-gradient(90deg,transparent,rgba(127,246,255,.055),transparent);transform:skewX(-18deg);animation:navscan 9s linear infinite;pointer-events:none}
+@keyframes navscan{to{left:115%}}
+
+.brandlock{display:flex;align-items:center;gap:12px;text-decoration:none;min-width:max-content}
+.brandmark{position:relative;width:34px;height:34px;border:1px solid rgba(127,246,255,.32);border-radius:10px;display:grid;place-items:center;background:radial-gradient(circle at 50% 50%,rgba(127,246,255,.08),transparent 65%)}
+.brandmark:before,.brandmark:after{content:"";position:absolute;border-radius:50%}
+.brandmark:before{width:14px;height:14px;border:1px solid rgba(180,156,255,.35)}
+.brandmark:after{width:4px;height:4px;background:var(--cyan);box-shadow:0 0 10px var(--cyan)}
+.brandmark i{position:absolute;width:4px;height:4px;border-radius:50%;background:var(--violet);box-shadow:0 0 8px var(--violet)}
+.brandmark i:nth-child(1){left:5px;top:7px}.brandmark i:nth-child(2){right:5px;bottom:7px}
+.brandtext{display:flex;flex-direction:column;line-height:1}
+.brandtext strong{font:900 .93rem/1 ui-sans-serif,system-ui;letter-spacing:.22em}
+.brandtext span{margin-top:5px;font:700 .52rem/1 monospace;letter-spacing:.12em;color:#66798c}
+.nav-center{display:flex;justify-content:center;align-items:center;gap:4px}
+.nav-center a{position:relative;text-decoration:none;color:#91a3b5;font:700 .68rem/1 monospace;letter-spacing:.08em;padding:11px 12px;border-radius:10px;transition:.2s ease}
+.nav-center a:hover{color:#eef7ff;background:rgba(127,246,255,.055)}
+.nav-center a:before{content:"";position:absolute;left:12px;right:12px;bottom:5px;height:1px;background:linear-gradient(90deg,var(--cyan),var(--violet));transform:scaleX(0);transform-origin:left;transition:.2s ease}
+.nav-center a:hover:before{transform:scaleX(1)}
+.nav-right{display:flex;align-items:center;gap:8px;min-width:max-content}
+.devnet-pill{display:flex;align-items:center;gap:8px;padding:9px 11px;border:1px solid rgba(115,255,189,.13);border-radius:999px;background:rgba(115,255,189,.035);font:700 .6rem/1 monospace;letter-spacing:.07em;color:#8da59a}
+.devnet-pill i{width:6px;height:6px;border-radius:50%;background:#73ffbd;box-shadow:0 0 12px #73ffbd;animation:statusPulse 2.6s ease-in-out infinite}
+@keyframes statusPulse{50%{opacity:.45;box-shadow:0 0 4px #73ffbd}}
+.nav-github{display:flex;align-items:center;gap:8px;padding:10px 13px;border:1px solid #304357;border-radius:11px;text-decoration:none;background:linear-gradient(145deg,rgba(255,255,255,.06),rgba(255,255,255,.025));font:800 .66rem/1 monospace;letter-spacing:.08em;color:#dce7f0;transition:.2s ease}
+.nav-github:hover{transform:translateY(-1px);border-color:rgba(127,246,255,.45);box-shadow:0 10px 28px rgba(0,0,0,.25),0 0 18px rgba(127,246,255,.06)}
+.nav-github:after{content:"↗";color:var(--cyan);font-size:.8rem}
+.nav-mobile{display:none}
+.header-underbar{height:18px;position:relative;pointer-events:none}
+.header-underbar:before{content:"";position:absolute;left:8%;right:8%;top:6px;height:1px;background:linear-gradient(90deg,transparent,rgba(127,246,255,.14),rgba(180,156,255,.12),transparent)}
+.header-underbar:after{content:"";position:absolute;left:50%;top:3px;width:6px;height:6px;border-radius:50%;background:var(--cyan);box-shadow:0 0 12px var(--cyan);animation:headerpacket 8s linear infinite}
+@keyframes headerpacket{0%{left:14%}100%{left:86%}}
+
+@media(max-width:980px){
+  nav.controlbar{grid-template-columns:auto auto;justify-content:space-between}
+  .nav-center{display:none}
+  .nav-mobile{display:flex;gap:4px;grid-column:1/-1;border-top:1px solid rgba(255,255,255,.045);padding-top:8px}
+  .nav-mobile a{flex:1;text-align:center;text-decoration:none;font:700 .62rem monospace;color:#8396a8;padding:8px 6px;border-radius:8px}
+  .nav-mobile a:hover{background:rgba(127,246,255,.05);color:#eef7ff}
+}
+@media(max-width:620px){
+  .site-header{padding-top:8px}
+  .site-header .wrap{width:min(100% - 16px,1280px)}
+  nav.controlbar{border-radius:14px;padding:8px 9px;gap:10px}
+  .brandmark{width:30px;height:30px;border-radius:9px}
+  .brandtext strong{font-size:.8rem}.brandtext span{display:none}
+  .devnet-pill{display:none}
+  .nav-github{padding:9px 10px;font-size:.6rem}
+  .nav-mobile{overflow-x:auto;justify-content:flex-start}
+  .nav-mobile a{flex:0 0 auto;padding:8px 10px}
+}
 </style>
 </head>
 <body>
-<div class="wrap"><nav><div class="brand">NIAHCIA</div><div class="navlinks"><a href="#protocol">PROTOCOL</a><a href="#architecture">ARCHITECTURE</a><a href="#principles">PRINCIPLES</a><a href="downloads.html">DOWNLOADS</a><a href="https://github.com/niahcia">GITHUB</a></div></nav></div>
+<header class="site-header"><div class="wrap"><nav class="controlbar"><a class="brandlock" href="/" aria-label="NIAHCIA home"><span class="brandmark"><i></i><i></i></span><span class="brandtext"><strong>NIAHCIA</strong><span>DECENTRALIZED INTELLIGENCE</span></span></a><div class="nav-center"><a href="#protocol">PROTOCOL</a><a href="#architecture">ARCHITECTURE</a><a href="#principles">PRINCIPLES</a><a href="downloads.html">DOWNLOADS</a><a href="releases.html">RELEASES</a></div><div class="nav-right"><span class="devnet-pill"><i></i>PRE-ALPHA DEVNET</span><a class="nav-github" href="https://github.com/niahcia">GITHUB</a></div><div class="nav-mobile"><a href="#protocol">PROTOCOL</a><a href="#architecture">ARCHITECTURE</a><a href="#principles">PRINCIPLES</a><a href="downloads.html">DOWNLOADS</a><a href="releases.html">RELEASES</a></div></nav><div class="header-underbar"></div></div></header>
 <main>
 <div class="wrap hero"><div class="orb"></div><div class="hero-grid"><div><div class="eyebrow">OPEN // PERMISSIONLESS // VERIFIABLE</div><h1>NIAHCIA</h1><div class="statement">A decentralized substrate where computation, intelligence, storage, and value can coordinate without a central operator.</div><p class="sub">CPU proof-of-work secures the chain. Independent GPU operators execute AI workloads. Service nodes provide durable network services and storage. Agents can discover capabilities, request work, verify results, retain controlled memory, and exchange value through an open protocol.</p><div class="actions"><a class="btn primary" href="https://github.com/niahcia">Explore the protocol</a><a class="btn" href="downloads.html">Builds & downloads</a><a class="btn" href="releases.html">Current releases</a></div><div class="status"><span><i class="dot"></i>PRE-ALPHA DEVNET</span><span>RANDOMX CPU CONSENSUS</span><span>RETH EXECUTION</span><span>OPEN SOURCE</span></div></div><aside class="hero-console"><div class="console-top"><span>NETWORK / DEVNET</span><span>LIVE SURFACE</span></div><div class="console-row"><b>CONSENSUS</b><div class="signal"></div><i>ONLINE</i></div><div class="console-row"><b>EXECUTION</b><div class="signal s2"></div><i>BOUND</i></div><div class="console-row"><b>COMPUTE</b><div class="signal s3"></div><i>OPEN</i></div><div class="console-row"><b>STORAGE</b><div class="signal s4"></div><i>VERIFIED</i></div><div class="hero-mini"><i class="a"></i><i class="b"></i><i class="c"></i><i class="d"></i><span class="la"></span><span class="lb"></span><span class="lc"></span><span class="ld"></span></div></aside></div></div>
 <section id="protocol" class="section-shell"><div class="wrap"><div class="section-no">01 / OBJECTIVE</div><h2 class="section-title">Intelligence as open infrastructure.</h2><p class="intro">NIAHCIA is being designed as infrastructure rather than a hosted AI service. Consensus, execution, compute, agents, storage, verification, identity, permissions, and payments are separate protocol responsibilities that can be operated by independent participants.</p><div class="protocol-map"><div class="protocol-bus"></div><article class="pmod"><div class="tag">CONSENSUS_01</div><h3>CPU-secured chain</h3><p>RandomX orders and secures protocol state without requiring miners to operate AI infrastructure.</p><div class="rail"><i></i><i></i><i></i></div></article><article class="pmod v"><div class="tag">COMPUTE_02</div><h3>Decentralized AI execution</h3><p>GPU operators advertise capabilities, execute jobs, and settle useful work through explicit protocol surfaces.</p><div class="rail"><i></i><i></i><i></i></div></article><article class="pmod"><div class="tag">AGENTS_03</div><h3>Persistent autonomous agents</h3><p>Identity, versioning, tools, permissions, memory descriptors, and payments become interoperable objects.</p><div class="rail"><i></i><i></i><i></i></div></article><article class="pmod v"><div class="tag">STORAGE_04</div><h3>Proof-backed services</h3><p>Storage and service nodes provide availability without becoming an alternate source of chain finality.</p><div class="rail"><i></i><i></i><i></i></div></article><article class="pmod"><div class="tag">VALUE_05</div><h3>Programmable native value</h3><p>Security, compute, storage, and agent activity remain economically distinct while settling on one network.</p><div class="rail"><i></i><i></i><i></i></div></article><article class="pmod v"><div class="tag">VERIFY_06</div><h3>Verification before trust</h3><p>Commitments, reproducible profiles, evidence, and explicit policies minimize trusted infrastructure.</p><div class="rail"><i></i><i></i><i></i></div></article></div></div></section>
