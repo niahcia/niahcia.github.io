@@ -18,6 +18,11 @@ body{
     linear-gradient(180deg,#020407 0%,#050913 52%,#020407 100%)
 }
 a{color:inherit}
+a:focus-visible,button:focus-visible,[tabindex="0"]:focus-visible{
+  outline:1px solid rgba(127,246,255,.72);
+  outline-offset:4px;
+  border-radius:6px
+}
 .wrap{width:min(1140px,calc(100% - 48px));margin:auto}
 .page-progress{position:fixed;left:0;right:0;top:0;height:2px;z-index:100;background:rgba(255,255,255,.01)}
 .page-progress i{display:block;height:100%;transform:scaleX(0);transform-origin:left;background:linear-gradient(90deg,var(--cyan),var(--violet))}
@@ -345,7 +350,7 @@ footer{padding:34px 0 42px;border-top:1px solid rgba(127,246,255,.07);color:#677
     <p class="hero-sub">Open intelligence. Shared compute. Verifiable results.</p>
     <div class="hero-prompt-wrap">
       <div class="hero-prompt" aria-label="Primary agent prompt preview">
-        <div class="hero-prompt-copy"><b>ASK NIAHCIA</b><span>What do you want to do?</span></div>
+        <div class="hero-prompt-copy"><b>ASK NIAHCIA</b><span>What should the network do?</span></div>
         <div class="hero-prompt-cta">ENTER →</div>
       </div>
       <div class="hover-prompt" aria-live="polite"><b>TRY</b><span></span></div>
@@ -366,7 +371,7 @@ footer{padding:34px 0 42px;border-top:1px solid rgba(127,246,255,.07);color:#677
 <section id="protocol" class="section">
   <div class="protocol-visual" aria-hidden="true"><svg viewBox="0 0 900 620" preserveAspectRatio="none"><defs><linearGradient id="riverGradient" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7ff6ff"/><stop offset="100%" stop-color="#b49cff"/></linearGradient></defs><path class="river" d="M20 180 C170 30 300 310 430 180 S690 20 880 210"/><path class="river2" d="M20 210 C180 80 300 350 455 210 S700 70 880 250"/><path class="branch" d="M260 250 C360 330 410 390 480 520"/><path class="branch" d="M520 190 C610 270 670 350 800 470"/><circle class="signal" r="4"/></svg></div>
   <div class="wrap">
-    <div class="section-head"><div class="section-no">01 / PROTOCOL</div><h2 class="section-title">Intelligence, open by design.</h2><p class="intro">Security, compute, agents, storage, verification, and value meet in one protocol.</p></div>
+    <div class="section-head"><div class="section-no">01 / PROTOCOL</div><h2 class="section-title">Intelligence, open by design.</h2><p class="intro">Consensus secures state. GPU workers execute AI jobs. Agents use tools, memory, verification, and settlement.</p></div>
     <div class="protocol-flow"><div class="protocol-step" data-stage="agents" tabindex="0"><b>ASK</b></div><div class="protocol-step" data-stage="consensus" tabindex="0"><b>UNDERSTAND</b></div><div class="protocol-step" data-stage="services" tabindex="0"><b>FIND</b></div><div class="protocol-step" data-stage="compute" tabindex="0"><b>RUN</b></div><div class="protocol-step" data-stage="verify" tabindex="0"><b>VERIFY</b></div><div class="protocol-step" data-stage="value" tabindex="0"><b>SETTLE</b></div></div>
     <div class="protocol-copy">
       <article class="protocol-item" data-stage="consensus"><div class="tag">CONSENSUS</div><h3>CPU-secured chain</h3><p>RandomX secures the network.</p></article>
@@ -382,7 +387,7 @@ footer{padding:34px 0 42px;border-top:1px solid rgba(127,246,255,.07);color:#677
 <section id="architecture" class="section">
   <div class="arch-visual" aria-hidden="true"><svg viewBox="0 0 900 560"><path class="mesh" d="M70 120 C230 40 400 60 520 180 S720 330 860 240"/><path class="mesh v" d="M40 260 C210 150 350 220 470 340 S700 500 860 390"/><path class="mesh" d="M160 30 C140 180 220 290 360 410 S610 540 800 500"/><polygon class="plate" points="360,130 520,90 650,180 600,320 430,350 300,240"/><polygon class="plate" points="500,250 680,210 790,310 720,440 560,430 470,340"/></svg></div>
   <div class="wrap">
-    <div class="section-head"><div class="section-no">02 / NETWORK</div><h2 class="section-title">One network. Clear roles.</h2><p class="intro">No participant has to be everything.</p></div>
+    <div class="section-head"><div class="section-no">02 / NETWORK</div><h2 class="section-title">One network. Clear roles.</h2><p class="intro">Each role has a defined job. No role becomes a second consensus authority.</p></div>
     <div class="role-constellation">
       <svg class="role-links" viewBox="0 0 760 350" preserveAspectRatio="none" aria-hidden="true">
         <defs>
@@ -420,7 +425,7 @@ footer{padding:34px 0 42px;border-top:1px solid rgba(127,246,255,.07);color:#677
     <div class="principles-layout">
       <div class="rule-list"><div class="rule"><b>01</b><span>No central scheduler</span></div><div class="rule"><b>02</b><span>Mining stays independent from AI</span></div><div class="rule"><b>03</b><span>No hidden second consensus</span></div><div class="rule"><b>04</b><span>Verify before trust</span></div><div class="rule"><b>05</b><span>Open infrastructure</span></div></div>
       <p class="manifesto">Many roles. One protocol.<em>No single role controls the intelligence layer.</em></p>
-      <p class="principles-note">NIAHCIA is pre-alpha. Core behavior is still being tested before production release.</p>
+      <p class="principles-note">NIAHCIA is pre-alpha. Devnet behavior may change before production.</p>
       <div class="constraint-strip"><div><b>CONSENSUS</b><span>CPU / RandomX</span></div><div><b>EXECUTION</b><span>Reth-backed</span></div><div><b>COMPUTE</b><span>GPU market</span></div><div><b>SERVICES</b><span>proof-backed</span></div></div>
     </div>
   </div>
@@ -429,7 +434,7 @@ footer{padding:34px 0 42px;border-top:1px solid rgba(127,246,255,.07);color:#677
 <section class="section">
   <div class="build-visual" aria-hidden="true"><svg viewBox="0 0 760 590"><path class="route" d="M120 110 C230 150 300 210 380 300 S560 410 690 470"/><path class="route v" d="M660 110 C540 170 480 210 390 305 S230 440 90 500"/><path class="route" d="M380 65 L380 520"/><rect class="hub" x="300" y="245" width="160" height="120" rx="52"/><rect class="hub" x="70" y="70" width="110" height="74" rx="32"/><rect class="hub" x="570" y="70" width="110" height="74" rx="32"/><rect class="hub" x="60" y="450" width="120" height="78" rx="34"/><rect class="hub" x="575" y="430" width="120" height="78" rx="34"/></svg></div>
   <div class="wrap">
-    <div class="section-head"><div class="section-no">04 / BUILD</div><h2 class="section-title">Built in public.</h2><p class="intro">Explore the code, protocol, compute, explorer, and web stack.</p></div>
+    <div class="section-head"><div class="section-no">04 / BUILD</div><h2 class="section-title">Built in public.</h2><p class="intro">The code and releases stay public while the protocol is under active development.</p></div>
     <div class="build-layout">
       <div class="repo-map"><a class="repo-node" href="https://github.com/niahcia/niahcia"><b>CORE</b><span>chain</span></a><a class="repo-node" href="https://github.com/niahcia/niahcia-protocol"><b>PROTOCOL</b><span>objects</span></a><a class="repo-node" href="https://github.com/niahcia/niahcia-compute"><b>COMPUTE</b><span>AI jobs</span></a><a class="repo-node" href="https://github.com/niahcia/niahcia-explorer"><b>EXPLORER</b><span>visibility</span></a><a class="repo-node" href="https://github.com/niahcia/niahcia.github.io"><b>WEB</b><span>interface</span></a></div>
       <div class="build-links"><a class="btn primary" href="https://github.com/niahcia">GitHub</a><a class="btn" href="releases.html">Releases</a><a class="btn" href="downloads.html">Downloads</a></div>
@@ -438,7 +443,7 @@ footer{padding:34px 0 42px;border-top:1px solid rgba(127,246,255,.07);color:#677
 </section>
 </main>
 
-<footer><div class="wrap foot"><strong>NIAHCIA</strong><span>Decentralized intelligence infrastructure.</span><span>© 2026 NIAHCIA</span><span>Pre-alpha · No production network yet.</span></div></footer>
+<footer><div class="wrap foot"><strong>NIAHCIA</strong><span>Decentralized intelligence infrastructure.</span><span>© 2026 NIAHCIA</span><span>Pre-alpha · Devnet only.</span></div></footer>
 <script src="app.js" defer></script>
 </body>
 </html>
