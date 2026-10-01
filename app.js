@@ -48,6 +48,29 @@
     source.addEventListener('blur', clearPrompt);
   });
 
+
+  const protocolSteps = [...document.querySelectorAll('.protocol-step[data-stage]')];
+  const protocolItems = [...document.querySelectorAll('.protocol-item[data-stage]')];
+
+  const setProtocolStage = stage => {
+    protocolSteps.forEach(step => step.classList.toggle('active', step.dataset.stage === stage));
+    protocolItems.forEach(item => item.classList.toggle('active', item.dataset.stage === stage));
+  };
+
+  const clearProtocolStage = () => {
+    protocolSteps.forEach(step => step.classList.remove('active'));
+    protocolItems.forEach(item => item.classList.remove('active'));
+  };
+
+  protocolSteps.forEach(step => {
+    const activate = () => setProtocolStage(step.dataset.stage);
+    step.addEventListener('mouseenter', activate);
+    step.addEventListener('focus', activate);
+    step.addEventListener('mouseleave', clearProtocolStage);
+    step.addEventListener('blur', clearProtocolStage);
+    step.addEventListener('click', activate);
+  });
+
   const onScroll = () => {
     const root = document.documentElement;
     const max = root.scrollHeight - innerHeight;
