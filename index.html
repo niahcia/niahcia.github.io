@@ -173,13 +173,81 @@ footer{padding:58px 0 78px;border-top:1px solid rgba(127,246,255,.07);color:#677
   .protocol-visual,.arch-visual,.principles-visual,.build-visual{opacity:.16}
 }
 @media(max-width:620px){
-  .wrap{width:min(100% - 28px,1140px)}.nav-right{display:none}
-  .hero{padding-top:24px}.hero-scene{min-height:700px}.hero-center{width:92%;padding-top:72px}.hero-center h1{font-size:clamp(2.7rem,13vw,3.9rem)}
-  .hero-prompt{grid-template-columns:1fr;border-radius:22px;padding:17px}.hero-prompt-copy{text-align:center}.hero-prompt-cta{text-align:center}.hover-prompt{white-space:normal;width:90%}
-  .hero-footnote{display:none}.hero-ai{width:100vw;height:430px;top:73%}.semantic-lens.primary{width:390px;height:190px}.semantic-lens.secondary{width:220px;height:120px}.semantic-lens.tertiary{width:170px;height:90px}.lens-contours{width:430px;height:210px}.context-thread{width:320px}.focus-arc{width:420px}
-  .section{padding:112px 0 102px}.protocol-copy{grid-template-columns:1fr}.protocol-step:not(:last-child)::after{display:none}
-  .role-constellation{min-height:470px}.role-links{display:none}.role{width:150px}.role.r1{left:0}.role.r2{right:0}.role.r3{left:0;bottom:24%}.role.r4{right:0;bottom:24%}.role.r5{bottom:0}
-  .protocol-visual,.arch-visual,.principles-visual,.build-visual{width:100%;opacity:.11}
+  .wrap{width:min(100% - 24px,1140px)}
+  header{padding-top:4px}
+  .controlbar{min-height:58px;padding:0 8px}
+  .nav-right{display:none}
+  .brandmark{width:28px;height:28px}
+  .brandtext strong{font-size:.95rem;letter-spacing:.22em}
+
+  .hero{padding:14px 0 44px}
+  .hero-scene{min-height:545px;overflow:hidden}
+  .hero-center{width:94%;padding-top:44px}
+  .hero-kicker{font-size:.72rem;letter-spacing:.16em}
+  .hero-center h1{font-size:clamp(2.65rem,12vw,3.65rem);margin:12px auto 12px}
+  .hero-sub{max-width:340px;font-size:1rem;line-height:1.45}
+
+  .hero-prompt-wrap{width:96%;margin-top:24px}
+  .hero-prompt{grid-template-columns:1fr;border-radius:20px;padding:14px;min-height:0;gap:12px}
+  .hero-prompt-copy{text-align:center}
+  .hero-prompt-copy b{font-size:.62rem}
+  .hero-prompt-copy span{font-size:1.04rem;line-height:1.35}
+  .hero-prompt-cta{text-align:center;padding:11px 14px;font-size:.72rem}
+  .hover-prompt{white-space:normal;width:92%;font-size:.64rem}
+
+  .hero-status{margin-top:13px;gap:10px;font-size:.62rem}
+  .hero-mini{margin-top:16px;gap:7px 10px}
+  .hero-mini button{font-size:.66rem;padding:7px 7px}
+  .hero-footnote{display:none}
+
+  .hero-ai{width:100vw;height:255px;top:75%;opacity:.72}
+  .semantic-lens.primary{width:330px;height:150px}
+  .semantic-lens.secondary{width:190px;height:92px;left:69%;opacity:.28}
+  .semantic-lens.tertiary{width:145px;height:72px;left:29%;opacity:.20}
+  .lens-contours{width:360px;height:165px;opacity:.32}
+  .context-thread{width:285px;top:79%;opacity:.34}
+  .focus-arc{width:350px;height:170px}
+
+  .section{min-height:0;padding:82px 0 78px}
+  .section>.wrap{width:min(100% - 28px,1080px)}
+  .section-no{font-size:.68rem;letter-spacing:.15em}
+  .section-title{font-size:clamp(2rem,9.8vw,2.8rem);margin:10px 0 14px}
+  .intro{font-size:1rem;line-height:1.5}
+
+  .protocol-flow{margin-top:34px;gap:8px 12px}
+  .protocol-step{padding:7px 0}
+  .protocol-step:not(:last-child)::after{display:none}
+  .protocol-step b{font-size:.68rem}
+  .protocol-copy{grid-template-columns:1fr;gap:20px;margin-top:42px}
+  .protocol-item{padding-bottom:16px}
+  .protocol-item .tag{font-size:.61rem}
+  .protocol-item h3{font-size:1.08rem}
+  .protocol-item p{font-size:.94rem;max-width:310px}
+
+  .role-constellation{min-height:430px;margin-top:42px}
+  .role-links{display:none}
+  .role-core{width:128px;height:128px}
+  .role-core b{font-size:.74rem}
+  .role-core span{font-size:.60rem}
+  .role{width:148px;padding:7px 0 10px}
+  .role b{font-size:.64rem}
+  .role span{font-size:.78rem}
+  .role.r1{left:0;top:2%}.role.r2{right:0;top:2%}
+  .role.r3{left:0;bottom:23%}.role.r4{right:0;bottom:23%}
+  .role.r5{bottom:0}
+
+  .rule-list{gap:12px 16px}
+  .rule b{font-size:.60rem}.rule span{font-size:.91rem}
+  .manifesto{margin-top:34px;font-size:1.48rem}
+  .principles-note{font-size:.95rem}
+  .constraint-strip b{font-size:.58rem}.constraint-strip span{font-size:.78rem}
+
+  .repo-map{gap:12px 20px}
+  .repo-node{min-width:92px}
+  .repo-node b{font-size:.64rem}.repo-node span{font-size:.78rem}
+  .build-links{margin-top:30px}.btn{font-size:.92rem}
+
+  .protocol-visual,.arch-visual,.principles-visual,.build-visual{width:100%;opacity:.08}
 }
 </style>
 </head>
