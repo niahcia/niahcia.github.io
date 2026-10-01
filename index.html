@@ -43,22 +43,87 @@ header{position:sticky;top:0;z-index:50;padding-top:10px;background:linear-gradi
 .hero-scene{--hx:50%;--hy:48%;--px:0px;--py:0px;position:relative;min-height:700px;overflow:hidden}
 .hero-scene:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at var(--hx) var(--hy),rgba(127,246,255,.075),transparent 18%),radial-gradient(circle at 67% 62%,rgba(180,156,255,.05),transparent 30%)}
 .hero-quiet{position:absolute;left:50%;top:43%;width:min(930px,76%);height:370px;transform:translate(-50%,-50%);z-index:3;background:radial-gradient(ellipse at center,rgba(2,7,12,.99) 0,rgba(2,7,12,.95) 48%,rgba(2,7,12,.56) 74%,transparent 100%);pointer-events:none}
-.hero-ai{position:absolute;left:50%;top:72%;width:min(980px,79vw);height:360px;transform:translate(calc(-50% + var(--px)),calc(-50% + var(--py)));z-index:2;perspective:1200px;transition:transform .16s ease-out}
-.hero-ai .sheet{position:absolute;left:50%;top:50%;width:700px;height:235px;border-radius:48% 52% 50% 50%/58% 42% 58% 42%;background:linear-gradient(rgba(127,246,255,.012) 1px,transparent 1px),linear-gradient(90deg,rgba(127,246,255,.012) 1px,transparent 1px),linear-gradient(135deg,rgba(127,246,255,.018),rgba(180,156,255,.014));background-size:42px 42px,42px 42px,auto}
-.hero-ai .s1{transform:translate(-50%,-50%) rotateX(68deg) rotateZ(-7deg) translateZ(-90px);opacity:.17}
-.hero-ai .s2{transform:translate(-50%,-50%) rotateX(68deg) rotateZ(1deg);opacity:.30}
-.hero-ai .s3{transform:translate(-50%,-50%) rotateX(68deg) rotateZ(8deg) translateZ(90px);opacity:.15}
-.hero-ai .attention{position:absolute;left:50%;top:54%;width:350px;height:160px;transform:translate(-50%,-50%);display:grid;grid-template-columns:repeat(10,1fr);grid-template-rows:repeat(6,1fr);gap:4px;padding:14px;border-radius:46% 54% 48% 52%/56% 44% 56% 44%;background:rgba(3,8,13,.48);backdrop-filter:blur(8px)}
-.hero-ai .attention i{display:block;border-radius:3px;background:linear-gradient(135deg,rgba(127,246,255,var(--a,.07)),rgba(180,156,255,var(--b,.05)));transition:.18s}
-.hero-scene:hover .hero-ai .attention i:nth-child(4n),.hero-scene:hover .hero-ai .attention i:nth-child(9n){filter:brightness(1.55);transform:scale(1.06)}
-.hero-ai .label{position:absolute;left:50%;top:calc(54% - 104px);transform:translateX(-50%);font:800 .48rem ui-monospace,monospace;letter-spacing:.15em;color:#70879b}.hero-ai .label strong{color:var(--cyan)}
-.hero-ai .embedding{position:absolute;left:50%;top:79%;width:480px;transform:translateX(-50%);display:grid;grid-template-columns:repeat(10,1fr);gap:5px}
-.hero-ai .embedding span{height:6px;border-radius:2px;background:linear-gradient(90deg,rgba(127,246,255,.05),rgba(127,246,255,.26),rgba(180,156,255,.11));transform:scaleX(var(--s,.6));transform-origin:left}
+.hero-ai{
+  position:absolute;left:50%;top:69%;width:min(1040px,82vw);height:390px;
+  transform:translate(calc(-50% + var(--px)),calc(-50% + var(--py)));
+  z-index:2;transition:transform .16s ease-out;pointer-events:none
+}
+.semantic-lens{
+  position:absolute;border-radius:50%;
+  border:1px solid rgba(127,246,255,.08);
+  background:
+    radial-gradient(circle at 36% 32%,rgba(127,246,255,.10),transparent 28%),
+    radial-gradient(circle at 68% 68%,rgba(180,156,255,.07),transparent 36%),
+    radial-gradient(circle at center,rgba(8,18,27,.30),rgba(2,7,12,.05) 68%,transparent 72%);
+  box-shadow:
+    inset 0 0 70px rgba(127,246,255,.025),
+    0 0 90px rgba(127,246,255,.018);
+  backdrop-filter:blur(2px)
+}
+.semantic-lens.primary{
+  width:560px;height:250px;left:50%;top:54%;
+  transform:translate(-50%,-50%) rotate(-7deg);
+  border-radius:56% 44% 60% 40%/48% 54% 46% 52%
+}
+.semantic-lens.secondary{
+  width:330px;height:170px;left:66%;top:45%;
+  transform:translate(-50%,-50%) rotate(13deg);
+  border-radius:43% 57% 46% 54%/61% 39% 61% 39%;
+  opacity:.55
+}
+.semantic-lens.tertiary{
+  width:250px;height:130px;left:32%;top:67%;
+  transform:translate(-50%,-50%) rotate(-18deg);
+  border-radius:62% 38% 55% 45%/47% 63% 37% 53%;
+  opacity:.38
+}
+.lens-contours{
+  position:absolute;left:50%;top:53%;width:720px;height:270px;
+  transform:translate(-50%,-50%);
+  opacity:.62
+}
+.lens-contours svg{width:100%;height:100%;overflow:visible}
+.lens-contours .contour{
+  fill:none;stroke:rgba(127,246,255,.10);stroke-width:1
+}
+.lens-contours .contour.v{stroke:rgba(180,156,255,.085)}
+.lens-contours .focus{
+  fill:none;stroke:url(#focusGrad);stroke-width:1.2;opacity:.72
+}
+.lens-label{
+  position:absolute;left:50%;top:17%;transform:translateX(-50%);
+  font:800 .48rem ui-monospace,monospace;letter-spacing:.16em;color:#647c90
+}
+.lens-label strong{color:var(--cyan)}
+.context-thread{
+  position:absolute;left:50%;top:78%;width:520px;height:42px;
+  transform:translateX(-50%);
+  opacity:.72
+}
+.context-thread svg{width:100%;height:100%}
+.context-thread path{fill:none;stroke:rgba(127,246,255,.10);stroke-width:1.1}
+.context-thread .violet{stroke:rgba(180,156,255,.10)}
 
-/* moving object 1: one slow inference sweep */
-.inference-sweep{position:absolute;left:50%;top:50%;width:520px;height:220px;transform:translate(-50%,-50%);border-radius:50%;pointer-events:none;opacity:.34}
-.inference-sweep:before{content:"";position:absolute;left:0;top:50%;width:120px;height:1px;background:linear-gradient(90deg,transparent,rgba(127,246,255,.8),transparent);filter:blur(.2px);animation:inferencePass 8.5s ease-in-out infinite}
-@keyframes inferencePass{0%{transform:translateX(0);opacity:0}12%{opacity:.8}50%{opacity:.45}88%{opacity:.75}100%{transform:translateX(400px);opacity:0}}
+/* one deliberate moving element: a slow focus arc crossing the lens field */
+.focus-arc{
+  position:absolute;left:50%;top:51%;width:620px;height:260px;
+  transform:translate(-50%,-50%);
+  overflow:hidden;border-radius:50%
+}
+.focus-arc:before{
+  content:"";position:absolute;left:-18%;top:49%;width:160px;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(127,246,255,.85),rgba(180,156,255,.55),transparent);
+  box-shadow:0 0 18px rgba(127,246,255,.18);
+  transform:rotate(-8deg);
+  animation:focusPass 9s cubic-bezier(.4,0,.2,1) infinite
+}
+@keyframes focusPass{
+  0%{transform:translateX(0) rotate(-8deg);opacity:0}
+  12%{opacity:.9}
+  50%{opacity:.55}
+  88%{opacity:.85}
+  100%{transform:translateX(760px) rotate(-8deg);opacity:0}
+}
 
 .hero-center{position:relative;z-index:5;width:min(850px,82%);margin:auto;padding-top:84px;text-align:center}
 .hero-kicker{font:800 .64rem ui-monospace,monospace;letter-spacing:.18em;color:#8af9ff}
@@ -132,7 +197,7 @@ header{position:sticky;top:0;z-index:50;padding-top:10px;background:linear-gradi
 footer{padding:56px 0 76px;border-top:1px solid rgba(127,246,255,.08);color:#677b8f}
 .foot{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}.foot a{text-decoration:none;color:#91a5b7;margin-right:16px}
 
-@media(prefers-reduced-motion:reduce){.inference-sweep:before,.protocol-visual .signal{animation:none}}
+@media(prefers-reduced-motion:reduce){.focus-arc:before,.protocol-visual .signal{animation:none}}
 @media(max-width:980px){
   .nav-center{display:none}.semantic-float{display:none}.hero-scene{min-height:760px}.hero-center{width:88%;padding-top:86px}.hero-ai{width:96vw}
   .protocol-visual,.arch-visual,.principles-visual,.build-visual{opacity:.22}
@@ -142,7 +207,7 @@ footer{padding:56px 0 76px;border-top:1px solid rgba(127,246,255,.08);color:#677
 }
 @media(max-width:620px){
   .wrap{width:min(100% - 28px,1240px)}.nav-right{display:none}.brandtext span{display:none}.hero{padding-top:24px}.hero-scene{min-height:700px}.hero-center{width:92%;padding-top:68px}.hero-center h1{font-size:clamp(2.6rem,13vw,3.8rem)}
-  .hero-prompt{grid-template-columns:1fr;border-radius:22px}.hero-prompt-cta{text-align:center}.hero-footnote{display:none}.hero-ai{width:100vw;height:430px;top:73%}.hero-ai .sheet{width:380px;height:190px}.hero-ai .attention{width:290px;height:170px}.hero-ai .embedding{width:300px}.inference-sweep{width:300px}
+  .hero-prompt{grid-template-columns:1fr;border-radius:22px}.hero-prompt-cta{text-align:center}.hero-footnote{display:none}.hero-ai{width:100vw;height:430px;top:73%}.semantic-lens.primary{width:390px;height:190px}.semantic-lens.secondary{width:220px;height:120px}.semantic-lens.tertiary{width:170px;height:90px}.lens-contours{width:430px;height:210px}.context-thread{width:320px}.focus-arc{width:420px}
   .section{padding:105px 0 96px}.protocol-flow,.roles,.repo-map{grid-template-columns:1fr}.protocol-copy,.build-layout{width:100%}.protocol-visual,.arch-visual,.principles-visual,.build-visual{width:100%;left:0;right:auto;opacity:.15}
 }
 </style>
@@ -161,11 +226,35 @@ footer{padding:56px 0 76px;border-top:1px solid rgba(127,246,255,.08);color:#677
 <div class="wrap hero"><div class="hero-scene">
   <div class="hero-quiet"></div>
   <div class="hero-ai" aria-hidden="true">
-    <div class="sheet s1"></div><div class="sheet s2"></div><div class="sheet s3"></div>
-    <div class="label"><strong>ATTENTION</strong> / HEAD 04</div>
-    <div class="attention"><i style="--a:0.03;--b:0.02"></i><i style="--a:0.03;--b:0.11"></i><i style="--a:0.03;--b:0.08"></i><i style="--a:0.03;--b:0.11"></i><i style="--a:0.08;--b:0.08"></i><i style="--a:0.08;--b:0.055"></i><i style="--a:0.08;--b:0.08"></i><i style="--a:0.08;--b:0.055"></i><i style="--a:0.18;--b:0.035"></i><i style="--a:0.18;--b:0.055"></i><i style="--a:0.18;--b:0.035"></i><i style="--a:0.18;--b:0.02"></i><i style="--a:0.03;--b:0.035"></i><i style="--a:0.03;--b:0.02"></i><i style="--a:0.03;--b:0.11"></i><i style="--a:0.03;--b:0.02"></i><i style="--a:0.08;--b:0.11"></i><i style="--a:0.08;--b:0.08"></i><i style="--a:0.08;--b:0.11"></i><i style="--a:0.08;--b:0.08"></i><i style="--a:0.18;--b:0.055"></i><i style="--a:0.18;--b:0.08"></i><i style="--a:0.18;--b:0.055"></i><i style="--a:0.18;--b:0.035"></i><i style="--a:0.03;--b:0.055"></i><i style="--a:0.03;--b:0.035"></i><i style="--a:0.03;--b:0.02"></i><i style="--a:0.03;--b:0.035"></i><i style="--a:0.08;--b:0.02"></i><i style="--a:0.08;--b:0.11"></i><i style="--a:0.08;--b:0.02"></i><i style="--a:0.08;--b:0.11"></i><i style="--a:0.18;--b:0.08"></i><i style="--a:0.18;--b:0.11"></i><i style="--a:0.18;--b:0.08"></i><i style="--a:0.18;--b:0.055"></i><i style="--a:0.03;--b:0.08"></i><i style="--a:0.03;--b:0.055"></i><i style="--a:0.03;--b:0.035"></i><i style="--a:0.03;--b:0.055"></i><i style="--a:0.08;--b:0.035"></i><i style="--a:0.08;--b:0.02"></i><i style="--a:0.08;--b:0.035"></i><i style="--a:0.08;--b:0.02"></i><i style="--a:0.18;--b:0.11"></i><i style="--a:0.18;--b:0.02"></i><i style="--a:0.18;--b:0.11"></i><i style="--a:0.18;--b:0.08"></i><i style="--a:0.03;--b:0.11"></i><i style="--a:0.03;--b:0.08"></i><i style="--a:0.03;--b:0.055"></i><i style="--a:0.03;--b:0.08"></i><i style="--a:0.08;--b:0.055"></i><i style="--a:0.08;--b:0.035"></i><i style="--a:0.08;--b:0.055"></i><i style="--a:0.08;--b:0.035"></i><i style="--a:0.18;--b:0.02"></i><i style="--a:0.18;--b:0.035"></i><i style="--a:0.18;--b:0.02"></i><i style="--a:0.18;--b:0.11"></i></div>
-    <div class="embedding"><span style="--s:.42"></span><span style="--s:.78"></span><span style="--s:.56"></span><span style="--s:.91"></span><span style="--s:.34"></span><span style="--s:.69"></span><span style="--s:.48"></span><span style="--s:.84"></span><span style="--s:.63"></span><span style="--s:.76"></span></div>
-    <div class="inference-sweep"></div>
+    <div class="semantic-lens primary"></div>
+    <div class="semantic-lens secondary"></div>
+    <div class="semantic-lens tertiary"></div>
+
+    <div class="lens-contours">
+      <svg viewBox="0 0 720 270" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="focusGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#7ff6ff"/>
+            <stop offset="100%" stop-color="#b49cff"/>
+          </linearGradient>
+        </defs>
+        <path class="contour" d="M40 154 C115 66 232 62 304 128 S470 230 676 116"/>
+        <path class="contour v" d="M28 178 C126 96 218 90 302 148 S476 248 694 142"/>
+        <path class="contour" d="M82 116 C162 42 270 54 338 112 S500 198 640 94"/>
+        <path class="focus" d="M112 188 C218 130 286 126 362 166 S510 214 612 158"/>
+      </svg>
+    </div>
+
+    <div class="lens-label"><strong>SEMANTIC FOCUS</strong> / CONTEXT LENS</div>
+
+    <div class="context-thread">
+      <svg viewBox="0 0 520 42" preserveAspectRatio="none">
+        <path d="M0 24 C72 4 122 38 188 18 S300 8 360 24 S446 30 520 12"/>
+        <path class="violet" d="M0 30 C82 16 138 34 205 24 S322 14 385 28 S458 34 520 20"/>
+      </svg>
+    </div>
+
+    <div class="focus-arc"></div>
   </div>
 
   <div class="semantic-float s1" tabindex="0" data-prompt="Plan an objective with constraints and policy."><b>INTENT</b><span>objective → constraints → policy</span></div>
