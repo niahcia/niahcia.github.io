@@ -994,6 +994,103 @@ background-size:200% 100%;animation:thinkingBand 3.8s linear infinite}
  .reason-graph{min-height:280px}
  .ai-console{min-height:980px}
 }
+
+/* v17 remove moving dots/packets site-wide */
+.dot,.devnet-pill i,.agent-coming i,.front-prompt-status:before,.node:after{display:none!important}
+.header-underbar{position:relative;overflow:hidden}
+.header-underbar:after{
+  content:"";position:absolute;left:18%;right:18%;top:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(127,246,255,.35),rgba(180,156,255,.22),transparent);
+  opacity:.55
+}
+.devnet-pill{padding-left:12px!important}
+.devnet-pill:before{
+  content:"LIVE";
+  display:inline-block;
+  margin-right:7px;
+  padding:2px 5px;
+  border:1px solid rgba(115,255,189,.18);
+  border-radius:5px;
+  font:800 .44rem monospace;
+  letter-spacing:.09em;
+  color:#73ffbd;
+  background:rgba(115,255,189,.025)
+}
+.agent-coming{padding-left:0!important}
+.front-prompt-status{padding-left:0!important}
+
+/* architecture: replace animated packets with static traffic bands */
+.net-packet{display:none!important}
+.net-path,.net-path.alt{
+  stroke-dasharray:none!important;
+  animation:none!important;
+  opacity:.32!important
+}
+.network-stage .traffic-band{
+  position:absolute;
+  left:12%;right:12%;bottom:58px;height:5px;
+  display:grid;grid-template-columns:repeat(12,1fr);gap:4px;
+  z-index:5;pointer-events:none
+}
+.network-stage .traffic-band i{
+  display:block;height:100%;
+  border-radius:2px;
+  background:linear-gradient(90deg,rgba(127,246,255,.08),rgba(127,246,255,.34));
+  transform-origin:left;
+  animation:bandLevel 3.6s ease-in-out infinite
+}
+.network-stage .traffic-band i:nth-child(2n){animation-delay:-.4s}
+.network-stage .traffic-band i:nth-child(3n){animation-delay:-.9s;background:linear-gradient(90deg,rgba(180,156,255,.06),rgba(180,156,255,.28))}
+.network-stage .traffic-band i:nth-child(5n){animation-delay:-1.4s}
+@keyframes bandLevel{
+  0%,100%{transform:scaleX(.28);opacity:.25}
+  45%{transform:scaleX(1);opacity:.8}
+  70%{transform:scaleX(.62);opacity:.5}
+}
+
+/* structured cognition activity: panel fills instead of point motion */
+.reason-card:after,
+.memory-card:after,
+.tool-card:after,
+.verify-card:after,
+.intent-card:after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:2px;
+  background:linear-gradient(90deg,transparent,rgba(127,246,255,.38),transparent);
+  transform:scaleX(.35);transform-origin:center;opacity:.35;
+  animation:panelActivity 4.2s ease-in-out infinite
+}
+.memory-card:after,.verify-card:after{
+  background:linear-gradient(90deg,transparent,rgba(180,156,255,.34),transparent);
+  animation-delay:-1.2s
+}
+.tool-card:after{animation-delay:-2s}
+.intent-card:after{animation-delay:-2.8s}
+@keyframes panelActivity{
+  0%,100%{transform:scaleX(.25);opacity:.18}
+  50%{transform:scaleX(.95);opacity:.72}
+}
+.rpulse{border-radius:14px!important;border:1px solid rgba(127,246,255,.10)!important;
+box-shadow:inset 0 0 28px rgba(127,246,255,.025)!important;
+animation:stateBlock 4.8s ease-in-out infinite!important}
+@keyframes stateBlock{50%{transform:scale(1.05);opacity:.6}}
+
+.confidence{position:relative}
+.confidence:after{
+  content:"84% VERIFIED";
+  position:absolute;right:0;top:-18px;
+  font:700 .43rem monospace;letter-spacing:.08em;color:#5f7589
+}
+
+/* no circular moving indicators in protocol/build visuals */
+.rail i{border-radius:2px!important}
+.repo-core:before,.repo-core:after{animation:none!important}
+.repo-line:after{display:none!important}
+
+@media(prefers-reduced-motion:reduce){
+ .network-stage .traffic-band i,
+ .reason-card:after,.memory-card:after,.tool-card:after,.verify-card:after,.intent-card:after,
+ .rpulse{animation:none!important}
+}
 </style>
 </head>
 <body><div class="page-progress" aria-hidden="true"><i></i></div>
@@ -1045,7 +1142,7 @@ background-size:200% 100%;animation:thinkingBand 3.8s linear infinite}
 </div>
 </aside></div></div>
 <section id="protocol" class="section-shell"><div class="wrap"><div class="section-no">01 / OBJECTIVE</div><h2 class="section-title">Intelligence as open infrastructure.</h2><p class="intro">NIAHCIA is being designed as infrastructure rather than a hosted AI service. Consensus, execution, compute, agents, storage, verification, identity, permissions, and payments are separate protocol responsibilities that can be operated by independent participants.</p><div class="protocol-map"><div class="protocol-bus"></div><article class="pmod"><div class="tag">CONSENSUS_01</div><h3>CPU-secured chain</h3><p>RandomX orders and secures protocol state without requiring miners to operate AI infrastructure.</p><div class="rail"><i></i><i></i><i></i></div></article><article class="pmod v"><div class="tag">COMPUTE_02</div><h3>Decentralized AI execution</h3><p>GPU operators advertise capabilities, execute jobs, and settle useful work through explicit protocol surfaces.</p><div class="rail"><i></i><i></i><i></i></div></article><article class="pmod"><div class="tag">AGENTS_03</div><h3>Persistent autonomous agents</h3><p>Identity, versioning, tools, permissions, memory descriptors, and payments become interoperable objects.</p><div class="rail"><i></i><i></i><i></i></div></article><article class="pmod v"><div class="tag">STORAGE_04</div><h3>Proof-backed services</h3><p>Storage and service nodes provide availability without becoming an alternate source of chain finality.</p><div class="rail"><i></i><i></i><i></i></div></article><article class="pmod"><div class="tag">VALUE_05</div><h3>Programmable native value</h3><p>Security, compute, storage, and agent activity remain economically distinct while settling on one network.</p><div class="rail"><i></i><i></i><i></i></div></article><article class="pmod v"><div class="tag">VERIFY_06</div><h3>Verification before trust</h3><p>Commitments, reproducible profiles, evidence, and explicit policies minimize trusted infrastructure.</p><div class="rail"><i></i><i></i><i></i></div></article></div></div></section>
-<section id="architecture" class="section-shell"><div class="wrap"><div class="section-no">02 / ARCHITECTURE</div><h2 class="section-title">One network. Distinct responsibilities.</h2><p class="intro">Decentralization becomes fragile when every participant is forced to perform every job. NIAHCIA separates roles while binding them through deterministic protocol objects and settlement.</p><div class="network-stage" aria-label="NIAHCIA network role topology"><svg class="net-svg" viewBox="0 0 1200 640" role="img" aria-label="CPU miners, execution, GPU workers, service nodes, and agents connected through the NIAHCIA protocol"><defs><linearGradient id="netgrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7ff6ff"/><stop offset="100%" stop-color="#b49cff"/></linearGradient><path id="p1" d="M600 320 C470 245 350 205 250 150"/><path id="p2" d="M600 320 C730 245 850 205 950 150"/><path id="p3" d="M600 320 C800 340 925 390 1015 455"/><path id="p4" d="M600 320 C400 340 275 390 185 455"/><path id="p5" d="M600 320 C600 210 600 145 600 88"/></defs><ellipse class="net-orbit" cx="600" cy="320" rx="390" ry="215"/><ellipse class="net-orbit secondary" cx="600" cy="320" rx="290" ry="160"/><path class="net-path" d="M600 320 C470 245 350 205 250 150"/><path class="net-path alt" d="M600 320 C730 245 850 205 950 150"/><path class="net-path" d="M600 320 C800 340 925 390 1015 455"/><path class="net-path alt" d="M600 320 C400 340 275 390 185 455"/><path class="net-path" d="M600 320 C600 210 600 145 600 88"/><circle class="net-pulse" cx="600" cy="320" r="92"/><circle class="net-pulse v" cx="600" cy="320" r="118"/><circle class="net-hub-ring" cx="600" cy="320" r="84"/><circle class="net-hub-inner" cx="600" cy="320" r="58"/><text class="net-hub-text" x="600" y="314" text-anchor="middle">NIAHCIA</text><text class="net-hub-sub" x="600" y="337" text-anchor="middle">PROTOCOL CORE</text><g transform="translate(145 103)"><rect class="net-nodebox" width="210" height="92" rx="15"/><rect class="net-nodecap" width="5" height="92" rx="2"/><text class="net-label" x="24" y="30">CPU MINERS</text><text class="net-small" x="24" y="54">POW CONSENSUS / SECURITY</text><text class="net-small" x="24" y="71">BLOCK PRODUCTION</text></g><g transform="translate(845 103)"><rect class="net-nodebox" width="210" height="92" rx="15"/><rect class="net-nodecap v" width="5" height="92" rx="2"/><text class="net-label" x="24" y="30">EXECUTION</text><text class="net-small" x="24" y="54">RETH-BACKED STATE</text><text class="net-small" x="24" y="71">SMART CONTRACTS</text></g><g transform="translate(905 425)"><rect class="net-nodebox" width="210" height="92" rx="15"/><rect class="net-nodecap" width="5" height="92" rx="2"/><text class="net-label" x="24" y="30">GPU WORKERS</text><text class="net-small" x="24" y="54">AI INFERENCE / DISCOVERY</text><text class="net-small" x="24" y="71">JOB EXECUTION</text></g><g transform="translate(85 425)"><rect class="net-nodebox" width="210" height="92" rx="15"/><rect class="net-nodecap v" width="5" height="92" rx="2"/><text class="net-label" x="24" y="30">SERVICE NODES</text><text class="net-small" x="24" y="54">STORAGE / AVAILABILITY</text><text class="net-small" x="24" y="71">PROOF OF SERVICE</text></g><g transform="translate(495 42)"><rect class="net-nodebox" width="210" height="92" rx="15"/><rect class="net-nodecap" width="5" height="92" rx="2"/><text class="net-label" x="24" y="30">AGENTS</text><text class="net-small" x="24" y="54">TOOLS / PERMISSIONS</text><text class="net-small" x="24" y="71">MEMORY / PAYMENTS</text></g><circle class="net-packet" r="4"><animateMotion dur="5.8s" repeatCount="indefinite"><mpath href="#p1"/></animateMotion></circle><circle class="net-packet v" r="4"><animateMotion dur="6.8s" begin="-2s" repeatCount="indefinite"><mpath href="#p2"/></animateMotion></circle><circle class="net-packet" r="4"><animateMotion dur="7.1s" begin="-3s" repeatCount="indefinite"><mpath href="#p3"/></animateMotion></circle><circle class="net-packet v" r="4"><animateMotion dur="6.2s" begin="-1s" repeatCount="indefinite"><mpath href="#p4"/></animateMotion></circle><circle class="net-packet" r="4"><animateMotion dur="5.4s" begin="-4s" repeatCount="indefinite"><mpath href="#p5"/></animateMotion></circle></svg><div class="arch-legend"><span><i></i> protocol traffic</span><span><i></i> verification / settlement path</span><span>roles remain independently operated</span></div></div></div></section><div class="flow-divider"></div>
+<section id="architecture" class="section-shell"><div class="wrap"><div class="section-no">02 / ARCHITECTURE</div><h2 class="section-title">One network. Distinct responsibilities.</h2><p class="intro">Decentralization becomes fragile when every participant is forced to perform every job. NIAHCIA separates roles while binding them through deterministic protocol objects and settlement.</p><div class="network-stage" aria-label="NIAHCIA network role topology"><svg class="net-svg" viewBox="0 0 1200 640" role="img" aria-label="CPU miners, execution, GPU workers, service nodes, and agents connected through the NIAHCIA protocol"><defs><linearGradient id="netgrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7ff6ff"/><stop offset="100%" stop-color="#b49cff"/></linearGradient><path id="p1" d="M600 320 C470 245 350 205 250 150"/><path id="p2" d="M600 320 C730 245 850 205 950 150"/><path id="p3" d="M600 320 C800 340 925 390 1015 455"/><path id="p4" d="M600 320 C400 340 275 390 185 455"/><path id="p5" d="M600 320 C600 210 600 145 600 88"/></defs><ellipse class="net-orbit" cx="600" cy="320" rx="390" ry="215"/><ellipse class="net-orbit secondary" cx="600" cy="320" rx="290" ry="160"/><path class="net-path" d="M600 320 C470 245 350 205 250 150"/><path class="net-path alt" d="M600 320 C730 245 850 205 950 150"/><path class="net-path" d="M600 320 C800 340 925 390 1015 455"/><path class="net-path alt" d="M600 320 C400 340 275 390 185 455"/><path class="net-path" d="M600 320 C600 210 600 145 600 88"/><circle class="net-pulse" cx="600" cy="320" r="92"/><circle class="net-pulse v" cx="600" cy="320" r="118"/><circle class="net-hub-ring" cx="600" cy="320" r="84"/><circle class="net-hub-inner" cx="600" cy="320" r="58"/><text class="net-hub-text" x="600" y="314" text-anchor="middle">NIAHCIA</text><text class="net-hub-sub" x="600" y="337" text-anchor="middle">PROTOCOL CORE</text><g transform="translate(145 103)"><rect class="net-nodebox" width="210" height="92" rx="15"/><rect class="net-nodecap" width="5" height="92" rx="2"/><text class="net-label" x="24" y="30">CPU MINERS</text><text class="net-small" x="24" y="54">POW CONSENSUS / SECURITY</text><text class="net-small" x="24" y="71">BLOCK PRODUCTION</text></g><g transform="translate(845 103)"><rect class="net-nodebox" width="210" height="92" rx="15"/><rect class="net-nodecap v" width="5" height="92" rx="2"/><text class="net-label" x="24" y="30">EXECUTION</text><text class="net-small" x="24" y="54">RETH-BACKED STATE</text><text class="net-small" x="24" y="71">SMART CONTRACTS</text></g><g transform="translate(905 425)"><rect class="net-nodebox" width="210" height="92" rx="15"/><rect class="net-nodecap" width="5" height="92" rx="2"/><text class="net-label" x="24" y="30">GPU WORKERS</text><text class="net-small" x="24" y="54">AI INFERENCE / DISCOVERY</text><text class="net-small" x="24" y="71">JOB EXECUTION</text></g><g transform="translate(85 425)"><rect class="net-nodebox" width="210" height="92" rx="15"/><rect class="net-nodecap v" width="5" height="92" rx="2"/><text class="net-label" x="24" y="30">SERVICE NODES</text><text class="net-small" x="24" y="54">STORAGE / AVAILABILITY</text><text class="net-small" x="24" y="71">PROOF OF SERVICE</text></g><g transform="translate(495 42)"><rect class="net-nodebox" width="210" height="92" rx="15"/><rect class="net-nodecap" width="5" height="92" rx="2"/><text class="net-label" x="24" y="30">AGENTS</text><text class="net-small" x="24" y="54">TOOLS / PERMISSIONS</text><text class="net-small" x="24" y="71">MEMORY / PAYMENTS</text></g></svg><div class="traffic-band" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="arch-legend"><span><i></i> protocol traffic</span><span><i></i> verification / settlement path</span><span>roles remain independently operated</span></div></div></div></section><div class="flow-divider"></div>
 <section id="principles" class="section-shell"><div class="wrap"><div class="section-no">03 / PRINCIPLES</div><div class="rule-surface"><aside class="rule-rail"><div class="rule"><b>RULE_01</b><span>No central scheduler</span></div><div class="rule"><b>RULE_02</b><span>Mining remains independent from AI</span></div><div class="rule"><b>RULE_03</b><span>No hidden secondary consensus</span></div><div class="rule"><b>RULE_04</b><span>Verification before trust</span></div><div class="rule"><b>RULE_05</b><span>Open, interoperable infrastructure</span></div></aside><div class="rule-core"><p class="manifesto">No central scheduler. No requirement that miners run AI. No second consensus authority hidden inside storage or compute.<em>Open participation, explicit verification, deterministic economics, and interoperable infrastructure.</em></p><p class="principles-note">The project is intentionally pre-alpha. Protocol surfaces are being locked through vectors, tests, restart/reorg behavior, multi-node devnet testing, and compatibility work before production-network promises are made.</p><div class="constraint-strip"><div><b>CONSENSUS</b><span>CPU / RandomX</span></div><div><b>EXECUTION</b><span>Reth-backed</span></div><div><b>COMPUTE</b><span>GPU / open market</span></div><div><b>SERVICES</b><span>proof-backed</span></div></div></div></div></div></section>
 <section class="section-shell"><div class="wrap"><div class="section-no">04 / BUILD</div><h2 class="section-title">The network is the product.</h2><p class="intro">NIAHCIA is developed in public. Core node, protocol specifications, compute, mining interoperability, explorer, web infrastructure, and supporting components live under the NIAHCIA GitHub organization.</p><div class="build-topology"><div class="repo-map"><div class="repo-line l1"></div><div class="repo-line l2"></div><div class="repo-line l3"></div><div class="repo-line l4"></div><div class="repo-line l5"></div><div class="repo-core"><div><b>NIAHCIA</b><span>PUBLIC INFRASTRUCTURE</span></div></div><a class="repo-node n1" href="https://github.com/niahcia/niahcia"><b>CORE NODE</b><span>consensus / chain</span></a><a class="repo-node n2" href="https://github.com/niahcia/niahcia-protocol"><b>PROTOCOL</b><span>objects / vectors</span></a><a class="repo-node n3" href="https://github.com/niahcia/niahcia-compute"><b>COMPUTE</b><span>gpu / jobs</span></a><a class="repo-node n4" href="https://github.com/niahcia/niahcia-explorer"><b>EXPLORER</b><span>network visibility</span></a><a class="repo-node n5" href="https://github.com/niahcia/niahcia.github.io"><b>WEB</b><span>public surface</span></a></div><div class="build-side"><div class="build-terminal"><div class="term-head">niahcia://devnet/status</div><div class="term-body"><div><span class="cyan">›</span> consensus ........ <span class="ok">active</span></div><div><span class="cyan">›</span> execution ........ bound</div><div><span class="cyan">›</span> vectors .......... locking</div><div><span class="cyan">›</span> storage proofs ... in test</div><div><span class="cyan">›</span> gpu compute ...... protocolizing</div><div><span class="cyan">›</span> production net ... not released</div></div></div><div class="build-links"><a class="btn primary" href="https://github.com/niahcia">Organization</a><a class="btn" href="releases.html">Releases</a><a class="btn" href="downloads.html">Downloads</a><a class="btn" href="https://github.com/niahcia/niahcia">Source</a></div></div></div></div></section>
 </main>
