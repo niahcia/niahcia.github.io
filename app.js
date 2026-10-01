@@ -1,8 +1,8 @@
 (() => {
   const root = document.documentElement;
-  const field = document.querySelector('.agent-console');
-  const prompt = document.querySelector('.front-prompt');
-  const promptText = document.querySelector('.front-prompt-placeholder');
+  const field = document.querySelector('.immersive-hero');
+  const prompt = document.querySelector('.hero-prompt');
+  const promptText = document.querySelector('.hero-prompt-copy span');
   const navLinks = [...document.querySelectorAll('.nav-center a[href^="#"], .nav-mobile a[href^="#"]')];
   const sections = [...document.querySelectorAll('main section[id]')];
 
@@ -12,16 +12,16 @@
       const r = field.getBoundingClientRect();
       const x = (e.clientX - r.left) / r.width;
       const y = (e.clientY - r.top) / r.height;
-      field.style.setProperty('--mx', ((x - .5) * 18).toFixed(2) + 'px');
-      field.style.setProperty('--my', ((y - .5) * 18).toFixed(2) + 'px');
+      field.style.setProperty('--px', ((x - .5) * 18).toFixed(2) + 'px');
+      field.style.setProperty('--py', ((y - .5) * 14).toFixed(2) + 'px');
       field.style.setProperty('--hx', (x * 100).toFixed(1) + '%');
       field.style.setProperty('--hy', (y * 100).toFixed(1) + '%');
     });
     field.addEventListener('pointerleave', () => {
-      field.style.setProperty('--mx', '0px');
-      field.style.setProperty('--my', '0px');
+      field.style.setProperty('--px', '0px');
+      field.style.setProperty('--py', '0px');
       field.style.setProperty('--hx', '50%');
-      field.style.setProperty('--hy', '42%');
+      field.style.setProperty('--hy', '48%');
     });
   }
 
