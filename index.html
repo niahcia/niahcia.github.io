@@ -103,30 +103,43 @@ header{position:sticky;top:0;z-index:50;padding-top:10px;background:linear-gradi
 .role-constellation{position:relative;z-index:3;margin:68px auto 0;width:min(760px,92%);min-height:350px}
 .role-links{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
 .role-links path{
-  fill:none;stroke:url(#roleLinkGradient);stroke-width:1.15;opacity:.38;
-  transition:opacity .2s,stroke-width .2s
+  fill:none;stroke:url(#roleLinkGradient);stroke-width:1.05;opacity:.20;
+  transition:opacity .18s,stroke-width .18s,filter .18s
 }
-.role-links .secondary{stroke:rgba(180,156,255,.16);stroke-width:.9;opacity:.28}
-.role-links circle{fill:#bffbff;opacity:.34;filter:drop-shadow(0 0 5px rgba(127,246,255,.35))}
-.role-constellation:hover .role-links path{opacity:.58;stroke-width:1.35}
+.role-links .secondary{stroke:rgba(180,156,255,.14);stroke-width:.85;opacity:.16}
+.role-links circle{fill:#bffbff;opacity:.24;filter:drop-shadow(0 0 4px rgba(127,246,255,.28));transition:.18s}
 .role-core{
   position:absolute;left:50%;top:50%;width:150px;height:150px;transform:translate(-50%,-50%);
-  border-radius:50%;display:grid;place-items:center;
+  border-radius:50%;display:grid;place-items:center;transition:.18s;
   background:radial-gradient(circle at 35% 30%,rgba(127,246,255,.11),transparent 42%),linear-gradient(135deg,rgba(127,246,255,.038),rgba(180,156,255,.038));
   box-shadow:0 0 85px rgba(127,246,255,.03),inset 0 0 0 1px rgba(127,246,255,.06)
 }
-.role-core:before{
-  content:"";position:absolute;inset:16px;border-radius:50%;
-  border:1px solid rgba(127,246,255,.07)
-}
+.role-core:before{content:"";position:absolute;inset:16px;border-radius:50%;border:1px solid rgba(127,246,255,.07)}
+.role-core:hover{box-shadow:0 0 110px rgba(127,246,255,.055),inset 0 0 0 1px rgba(127,246,255,.10)}
 .role-core b{font-size:.78rem;letter-spacing:.14em}.role-core span{display:block;margin-top:5px;font:.52rem ui-monospace,monospace;color:#71869a}
 .role{
   position:absolute;width:180px;padding:8px 0 11px;border-bottom:1px solid rgba(127,246,255,.08);
   transition:.18s;background:linear-gradient(90deg,transparent,rgba(3,8,13,.54),transparent)
 }
-.role:hover{transform:translateY(-4px);border-color:rgba(127,246,255,.28)}
-.role b{display:block;font:800 .52rem ui-monospace,monospace;color:#b7c9d7}.role span{display:block;margin-top:5px;font-size:.72rem;color:#71869b}
+.role:hover{transform:translateY(-4px);border-color:rgba(127,246,255,.30)}
+.role:hover b{color:#ecfbff}.role:hover span{color:#9bb1c4}
+.role b{display:block;font:800 .52rem ui-monospace,monospace;color:#b7c9d7;transition:.18s}.role span{display:block;margin-top:5px;font-size:.72rem;color:#71869b;transition:.18s}
 .role.r1{left:3%;top:4%}.role.r2{right:3%;top:4%}.role.r3{left:0;bottom:5%}.role.r4{right:0;bottom:5%}.role.r5{left:50%;bottom:-2%;transform:translateX(-50%)}.role.r5:hover{transform:translate(-50%,-4px)}
+
+.role-constellation:has(.r1:hover) .role-links path:not(.link-r1),
+.role-constellation:has(.r2:hover) .role-links path:not(.link-r2),
+.role-constellation:has(.r3:hover) .role-links path:not(.link-r3),
+.role-constellation:has(.r4:hover) .role-links path:not(.link-r4),
+.role-constellation:has(.r5:hover) .role-links path:not(.link-r5){opacity:.07}
+.role-constellation:has(.r1:hover) .link-r1,
+.role-constellation:has(.r2:hover) .link-r2,
+.role-constellation:has(.r3:hover) .link-r3,
+.role-constellation:has(.r4:hover) .link-r4,
+.role-constellation:has(.r5:hover) .link-r5{
+  opacity:.9;stroke-width:1.7;filter:drop-shadow(0 0 5px rgba(127,246,255,.45))
+}
+.role-constellation:has(.role-core:hover) .role-links path{opacity:.50}
+.role-constellation:has(.role-core:hover) .role-links .secondary{opacity:.30}
 
 .principles-visual{top:50%;width:min(700px,58vw);height:480px;transform:translate(-50%,-48%)}
 .principles-visual svg{width:100%;height:100%}.principles-visual .gate{fill:none;stroke:url(#gateGradient);stroke-width:1}.principles-visual .cut{fill:none;stroke:rgba(127,246,255,.06);stroke-width:1}.principles-visual .zone{fill:rgba(180,156,255,.012)}
@@ -247,13 +260,13 @@ footer{padding:58px 0 78px;border-top:1px solid rgba(127,246,255,.07);color:#677
             <stop offset="100%" stop-color="#b49cff"/>
           </linearGradient>
         </defs>
-        <path d="M380 175 C320 135 225 92 112 48"/>
-        <path d="M380 175 C440 135 535 92 648 48"/>
-        <path d="M380 175 C300 210 205 255 90 300"/>
-        <path d="M380 175 C460 210 555 255 670 300"/>
-        <path d="M380 175 C380 220 380 265 380 322"/>
-        <path class="secondary" d="M112 48 C235 18 525 18 648 48"/>
-        <path class="secondary" d="M90 300 C230 338 530 338 670 300"/>
+        <path class="link-r1" d="M380 175 C320 135 225 92 112 48"/>
+        <path class="link-r2" d="M380 175 C440 135 535 92 648 48"/>
+        <path class="link-r3" d="M380 175 C300 210 205 255 90 300"/>
+        <path class="link-r4" d="M380 175 C460 210 555 255 670 300"/>
+        <path class="link-r5" d="M380 175 C380 220 380 265 380 322"/>
+        <path class="secondary link-r1 link-r2" d="M112 48 C235 18 525 18 648 48"/>
+        <path class="secondary link-r3 link-r4" d="M90 300 C230 338 530 338 670 300"/>
         <circle cx="380" cy="175" r="3.5"/>
         <circle cx="112" cy="48" r="2.3"/>
         <circle cx="648" cy="48" r="2.3"/>
