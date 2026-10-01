@@ -1484,9 +1484,181 @@ body:before{opacity:.42}
 @media(prefers-reduced-motion:reduce){
  .immersive-hero:before,.immersive-core .shellA,.immersive-core .shellB,.immersive-core .shellC{animation:none!important}
 }
+
+/* v21 AI background + alignment + universal hover */
+body{
+  background:
+    radial-gradient(circle at 15% 18%,rgba(50,219,255,.08),transparent 26%),
+    radial-gradient(circle at 80% 24%,rgba(139,124,255,.09),transparent 30%),
+    linear-gradient(180deg,#030508 0%,#050811 48%,#030507 100%)!important;
+}
+body:before{
+  opacity:.5!important;
+  background-image:
+    radial-gradient(ellipse at 35% 32%,rgba(127,246,255,.05),transparent 34%),
+    radial-gradient(ellipse at 70% 60%,rgba(180,156,255,.045),transparent 38%),
+    repeating-radial-gradient(ellipse at 50% 40%,rgba(127,246,255,.024) 0 1px,transparent 1px 28px)!important;
+  background-size:auto!important;
+  mask-image:linear-gradient(to bottom,black,rgba(0,0,0,.75) 72%,transparent)!important;
+}
+.ai-background{
+  position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden;
+}
+.ai-background .contour{
+  position:absolute;inset:-8%;
+  opacity:.16;
+  filter:blur(.1px);
+}
+.ai-background .plane{
+  position:absolute;width:36vw;height:18vw;border:1px solid rgba(127,246,255,.045);
+  background:linear-gradient(135deg,rgba(127,246,255,.015),rgba(180,156,255,.012));
+  transform:perspective(700px) rotateX(62deg) rotateZ(-14deg);
+  border-radius:30px;
+  box-shadow:inset 0 1px rgba(255,255,255,.015);
+}
+.ai-background .plane.p1{left:-4vw;top:18vh}
+.ai-background .plane.p2{right:-6vw;top:46vh;transform:perspective(700px) rotateX(66deg) rotateZ(18deg)}
+.ai-background .plane.p3{left:34vw;bottom:-4vh;width:28vw;height:14vw;transform:perspective(700px) rotateX(70deg) rotateZ(4deg)}
+.ai-background .field{
+  position:absolute;border:1px solid rgba(127,246,255,.035);border-radius:50%;
+  box-shadow:0 0 0 42px rgba(127,246,255,.008),0 0 0 90px rgba(180,156,255,.006);
+}
+.ai-background .field.f1{width:34vw;height:34vw;left:10vw;top:12vh}
+.ai-background .field.f2{width:28vw;height:28vw;right:8vw;top:34vh;border-color:rgba(180,156,255,.035)}
+.ai-background .field.f3{width:22vw;height:22vw;left:42vw;bottom:4vh}
+.ai-background .glyph{
+  position:absolute;font:700 .48rem ui-monospace,monospace;letter-spacing:.18em;color:rgba(127,246,255,.12)
+}
+.ai-background .g1{left:8vw;top:34vh}.ai-background .g2{right:11vw;top:21vh}.ai-background .g3{left:48vw;bottom:12vh}.ai-background .g4{right:28vw;top:58vh}
+
+.immersive-hero{
+  --hx:50%;--hy:48%;--px:0px;--py:0px;
+  background:
+    radial-gradient(circle at var(--hx) var(--hy),rgba(127,246,255,.12),transparent 22%),
+    radial-gradient(circle at 62% 50%,rgba(180,156,255,.075),transparent 38%),
+    linear-gradient(180deg,rgba(5,9,16,.94),rgba(3,6,11,.98))!important;
+  transition:border-color .22s ease,box-shadow .22s ease,transform .22s ease;
+}
+.immersive-hero:hover{
+  border-color:rgba(127,246,255,.23);
+  box-shadow:0 58px 160px rgba(0,0,0,.48),0 0 70px rgba(127,246,255,.045),inset 0 1px rgba(255,255,255,.04);
+}
+.immersive-core{
+  transform:translate(calc(-50% + var(--px)),calc(-50% + var(--py)))!important;
+  transition:transform .18s ease-out!important;
+}
+.hero-center{
+  width:min(860px,82%)!important;
+  padding-top:84px!important;
+}
+.hero-center h1{
+  margin:14px auto 14px!important;
+  max-width:860px!important;
+}
+.hero-center .hero-sub{
+  max-width:640px!important;
+  margin:0 auto!important;
+  line-height:1.48!important;
+}
+.hero-prompt{
+  width:min(760px,91%)!important;
+  margin-top:38px!important;
+  transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease,background .2s ease;
+}
+.hero-prompt:hover{
+  transform:translateY(-3px);
+  border-color:rgba(127,246,255,.42);
+  background:linear-gradient(180deg,rgba(9,17,27,.86),rgba(5,10,16,.84));
+  box-shadow:0 28px 82px rgba(0,0,0,.38),0 0 50px rgba(127,246,255,.08),inset 0 1px rgba(255,255,255,.05);
+}
+.hero-prompt-cta{
+  transition:transform .18s ease,box-shadow .18s ease,background .18s ease;
+}
+.hero-prompt:hover .hero-prompt-cta,.hero-prompt-cta:hover{
+  transform:translateY(-2px);
+  background:#fff;
+  box-shadow:0 10px 28px rgba(127,246,255,.18);
+}
+.hero-mini span{
+  transition:transform .18s ease,border-color .18s ease,color .18s ease,background .18s ease,box-shadow .18s ease;
+}
+.hero-mini span:hover{
+  transform:translateY(-2px);
+  color:#d8ebf5;
+  border-color:rgba(127,246,255,.26);
+  background:rgba(127,246,255,.035);
+  box-shadow:0 8px 22px rgba(0,0,0,.18);
+}
+.semantic-float{
+  transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease,background .2s ease;
+}
+.semantic-float:hover{
+  transform:translateY(-5px) scale(1.015);
+  border-color:rgba(127,246,255,.30);
+  background:linear-gradient(180deg,rgba(9,17,27,.78),rgba(5,10,16,.72));
+  box-shadow:0 24px 58px rgba(0,0,0,.26),0 0 26px rgba(127,246,255,.055);
+}
+.semantic-float.s2:hover,.semantic-float.s4:hover{border-color:rgba(180,156,255,.30)}
+.semantic-float:hover:after{background:linear-gradient(90deg,rgba(127,246,255,.55),transparent)}
+
+.nav-center a,.nav-github,.devnet-pill,.brandlock{
+  transition:transform .18s ease,color .18s ease,border-color .18s ease,box-shadow .18s ease,background .18s ease;
+}
+.nav-center a:hover{transform:translateY(-1px);color:#fff;text-shadow:0 0 16px rgba(127,246,255,.32)}
+.nav-github:hover,.devnet-pill:hover{
+  transform:translateY(-2px);
+  border-color:rgba(127,246,255,.30);
+  box-shadow:0 10px 26px rgba(0,0,0,.18),0 0 20px rgba(127,246,255,.04);
+}
+.brandlock:hover{transform:translateY(-1px)}
+.brandlock:hover .brandmark{box-shadow:0 0 26px rgba(127,246,255,.09)}
+
+.pmod,.pipeline-stage,.pipeline-output,.network-stage,.rule,.rule-core,.memory-shard,.verification-gate,.repo-node,.build-terminal,.constraint-strip div,.gate-metrics div{
+  transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease,background .2s ease,color .2s ease;
+}
+.pmod:hover,.pipeline-stage:hover,.memory-shard:hover,.repo-node:hover,.gate-metrics div:hover,.constraint-strip div:hover{
+  transform:translateY(-4px);
+  border-color:rgba(127,246,255,.28)!important;
+  box-shadow:0 18px 46px rgba(0,0,0,.22),0 0 24px rgba(127,246,255,.035);
+}
+.pipeline-output:hover,.verification-gate:hover,.build-terminal:hover,.rule-core:hover,.network-stage:hover{
+  border-color:rgba(127,246,255,.22)!important;
+  box-shadow:0 30px 90px rgba(0,0,0,.28),0 0 36px rgba(127,246,255,.035);
+}
+.rule:hover{
+  transform:translateX(6px);
+  background:rgba(127,246,255,.025)!important;
+}
+.memory-shard:hover{background:linear-gradient(145deg,rgba(127,246,255,.06),rgba(180,156,255,.04))!important}
+.verification-gate:hover .gate-core{border-color:rgba(180,156,255,.22)}
+.repo-node:hover{transform:translateY(-5px) scale(1.01)}
+.build-links .btn:hover{transform:translateY(-3px)!important}
+
+@media(max-width:900px){
+ .hero-center{width:88%!important;padding-top:88px!important}
+}
+@media(max-width:620px){
+ .hero-center{width:92%!important;padding-top:72px!important}
+}
+@media(prefers-reduced-motion:reduce){
+ .immersive-hero,.immersive-core,.semantic-float,.hero-prompt,.hero-prompt-cta,.hero-mini span,
+ .pmod,.pipeline-stage,.pipeline-output,.network-stage,.rule,.rule-core,.memory-shard,.verification-gate,.repo-node,.build-terminal{transition:none!important}
+}
 </style>
 </head>
-<body><div class="page-progress" aria-hidden="true"><i></i></div>
+<body><div class="ai-background" aria-hidden="true">
+<svg class="contour" viewBox="0 0 1600 900" preserveAspectRatio="none">
+  <path d="M-60 260 C180 110 390 120 610 250 S1050 420 1320 250 1590 160 1700 240" fill="none" stroke="rgba(127,246,255,.16)" stroke-width="1"/>
+  <path d="M-80 410 C220 250 430 270 670 410 S1110 560 1370 400 1600 340 1700 410" fill="none" stroke="rgba(180,156,255,.14)" stroke-width="1"/>
+  <path d="M-40 590 C210 450 470 470 730 610 S1160 750 1440 560 1630 520 1700 570" fill="none" stroke="rgba(127,246,255,.11)" stroke-width="1"/>
+  <path d="M260 -60 C130 190 170 410 330 610 S560 900 460 980" fill="none" stroke="rgba(127,246,255,.10)" stroke-width="1"/>
+  <path d="M800 -80 C680 170 710 390 830 590 S990 870 920 980" fill="none" stroke="rgba(180,156,255,.10)" stroke-width="1"/>
+  <path d="M1320 -60 C1180 180 1210 420 1360 620 S1530 900 1460 980" fill="none" stroke="rgba(127,246,255,.08)" stroke-width="1"/>
+</svg>
+<div class="plane p1"></div><div class="plane p2"></div><div class="plane p3"></div>
+<div class="field f1"></div><div class="field f2"></div><div class="field f3"></div>
+<div class="glyph g1">SEMANTIC FIELD / 01</div><div class="glyph g2">ATTENTION PLANE / 02</div><div class="glyph g3">MEMORY SPACE / 03</div><div class="glyph g4">VERIFICATION FIELD / 04</div>
+</div><div class="page-progress" aria-hidden="true"><i></i></div>
 <header class="site-header"><div class="wrap"><nav class="controlbar"><a class="brandlock" href="/" aria-label="NIAHCIA home"><span class="brandmark"><i></i><i></i></span><span class="brandtext"><strong>NIAHCIA</strong><span>DECENTRALIZED INTELLIGENCE</span></span></a><div class="nav-center"><a href="/">AGENT</a><a href="#architecture">NETWORK</a><a href="#protocol">PROTOCOL</a><a href="#principles">PRINCIPLES</a><a href="downloads.html">DOWNLOADS</a></div><div class="nav-right"><span class="devnet-pill"><i></i>AGENT NETWORK // DEVNET</span><a class="nav-github" href="https://github.com/niahcia">GITHUB</a></div><div class="nav-mobile"><a href="/">AGENT</a><a href="#architecture">NETWORK</a><a href="#protocol">PROTOCOL</a><a href="#principles">PRINCIPLES</a><a href="downloads.html">DOWNLOADS</a></div></nav><div class="header-underbar"></div></div></header>
 <main>
 <div class="wrap hero agent-hero"><div class="immersive-hero">
