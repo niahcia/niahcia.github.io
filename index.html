@@ -42,16 +42,36 @@ header{position:sticky;top:0;z-index:50;padding-top:10px;background:linear-gradi
 .hero-scene{--hx:50%;--hy:48%;--px:0px;--py:0px;position:relative;min-height:720px;overflow:hidden;text-align:center}
 .hero-scene:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at var(--hx) var(--hy),rgba(127,246,255,.06),transparent 18%),radial-gradient(circle at 66% 63%,rgba(180,156,255,.04),transparent 30%)}
 .hero-quiet{position:absolute;left:50%;top:42%;width:min(960px,78%);height:390px;transform:translate(-50%,-50%);z-index:3;background:radial-gradient(ellipse at center,rgba(2,7,12,.995) 0,rgba(2,7,12,.965) 49%,rgba(2,7,12,.54) 75%,transparent 100%);pointer-events:none}
-.hero-ai{position:absolute;left:50%;top:70%;width:min(1060px,84vw);height:400px;transform:translate(calc(-50% + var(--px)),calc(-50% + var(--py)));z-index:2;transition:transform .16s ease-out;pointer-events:none}
-.semantic-lens{position:absolute;border-radius:50%;border:1px solid rgba(127,246,255,.052);background:radial-gradient(circle at 36% 32%,rgba(127,246,255,.058),transparent 29%),radial-gradient(circle at 68% 68%,rgba(180,156,255,.045),transparent 37%),radial-gradient(circle at center,rgba(8,18,27,.20),rgba(2,7,12,.025) 68%,transparent 72%);box-shadow:inset 0 0 70px rgba(127,246,255,.014),0 0 90px rgba(127,246,255,.012);backdrop-filter:blur(2px)}
-.semantic-lens.primary{width:570px;height:255px;left:50%;top:54%;transform:translate(-50%,-50%) rotate(-7deg);border-radius:56% 44% 60% 40%/48% 54% 46% 52%}
-.semantic-lens.secondary{width:330px;height:170px;left:66%;top:45%;transform:translate(-50%,-50%) rotate(13deg);border-radius:43% 57% 46% 54%/61% 39% 61% 39%;opacity:.38}
-.semantic-lens.tertiary{width:250px;height:130px;left:32%;top:67%;transform:translate(-50%,-50%) rotate(-18deg);border-radius:62% 38% 55% 45%/47% 63% 37% 53%;opacity:.26}
-.lens-contours{position:absolute;left:50%;top:53%;width:720px;height:270px;transform:translate(-50%,-50%);opacity:.40}
-.lens-contours svg{width:100%;height:100%;overflow:visible}.lens-contours .contour{fill:none;stroke:rgba(127,246,255,.07);stroke-width:1}.lens-contours .contour.v{stroke:rgba(180,156,255,.06)}.lens-contours .focus{fill:none;stroke:url(#focusGrad);stroke-width:1.1;opacity:.55}
-.context-thread{position:absolute;left:50%;top:78%;width:520px;height:42px;transform:translateX(-50%);opacity:.48}.context-thread svg{width:100%;height:100%}.context-thread path{fill:none;stroke:rgba(127,246,255,.07);stroke-width:1}.context-thread .violet{stroke:rgba(180,156,255,.07)}
-.focus-arc{position:absolute;left:50%;top:51%;width:620px;height:260px;transform:translate(-50%,-50%);overflow:hidden;border-radius:50%}
-.focus-arc:before{content:"";position:absolute;left:-18%;top:49%;width:160px;height:1px;background:linear-gradient(90deg,transparent,rgba(127,246,255,.72),rgba(180,156,255,.42),transparent);box-shadow:0 0 16px rgba(127,246,255,.14);transform:rotate(-8deg);animation:focusPass 10s cubic-bezier(.4,0,.2,1) infinite}
+.hero-ai{
+  position:absolute;left:50%;top:70%;width:min(980px,82vw);height:360px;
+  transform:translate(calc(-50% + var(--px)),calc(-50% + var(--py)));
+  z-index:2;transition:transform .16s ease-out;pointer-events:none;
+  background:radial-gradient(circle at 50% 52%,rgba(127,246,255,.026),transparent 36%)
+}
+.semantic-lens{
+  position:absolute;left:50%;top:54%;width:560px;height:250px;
+  transform:translate(-50%,-50%) rotate(-7deg);
+  border-radius:56% 44% 60% 40%/48% 54% 46% 52%;
+  border:1px solid rgba(127,246,255,.095);
+  background:
+    radial-gradient(circle at 40% 34%,rgba(127,246,255,.11),transparent 31%),
+    radial-gradient(circle at 66% 66%,rgba(180,156,255,.075),transparent 40%),
+    radial-gradient(circle at center,rgba(8,18,27,.24),rgba(2,7,12,.035) 70%,transparent 73%);
+  box-shadow:inset 0 0 64px rgba(127,246,255,.02),0 0 70px rgba(127,246,255,.02);
+  backdrop-filter:blur(2px)
+}
+.lens-contours{position:absolute;left:50%;top:53%;width:700px;height:260px;transform:translate(-50%,-50%);opacity:.58}
+.lens-contours svg{width:100%;height:100%;overflow:visible}
+.lens-contours .contour{fill:none;stroke:rgba(127,246,255,.12);stroke-width:1.05}
+.lens-contours .contour.v{stroke:rgba(180,156,255,.095)}
+.lens-contours .focus{fill:none;stroke:url(#focusGrad);stroke-width:1.3;opacity:.74}
+.focus-arc{position:absolute;left:50%;top:51%;width:600px;height:250px;transform:translate(-50%,-50%);overflow:hidden;border-radius:50%}
+.focus-arc:before{
+  content:"";position:absolute;left:-18%;top:49%;width:160px;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(127,246,255,.82),rgba(180,156,255,.48),transparent);
+  box-shadow:0 0 14px rgba(127,246,255,.18);transform:rotate(-8deg);
+  animation:focusPass 10s cubic-bezier(.4,0,.2,1) infinite
+}
 @keyframes focusPass{0%{transform:translateX(0) rotate(-8deg);opacity:0}12%{opacity:.75}50%{opacity:.42}88%{opacity:.7}100%{transform:translateX(760px) rotate(-8deg);opacity:0}}
 
 .hero-center{position:relative;z-index:5;width:min(850px,82%);margin:auto;padding-top:92px;text-align:center}
@@ -75,7 +95,7 @@ header{position:sticky;top:0;z-index:50;padding-top:10px;background:linear-gradi
 .semantic-float.s1{left:10%;top:32%}.semantic-float.s2{right:10%;top:32%}.semantic-float.s3{left:18%;bottom:10%}.semantic-float.s4{right:18%;bottom:10%}
 .hero-footnote{position:absolute;left:50%;bottom:12px;transform:translateX(-50%);width:min(780px,90%);font:700 .45rem ui-monospace,monospace;letter-spacing:.08em;color:#4f6377;text-align:center}
 
-.section{position:relative;min-height:78vh;padding:150px 0 145px;overflow:hidden;text-align:center;display:flex;align-items:center}
+.section{position:relative;min-height:72vh;padding:132px 0 128px;overflow:hidden;text-align:center;display:flex;align-items:center}
 .section::before{content:"";position:absolute;left:-8%;right:-8%;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(127,246,255,.12),rgba(180,156,255,.09),transparent)}
 .section>.wrap{width:min(1080px,calc(100% - 48px))}
 .section-head{max-width:720px;margin:0 auto;position:relative;z-index:3}
@@ -108,11 +128,10 @@ header{position:sticky;top:0;z-index:50;padding-top:10px;background:linear-gradi
 .role-constellation{position:relative;z-index:3;margin:68px auto 0;width:min(760px,92%);min-height:350px}
 .role-links{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
 .role-links path{
-  fill:none;stroke:url(#roleLinkGradient);stroke-width:1.05;opacity:.20;
+  fill:none;stroke:url(#roleLinkGradient);stroke-width:1.35;opacity:.38;
   transition:opacity .18s,stroke-width .18s,filter .18s
 }
-.role-links .secondary{stroke:rgba(180,156,255,.14);stroke-width:.85;opacity:.16}
-.role-links circle{fill:#bffbff;opacity:.24;filter:drop-shadow(0 0 4px rgba(127,246,255,.28));transition:.18s}
+.role-links circle{fill:#bffbff;opacity:.48;filter:drop-shadow(0 0 4px rgba(127,246,255,.32));transition:.18s}
 .role-core{
   position:absolute;left:50%;top:50%;width:150px;height:150px;transform:translate(-50%,-50%);
   border-radius:50%;display:grid;place-items:center;transition:.18s;
@@ -144,7 +163,6 @@ header{position:sticky;top:0;z-index:50;padding-top:10px;background:linear-gradi
   opacity:.9;stroke-width:1.7;filter:drop-shadow(0 0 5px rgba(127,246,255,.45))
 }
 .role-constellation:has(.role-core:hover) .role-links path{opacity:.50}
-.role-constellation:has(.role-core:hover) .role-links .secondary{opacity:.30}
 
 .principles-visual{top:50%;width:min(700px,58vw);height:480px;transform:translate(-50%,-48%)}
 .principles-visual svg{width:100%;height:100%}.principles-visual .gate{fill:none;stroke:url(#gateGradient);stroke-width:1}.principles-visual .cut{fill:none;stroke:rgba(127,246,255,.06);stroke-width:1}.principles-visual .zone{fill:rgba(180,156,255,.012)}
@@ -210,8 +228,7 @@ footer{padding:34px 0 42px;border-top:1px solid rgba(127,246,255,.07);color:#677
     width:100vw;height:230px;top:76%;opacity:1;
     background:radial-gradient(circle at 50% 50%,rgba(127,246,255,.035),transparent 38%)
   }
-  .semantic-lens.secondary,.semantic-lens.tertiary,.context-thread{display:none}
-  .semantic-lens.primary{
+  .semantic-lens{
     width:322px;height:146px;
     border-color:rgba(127,246,255,.13);
     background:
@@ -257,7 +274,6 @@ footer{padding:34px 0 42px;border-top:1px solid rgba(127,246,255,.07);color:#677
     opacity:.78;stroke-width:2.05;
     filter:drop-shadow(0 0 3px rgba(127,246,255,.22))
   }
-  .role-links .secondary{display:none}
   .role-links circle{
     opacity:.82;transform-box:fill-box;transform-origin:center;
     filter:drop-shadow(0 0 5px rgba(127,246,255,.48))
@@ -313,9 +329,8 @@ footer{padding:34px 0 42px;border-top:1px solid rgba(127,246,255,.07);color:#677
 <div class="wrap hero"><div class="hero-scene">
   <div class="hero-quiet"></div>
   <div class="hero-ai" aria-hidden="true">
-    <div class="semantic-lens primary"></div><div class="semantic-lens secondary"></div><div class="semantic-lens tertiary"></div>
-    <div class="lens-contours"><svg viewBox="0 0 720 270" preserveAspectRatio="none"><defs><linearGradient id="focusGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7ff6ff"/><stop offset="100%" stop-color="#b49cff"/></linearGradient></defs><path class="contour" d="M40 154 C115 66 232 62 304 128 S470 230 676 116"/><path class="contour v" d="M28 178 C126 96 218 90 302 148 S476 248 694 142"/><path class="contour" d="M82 116 C162 42 270 54 338 112 S500 198 640 94"/><path class="focus" d="M112 188 C218 130 286 126 362 166 S510 214 612 158"/></svg></div>
-    <div class="context-thread"><svg viewBox="0 0 520 42" preserveAspectRatio="none"><path d="M0 24 C72 4 122 38 188 18 S300 8 360 24 S446 30 520 12"/><path class="violet" d="M0 30 C82 16 138 34 205 24 S322 14 385 28 S458 34 520 20"/></svg></div>
+    <div class="semantic-lens"></div>
+    <div class="lens-contours"><svg viewBox="0 0 720 270" preserveAspectRatio="none"><defs><linearGradient id="focusGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7ff6ff"/><stop offset="100%" stop-color="#b49cff"/></linearGradient></defs><path class="contour" d="M40 154 C115 66 232 62 304 128 S470 230 676 116"/><path class="contour v" d="M28 178 C126 96 218 90 302 148 S476 248 694 142"/><path class="focus" d="M112 188 C218 130 286 126 362 166 S510 214 612 158"/></svg></div>
     <div class="focus-arc"></div>
   </div>
 
@@ -381,8 +396,6 @@ footer{padding:34px 0 42px;border-top:1px solid rgba(127,246,255,.07);color:#677
         <path class="link-r3" d="M380 175 C300 210 205 255 90 300"/>
         <path class="link-r4" d="M380 175 C460 210 555 255 670 300"/>
         <path class="link-r5" d="M380 175 C380 220 380 265 380 322"/>
-        <path class="secondary link-r1 link-r2" d="M112 48 C235 18 525 18 648 48"/>
-        <path class="secondary link-r3 link-r4" d="M90 300 C230 338 530 338 670 300"/>
         <circle cx="380" cy="175" r="3.5"/>
         <circle cx="112" cy="48" r="2.3"/>
         <circle cx="648" cy="48" r="2.3"/>
