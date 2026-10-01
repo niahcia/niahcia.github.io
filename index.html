@@ -90,13 +90,18 @@ header{position:sticky;top:0;z-index:50;padding-top:10px;background:linear-gradi
 @keyframes signalFlow{0%{offset-distance:0%;opacity:0}10%{opacity:.75}90%{opacity:.75}100%{offset-distance:100%;opacity:0}}
 
 .protocol-flow{margin:56px auto 0;display:flex;align-items:center;justify-content:center;gap:10px 14px;flex-wrap:wrap;position:relative;z-index:3;max-width:900px}
-.protocol-step{display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid rgba(127,246,255,.08);transition:.18s}
+.protocol-step{display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid rgba(127,246,255,.08);transition:.18s;cursor:default}
 .protocol-step:not(:last-child)::after{content:"→";margin-left:6px;color:#50677a}
-.protocol-step:hover{transform:translateY(-3px);border-color:rgba(127,246,255,.24)}
-.protocol-step b{font:800 .53rem ui-monospace,monospace;color:#b4c8d6;letter-spacing:.10em}.protocol-step span{font-size:.68rem;color:#6f8396}
+.protocol-step:hover,.protocol-step.active{transform:translateY(-3px);border-color:rgba(127,246,255,.34)}
+.protocol-step.active b{color:#f3fdff;text-shadow:0 0 14px rgba(127,246,255,.16)}
+.protocol-step b{font:800 .53rem ui-monospace,monospace;color:#b4c8d6;letter-spacing:.10em;transition:.18s}.protocol-step span{font-size:.68rem;color:#6f8396}
 .protocol-copy{margin:74px auto 0;width:min(760px,94%);display:grid;grid-template-columns:repeat(3,1fr);gap:30px 34px;position:relative;z-index:3}
-.protocol-item{padding:0 0 18px;border-bottom:1px solid rgba(127,246,255,.065);transition:.18s}.protocol-item:hover{transform:translateY(-3px)}
-.protocol-item .tag{font:800 .48rem ui-monospace,monospace;color:#6c8599}.protocol-item h3{margin:7px 0 6px;font-size:1.05rem}.protocol-item p{margin:0 auto;max-width:220px;color:#8295a6;font-size:.86rem}
+.protocol-item{padding:0 0 18px;border-bottom:1px solid rgba(127,246,255,.065);transition:.18s}
+.protocol-item:hover,.protocol-item.active{transform:translateY(-3px);border-color:rgba(127,246,255,.24)}
+.protocol-item.active{background:radial-gradient(circle at 50% 100%,rgba(127,246,255,.045),transparent 68%)}
+.protocol-item.active h3{color:#effcff}
+.protocol-item.active .tag{color:#9df8ff}
+.protocol-item .tag{font:800 .48rem ui-monospace,monospace;color:#6c8599;transition:.18s}.protocol-item h3{margin:7px 0 6px;font-size:1.05rem;transition:.18s}.protocol-item p{margin:0 auto;max-width:220px;color:#8295a6;font-size:.86rem}
 
 .arch-visual{top:50%;width:min(760px,62vw);height:470px;transform:translate(-50%,-46%)}
 .arch-visual svg{width:100%;height:100%}.arch-visual .mesh{fill:none;stroke:rgba(127,246,255,.06);stroke-width:1}.arch-visual .mesh.v{stroke:rgba(180,156,255,.05)}.arch-visual .plate{fill:rgba(127,246,255,.012);stroke:rgba(127,246,255,.065)}
@@ -309,14 +314,14 @@ footer{padding:34px 0 42px;border-top:1px solid rgba(127,246,255,.07);color:#677
   <div class="protocol-visual" aria-hidden="true"><svg viewBox="0 0 900 620" preserveAspectRatio="none"><defs><linearGradient id="riverGradient" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7ff6ff"/><stop offset="100%" stop-color="#b49cff"/></linearGradient></defs><path class="river" d="M20 180 C170 30 300 310 430 180 S690 20 880 210"/><path class="river2" d="M20 210 C180 80 300 350 455 210 S700 70 880 250"/><path class="branch" d="M260 250 C360 330 410 390 480 520"/><path class="branch" d="M520 190 C610 270 670 350 800 470"/><circle class="signal" r="4"/></svg></div>
   <div class="wrap">
     <div class="section-head"><div class="section-no">01 / PROTOCOL</div><h2 class="section-title">Intelligence, open by design.</h2><p class="intro">Security, compute, agents, storage, verification, and value meet in one protocol.</p></div>
-    <div class="protocol-flow"><div class="protocol-step"><b>ASK</b></div><div class="protocol-step"><b>UNDERSTAND</b></div><div class="protocol-step"><b>FIND</b></div><div class="protocol-step"><b>RUN</b></div><div class="protocol-step"><b>VERIFY</b></div><div class="protocol-step"><b>SETTLE</b></div></div>
+    <div class="protocol-flow"><div class="protocol-step" data-stage="agents" tabindex="0"><b>ASK</b></div><div class="protocol-step" data-stage="consensus" tabindex="0"><b>UNDERSTAND</b></div><div class="protocol-step" data-stage="services" tabindex="0"><b>FIND</b></div><div class="protocol-step" data-stage="compute" tabindex="0"><b>RUN</b></div><div class="protocol-step" data-stage="verify" tabindex="0"><b>VERIFY</b></div><div class="protocol-step" data-stage="value" tabindex="0"><b>SETTLE</b></div></div>
     <div class="protocol-copy">
-      <article class="protocol-item"><div class="tag">CONSENSUS</div><h3>CPU-secured chain</h3><p>RandomX secures the network.</p></article>
-      <article class="protocol-item"><div class="tag">COMPUTE</div><h3>Open AI execution</h3><p>GPU workers provide compute.</p></article>
-      <article class="protocol-item"><div class="tag">AGENTS</div><h3>Persistent agents</h3><p>Identity, tools, memory, and payments.</p></article>
-      <article class="protocol-item"><div class="tag">SERVICES</div><h3>Proof-backed storage</h3><p>Availability without a second consensus.</p></article>
-      <article class="protocol-item"><div class="tag">VALUE</div><h3>Native settlement</h3><p>Useful work settles on one network.</p></article>
-      <article class="protocol-item"><div class="tag">VERIFY</div><h3>Verify before trust</h3><p>Evidence comes before acceptance.</p></article>
+      <article class="protocol-item" data-stage="consensus"><div class="tag">CONSENSUS</div><h3>CPU-secured chain</h3><p>RandomX secures the network.</p></article>
+      <article class="protocol-item" data-stage="compute"><div class="tag">COMPUTE</div><h3>Open AI execution</h3><p>GPU workers provide compute.</p></article>
+      <article class="protocol-item" data-stage="agents"><div class="tag">AGENTS</div><h3>Persistent agents</h3><p>Identity, tools, memory, and payments.</p></article>
+      <article class="protocol-item" data-stage="services"><div class="tag">SERVICES</div><h3>Proof-backed storage</h3><p>Availability without a second consensus.</p></article>
+      <article class="protocol-item" data-stage="value"><div class="tag">VALUE</div><h3>Native settlement</h3><p>Useful work settles on one network.</p></article>
+      <article class="protocol-item" data-stage="verify"><div class="tag">VERIFY</div><h3>Verify before trust</h3><p>Evidence comes before acceptance.</p></article>
     </div>
   </div>
 </section>
