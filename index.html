@@ -1747,6 +1747,201 @@ body:before{
  .hero-center h1{font-size:clamp(2.6rem,13vw,3.8rem)!important}
  .immersive-hero{min-height:680px!important}
 }
+
+/* v23 explicit AI visual system — transformer / tensor / attention, zero particles */
+.header-underbar:after,
+.flow-divider:after,
+.protocol-bus:before,.protocol-bus:after,
+.repo-line:after,
+.agent-link:after,
+.console-row:before,
+.devnet-pill i,
+.agent-coming i,
+.front-prompt-status:before,
+.rule:before,
+.net-packet,
+.net-pulse,
+.cog-ring,.thought-wave,.activity-arc,.reasoning-sweep,
+.token-stream,.attn-head,.latent-viz .latent-node,
+.agent-core:before,.agent-core:after,
+.hero-mini:before,.hero-mini:after,.hero-mini i{
+  display:none!important;
+  animation:none!important;
+}
+
+/* remove old particle/path motion globally */
+.net-path,.net-path.alt,.repo-line,.protocol-bus,.header-underbar,.flow-divider{
+  animation:none!important;
+}
+.net-path,.net-path.alt{stroke-dasharray:none!important}
+
+/* Hero becomes a transformer inference scene */
+.immersive-core{display:none!important}
+.hero-orbit-label{display:none!important}
+
+.transformer-scene{
+  position:absolute;
+  left:50%;top:52%;
+  width:min(860px,72vw);height:500px;
+  transform:translate(-50%,-50%);
+  z-index:2;
+  pointer-events:none;
+  perspective:1200px;
+}
+.tensor-plane{
+  position:absolute;
+  left:50%;top:50%;
+  width:540px;height:250px;
+  transform-style:preserve-3d;
+  border:1px solid rgba(127,246,255,.11);
+  border-radius:26px;
+  background:
+    linear-gradient(rgba(127,246,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(127,246,255,.025) 1px,transparent 1px),
+    linear-gradient(135deg,rgba(127,246,255,.035),rgba(180,156,255,.028));
+  background-size:32px 32px,32px 32px,auto;
+  box-shadow:0 30px 90px rgba(0,0,0,.22),inset 0 1px rgba(255,255,255,.025);
+}
+.tensor-plane.p1{transform:translate(-50%,-50%) rotateX(63deg) rotateZ(-5deg) translateZ(-80px);opacity:.38}
+.tensor-plane.p2{transform:translate(-50%,-50%) rotateX(63deg) rotateZ(2deg) translateZ(0);opacity:.58}
+.tensor-plane.p3{transform:translate(-50%,-50%) rotateX(63deg) rotateZ(8deg) translateZ(82px);opacity:.34}
+.tensor-plane:after{
+  content:attr(data-layer);
+  position:absolute;left:18px;top:14px;
+  font:800 .52rem ui-monospace,monospace;letter-spacing:.16em;color:#7690a5;
+}
+.attention-matrix{
+  position:absolute;left:50%;top:49%;
+  width:370px;height:220px;
+  transform:translate(-50%,-50%);
+  display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:repeat(7,1fr);gap:4px;
+  z-index:4;
+  padding:16px;
+  border:1px solid rgba(127,246,255,.15);
+  border-radius:22px;
+  background:rgba(3,8,13,.62);
+  backdrop-filter:blur(10px);
+  box-shadow:0 24px 80px rgba(0,0,0,.28),0 0 50px rgba(127,246,255,.035);
+}
+.attention-matrix i{
+  display:block;border-radius:3px;
+  background:linear-gradient(135deg,rgba(127,246,255,var(--a,.08)),rgba(180,156,255,var(--b,.05)));
+  border:1px solid rgba(255,255,255,.018);
+  transition:transform .18s ease,filter .18s ease,background .18s ease;
+}
+.immersive-hero:hover .attention-matrix i:nth-child(5n),
+.immersive-hero:hover .attention-matrix i:nth-child(11n){
+  filter:brightness(1.55);
+  transform:translateZ(0) scale(1.08);
+}
+.matrix-title{
+  position:absolute;left:50%;top:calc(49% - 132px);transform:translateX(-50%);
+  z-index:5;
+  font:800 .54rem ui-monospace,monospace;letter-spacing:.16em;color:#8aa4b8;
+}
+.matrix-title strong{color:#7ff6ff}
+
+.embedding-strip{
+  position:absolute;
+  left:50%;top:72%;
+  transform:translateX(-50%);
+  z-index:5;
+  width:500px;
+  display:grid;grid-template-columns:repeat(10,1fr);gap:5px;
+}
+.embedding-strip span{
+  height:8px;border-radius:2px;
+  background:linear-gradient(90deg,rgba(127,246,255,.08),rgba(127,246,255,.42),rgba(180,156,255,.18));
+  transform:scaleX(var(--s,.6));
+  transform-origin:left;
+  opacity:.72;
+}
+.embedding-label{
+  position:absolute;left:50%;top:75.5%;transform:translateX(-50%);
+  z-index:5;
+  font:700 .46rem ui-monospace,monospace;letter-spacing:.13em;color:#536b80;
+}
+
+.token-rail{
+  position:absolute;left:50%;top:23%;transform:translateX(-50%);
+  z-index:5;
+  display:flex;gap:7px;max-width:620px;
+}
+.token-rail span{
+  padding:6px 9px;border:1px solid rgba(127,246,255,.08);
+  border-radius:7px;background:rgba(5,10,16,.72);
+  font:700 .48rem ui-monospace,monospace;color:#647b90;
+  transition:transform .18s ease,border-color .18s ease,color .18s ease,background .18s ease;
+}
+.token-rail span:nth-child(3n){border-color:rgba(180,156,255,.09)}
+.immersive-hero:hover .token-rail span:hover{
+  transform:translateY(-3px);
+  color:#d7edf7;
+  border-color:rgba(127,246,255,.28);
+  background:rgba(127,246,255,.035);
+}
+
+.model-stack{
+  position:absolute;right:7%;top:42%;z-index:5;
+  width:154px;
+  display:grid;gap:7px;
+}
+.model-stack div{
+  padding:8px 10px;border-left:2px solid rgba(127,246,255,.18);
+  background:linear-gradient(90deg,rgba(127,246,255,.025),transparent);
+  font:700 .47rem ui-monospace,monospace;color:#60788d;
+}
+.model-stack div:nth-child(even){border-left-color:rgba(180,156,255,.19)}
+.model-stack b{display:block;color:#9cb4c6;font-size:.48rem;margin-bottom:2px}
+
+.immersive-hero:before{
+  animation:none!important;
+  background:
+    linear-gradient(115deg,transparent 0 34%,rgba(127,246,255,.04) 48%,transparent 62%),
+    linear-gradient(245deg,transparent 0 37%,rgba(180,156,255,.035) 51%,transparent 65%)!important;
+  filter:blur(18px)!important;
+}
+
+/* AI themed page background: attention-map geometry, not circles/particles */
+.ai-background .field{display:none!important}
+.ai-background .contour{display:none!important}
+.ai-background .plane{
+  border-radius:20px!important;
+  opacity:.55;
+}
+.ai-background:before{
+  content:"";
+  position:absolute;inset:0;
+  background:
+    linear-gradient(135deg,transparent 0 18%,rgba(127,246,255,.025) 18.1% 18.25%,transparent 18.35% 100%),
+    linear-gradient(45deg,transparent 0 64%,rgba(180,156,255,.022) 64.1% 64.25%,transparent 64.35% 100%),
+    repeating-linear-gradient(90deg,rgba(127,246,255,.012) 0 1px,transparent 1px 72px),
+    repeating-linear-gradient(0deg,rgba(127,246,255,.010) 0 1px,transparent 1px 72px);
+}
+.ai-background:after{
+  content:"ATTENTION  /  EMBEDDING  /  MEMORY  /  VERIFY";
+  position:absolute;right:5vw;bottom:7vh;
+  font:800 .52rem ui-monospace,monospace;letter-spacing:.24em;
+  color:rgba(127,246,255,.10);
+}
+
+/* No automatic visual motion. Interaction only. */
+*::before,*::after{animation-play-state:paused}
+.immersive-hero:hover *::before,.immersive-hero:hover *::after{animation-play-state:paused}
+
+@media(max-width:900px){
+ .transformer-scene{width:94vw;height:480px}
+ .tensor-plane{width:500px}
+ .model-stack{display:none}
+}
+@media(max-width:620px){
+ .transformer-scene{width:98vw;height:440px;top:55%}
+ .tensor-plane{width:360px;height:190px}
+ .attention-matrix{width:290px;height:180px;gap:3px}
+ .embedding-strip{width:300px}
+ .token-rail{display:none}
+ .matrix-title{top:calc(49% - 110px)}
+}
 </style>
 </head>
 <body><div class="ai-background" aria-hidden="true">
@@ -1765,24 +1960,18 @@ body:before{
 <header class="site-header"><div class="wrap"><nav class="controlbar"><a class="brandlock" href="/" aria-label="NIAHCIA home"><span class="brandmark"><i></i><i></i></span><span class="brandtext"><strong>NIAHCIA</strong><span>DECENTRALIZED INTELLIGENCE</span></span></a><div class="nav-center"><a href="/">AGENT</a><a href="#architecture">NETWORK</a><a href="#protocol">PROTOCOL</a><a href="#principles">PRINCIPLES</a><a href="downloads.html">DOWNLOADS</a></div><div class="nav-right"><span class="devnet-pill"><i></i>AGENT NETWORK // DEVNET</span><a class="nav-github" href="https://github.com/niahcia">GITHUB</a></div><div class="nav-mobile"><a href="/">AGENT</a><a href="#architecture">NETWORK</a><a href="#protocol">PROTOCOL</a><a href="#principles">PRINCIPLES</a><a href="downloads.html">DOWNLOADS</a></div></nav><div class="header-underbar"></div></div></header>
 <main>
 <div class="wrap hero agent-hero"><div class="immersive-hero">
-  <div class="immersive-grid"></div>
-  <svg class="immersive-core" viewBox="0 0 800 620" aria-hidden="true">
-    <defs>
-      <linearGradient id="immA" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7ff6ff" stop-opacity=".12"/><stop offset="48%" stop-color="#7ff6ff" stop-opacity=".018"/><stop offset="100%" stop-color="#b49cff" stop-opacity=".11"/></linearGradient>
-      <linearGradient id="immB" x1="1" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#b49cff" stop-opacity=".12"/><stop offset="54%" stop-color="#ffffff" stop-opacity=".012"/><stop offset="100%" stop-color="#7ff6ff" stop-opacity=".09"/></linearGradient>
-      <radialGradient id="immC"><stop offset="0%" stop-color="#d8ffff" stop-opacity=".13"/><stop offset="58%" stop-color="#7fd8f0" stop-opacity=".035"/><stop offset="100%" stop-color="#8b7cff" stop-opacity=".012"/></radialGradient>
-      <linearGradient id="immLine" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#7ff6ff" stop-opacity="0"/><stop offset="46%" stop-color="#7ff6ff"/><stop offset="68%" stop-color="#b49cff"/><stop offset="100%" stop-color="#b49cff" stop-opacity="0"/></linearGradient>
-      <filter id="immGlow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="2.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-    </defs>
-    <path class="shellA" d="M401 54 C535 53 650 143 692 266 C736 395 642 529 506 572 C375 614 217 566 122 456 C30 349 58 189 170 103 C232 55 316 50 401 54Z"/>
-    <path class="shellB" d="M400 97 C509 88 608 161 637 270 C667 379 586 476 484 514 C381 553 261 511 192 431 C122 350 135 234 216 165 C266 122 326 104 400 97Z"/>
-    <path class="shellC" d="M399 148 C478 142 553 194 572 274 C592 356 538 423 466 451 C394 478 309 451 257 396 C205 342 215 259 267 210 C301 177 347 153 399 148Z"/>
-    <path class="membrane" d="M95 318 C200 237 302 234 395 307 C490 381 585 382 707 287"/>
-    <path class="membrane" d="M111 260 C214 337 312 346 410 278 C506 212 599 209 692 267"/>
-    <path class="slice" d="M185 164 L604 471"/><path class="slice v" d="M196 468 L615 157"/><path class="slice" d="M400 92 L400 526"/>
-    <polygon class="facet" points="250,190 363,145 461,191 428,264 298,278"/>
-    <polygon class="facet v" points="366,334 486,294 551,365 465,430 351,405"/>
-  </svg>
+  <div class="immersive-grid"></div><div class="transformer-scene" aria-hidden="true">
+    <div class="tensor-plane p1" data-layer="CONTEXT EMBEDDINGS"></div>
+    <div class="tensor-plane p2" data-layer="MULTI-HEAD ATTENTION"></div>
+    <div class="tensor-plane p3" data-layer="LATENT STATE"></div>
+    <div class="token-rail"><span>&lt;BOS&gt;</span><span>ASK</span><span>THE</span><span>NETWORK</span><span>INTENT</span><span>CONTEXT</span><span>VERIFY</span></div>
+    <div class="matrix-title"><strong>ATTENTION</strong> / HEAD 04</div>
+    <div class="attention-matrix"><i style="--a:0.04;--b:0.02"></i><i style="--a:0.11;--b:0.15"></i><i style="--a:0.23;--b:0.1"></i><i style="--a:0.04;--b:0.07"></i><i style="--a:0.11;--b:0.07"></i><i style="--a:0.31;--b:0.04"></i><i style="--a:0.07;--b:0.02"></i><i style="--a:0.16;--b:0.15"></i><i style="--a:0.31;--b:0.15"></i><i style="--a:0.07;--b:0.1"></i><i style="--a:0.23;--b:0.07"></i><i style="--a:0.04;--b:0.04"></i><i style="--a:0.11;--b:0.04"></i><i style="--a:0.23;--b:0.02"></i><i style="--a:0.04;--b:0.15"></i><i style="--a:0.16;--b:0.1"></i><i style="--a:0.31;--b:0.1"></i><i style="--a:0.07;--b:0.07"></i><i style="--a:0.16;--b:0.04"></i><i style="--a:0.31;--b:0.02"></i><i style="--a:0.11;--b:0.02"></i><i style="--a:0.23;--b:0.15"></i><i style="--a:0.04;--b:0.1"></i><i style="--a:0.11;--b:0.07"></i><i style="--a:0.23;--b:0.07"></i><i style="--a:0.07;--b:0.04"></i><i style="--a:0.16;--b:0.02"></i><i style="--a:0.31;--b:0.15"></i><i style="--a:0.07;--b:0.15"></i><i style="--a:0.16;--b:0.1"></i><i style="--a:0.04;--b:0.07"></i><i style="--a:0.11;--b:0.04"></i><i style="--a:0.23;--b:0.04"></i><i style="--a:0.04;--b:0.02"></i><i style="--a:0.11;--b:0.15"></i><i style="--a:0.31;--b:0.1"></i><i style="--a:0.07;--b:0.1"></i><i style="--a:0.16;--b:0.07"></i><i style="--a:0.31;--b:0.04"></i><i style="--a:0.07;--b:0.02"></i><i style="--a:0.23;--b:0.02"></i><i style="--a:0.04;--b:0.15"></i><i style="--a:0.11;--b:0.1"></i><i style="--a:0.23;--b:0.07"></i><i style="--a:0.04;--b:0.07"></i><i style="--a:0.16;--b:0.04"></i><i style="--a:0.31;--b:0.02"></i><i style="--a:0.07;--b:0.15"></i><i style="--a:0.16;--b:0.15"></i><i style="--a:0.31;--b:0.1"></i><i style="--a:0.11;--b:0.07"></i><i style="--a:0.23;--b:0.04"></i><i style="--a:0.04;--b:0.04"></i><i style="--a:0.11;--b:0.02"></i><i style="--a:0.23;--b:0.15"></i><i style="--a:0.07;--b:0.1"></i><i style="--a:0.16;--b:0.1"></i><i style="--a:0.31;--b:0.07"></i><i style="--a:0.07;--b:0.04"></i><i style="--a:0.16;--b:0.02"></i><i style="--a:0.04;--b:0.02"></i><i style="--a:0.11;--b:0.15"></i><i style="--a:0.23;--b:0.1"></i><i style="--a:0.04;--b:0.07"></i><i style="--a:0.11;--b:0.07"></i><i style="--a:0.31;--b:0.04"></i><i style="--a:0.07;--b:0.02"></i><i style="--a:0.16;--b:0.15"></i><i style="--a:0.31;--b:0.15"></i><i style="--a:0.07;--b:0.1"></i><i style="--a:0.23;--b:0.07"></i><i style="--a:0.04;--b:0.04"></i><i style="--a:0.11;--b:0.04"></i><i style="--a:0.23;--b:0.02"></i><i style="--a:0.04;--b:0.15"></i><i style="--a:0.16;--b:0.1"></i><i style="--a:0.31;--b:0.1"></i><i style="--a:0.07;--b:0.07"></i><i style="--a:0.16;--b:0.04"></i><i style="--a:0.31;--b:0.02"></i><i style="--a:0.11;--b:0.02"></i><i style="--a:0.23;--b:0.15"></i><i style="--a:0.04;--b:0.1"></i><i style="--a:0.11;--b:0.07"></i></div>
+    <div class="embedding-strip"><span style="--s:.42"></span><span style="--s:.78"></span><span style="--s:.56"></span><span style="--s:.91"></span><span style="--s:.34"></span><span style="--s:.69"></span><span style="--s:.48"></span><span style="--s:.84"></span><span style="--s:.63"></span><span style="--s:.76"></span></div>
+    <div class="embedding-label">LATENT VECTOR / 10 DIMENSION PREVIEW</div>
+    <div class="model-stack"><div><b>LAYER 12</b>context synthesis</div><div><b>LAYER 13</b>capability routing</div><div><b>LAYER 14</b>tool selection</div><div><b>LAYER 15</b>verification policy</div></div>
+  </div>
+  
   <div class="hero-orbit-label">NIAHCIA / PRIMARY INTELLIGENCE</div>
   <div class="semantic-float s1"><b>INTENT</b><span>objective → constraints → policy</span></div>
   <div class="semantic-float s2"><b>MEMORY</b><span>context → descriptors → relevance</span></div>
